@@ -6,7 +6,7 @@ const features = [
     icon: RefreshCw,
     title: 'Live Data Sync',
     tagline: 'Fresh data. Always.',
-    description: "We don't just import once. We track changes across Notion, Google Drive, and Websites. When your team edits a doc, Axio updates instantly.",
+    description: "We only synchronize once. When you or someone on your team updates a file or content, it automatically updates in Axio.",
     gradient: 'from-violet-500 to-purple-600',
   },
   {
