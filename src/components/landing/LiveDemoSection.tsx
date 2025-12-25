@@ -1,251 +1,330 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FileText, MessageSquare, Database, Send } from 'lucide-react';
+import { FileText, MessageSquare, Database, Wrench, AlertTriangle, FileSpreadsheet, Check, Users, Factory } from 'lucide-react';
 
 interface Source {
   id: string;
   name: string;
-  type: 'pdf' | 'notion' | 'slack';
+  type: string;
   icon: typeof FileText;
+  size?: string;
 }
 
-const sources: Source[] = [
-  { id: '1', name: 'Q4-Planning.pdf', type: 'pdf', icon: FileText },
-  { id: '2', name: 'Product Roadmap', type: 'notion', icon: Database },
-  { id: '3', name: '#strategy-chat', type: 'slack', icon: MessageSquare },
-  { id: '4', name: 'Budget-2024.xlsx', type: 'pdf', icon: FileText },
-  { id: '5', name: 'Team Wiki', type: 'notion', icon: Database },
-];
+const teamsScenario: { sources: Source[]; demoSequence: { query: string; response: string; citedSources: string[] }[] } = {
+  sources: [
+    { id: '1', name: 'Marketing-Plan-Q4.pdf', type: 'pdf', icon: FileText },
+    { id: '2', name: 'Budget-2025.xlsx', type: 'excel', icon: FileSpreadsheet },
+    { id: '3', name: 'Product Roadmap', type: 'notion', icon: Database },
+    { id: '4', name: '#marketing-chat', type: 'slack', icon: MessageSquare },
+  ],
+  demoSequence: [
+    {
+      query: "What's our Q4 marketing budget?",
+      response: "Based on **Budget-2025.xlsx** and the **Marketing Plan**, the Q4 budget is **$125,000** allocated across digital ads ($75k), events ($30k), and content ($20k).",
+      citedSources: ['1', '2'],
+    },
+    {
+      query: "When is the product launch?",
+      response: "According to the **Product Roadmap**, the v2.0 launch is scheduled for **March 15th**. The #marketing-chat confirms the campaign starts **2 weeks prior**.",
+      citedSources: ['3', '4'],
+    },
+  ],
+};
 
-const demoSequence = [
-  {
-    query: "What's our product launch date?",
-    response: "Based on your Product Roadmap and Q4 Planning documents, the launch is scheduled for March 15th, 2025.",
-    citedSources: ['2', '1'],
-  },
-  {
-    query: "Who's leading the mobile initiative?",
-    response: "According to the Team Wiki and recent Slack discussions, Alex Rivera is leading mobile development.",
-    citedSources: ['5', '3'],
-  },
-];
+const operationsScenario: { sources: Source[]; demoSequence: { query: string; response: string; citedSources: string[] }[] } = {
+  sources: [
+    { id: '1', name: 'Turbine-Maintenance-Manual.pdf', type: 'pdf', icon: Wrench, size: '200MB' },
+    { id: '2', name: 'Safety-Protocols-2025.docx', type: 'doc', icon: AlertTriangle },
+    { id: '3', name: 'Field-Ops-Log.xlsx', type: 'excel', icon: FileSpreadsheet },
+    { id: '4', name: 'HQ Knowledge Base', type: 'notion', icon: Database },
+  ],
+  demoSequence: [
+    {
+      query: "What is the max pressure for Valve X-99 during startup?",
+      response: "According to the **Turbine Maintenance Manual (Page 45)**, the max pressure is **140 PSI**. ⚠️ Ensure the bypass valve is open first (See **Safety Protocols**).",
+      citedSources: ['1', '2'],
+    },
+    {
+      query: "Show me the lockout procedure for Unit 7",
+      response: "From **Safety Protocols 2025 (Section 4.2)**: 1) Notify control room, 2) Apply LOTO tag, 3) Verify zero energy state. See **Field-Ops-Log** for recent history.",
+      citedSources: ['2', '3'],
+    },
+  ],
+};
 
 export const LiveDemoSection = () => {
+  const [activeTab, setActiveTab] = useState<'teams' | 'operations'>('teams');
   const [currentStep, setCurrentStep] = useState(0);
   const [displayedQuery, setDisplayedQuery] = useState('');
   const [displayedResponse, setDisplayedResponse] = useState('');
+  const [isTypingQuery, setIsTypingQuery] = useState(true);
   const [activeSources, setActiveSources] = useState<string[]>([]);
-  const [isTypingQuery, setIsTypingQuery] = useState(false);
-  const [isTypingResponse, setIsTypingResponse] = useState(false);
-  const svgRef = useRef<SVGSVGElement>(null);
-  const sourceRefs = useRef<Map<string, HTMLDivElement>>(new Map());
   const chatRef = useRef<HTMLDivElement>(null);
 
+  const scenario = activeTab === 'teams' ? teamsScenario : operationsScenario;
+  const sources = scenario.sources;
+  const demoSequence = scenario.demoSequence;
+
+  // Reset animation when tab changes
   useEffect(() => {
-    const runDemo = async () => {
-      const step = demoSequence[currentStep];
-      
-      // Reset
-      setDisplayedQuery('');
-      setDisplayedResponse('');
-      setActiveSources([]);
+    setCurrentStep(0);
+    setDisplayedQuery('');
+    setDisplayedResponse('');
+    setIsTypingQuery(true);
+    setActiveSources([]);
+  }, [activeTab]);
 
-      // Type query fast
-      setIsTypingQuery(true);
-      for (let i = 0; i <= step.query.length; i++) {
-        setDisplayedQuery(step.query.slice(0, i));
-        await new Promise(r => setTimeout(r, 25));
+  useEffect(() => {
+    if (currentStep >= demoSequence.length) {
+      const resetTimer = setTimeout(() => {
+        setCurrentStep(0);
+        setDisplayedQuery('');
+        setDisplayedResponse('');
+        setIsTypingQuery(true);
+        setActiveSources([]);
+      }, 4000);
+      return () => clearTimeout(resetTimer);
+    }
+
+    const currentDemo = demoSequence[currentStep];
+    let queryIndex = 0;
+    let responseIndex = 0;
+
+    setIsTypingQuery(true);
+    setDisplayedQuery('');
+    setDisplayedResponse('');
+    setActiveSources([]);
+
+    // Type query fast
+    const queryInterval = setInterval(() => {
+      if (queryIndex < currentDemo.query.length) {
+        setDisplayedQuery(currentDemo.query.slice(0, queryIndex + 1));
+        queryIndex++;
+      } else {
+        clearInterval(queryInterval);
+        setIsTypingQuery(false);
+        
+        // Laser-fast source activation
+        setTimeout(() => {
+          setActiveSources(currentDemo.citedSources);
+        }, 200);
+
+        // Type response
+        setTimeout(() => {
+          const responseInterval = setInterval(() => {
+            if (responseIndex < currentDemo.response.length) {
+              setDisplayedResponse(currentDemo.response.slice(0, responseIndex + 1));
+              responseIndex++;
+            } else {
+              clearInterval(responseInterval);
+              setTimeout(() => setCurrentStep(prev => prev + 1), 2500);
+            }
+          }, 15);
+        }, 400);
       }
-      setIsTypingQuery(false);
+    }, 30);
 
-      await new Promise(r => setTimeout(r, 200));
+    return () => clearInterval(queryInterval);
+  }, [currentStep, demoSequence]);
 
-      // Type response fast
-      setIsTypingResponse(true);
-      for (let i = 0; i <= step.response.length; i++) {
-        setDisplayedResponse(step.response.slice(0, i));
-        await new Promise(r => setTimeout(r, 15));
+  const renderFormattedText = (text: string) => {
+    return text.split(/(\*\*[^*]+\*\*)/).map((part, index) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        return (
+          <span key={index} className="text-axio-cyan font-semibold">
+            {part.slice(2, -2)}
+          </span>
+        );
       }
-      setIsTypingResponse(false);
-
-      // Quick laser citations
-      await new Promise(r => setTimeout(r, 100));
-      setActiveSources(step.citedSources);
-
-      // Wait and move to next
-      await new Promise(r => setTimeout(r, 3000));
-      setCurrentStep((prev) => (prev + 1) % demoSequence.length);
-    };
-
-    runDemo();
-  }, [currentStep]);
+      return part;
+    });
+  };
 
   return (
-    <section className="py-32 bg-void relative overflow-hidden">
+    <section className="relative py-32 overflow-hidden">
       {/* Background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px]" />
-
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-axio-violet/10 rounded-full blur-[120px]" />
+      
+      <div className="relative z-10 container mx-auto px-4">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-4">
-            <span className="text-foreground">See the </span>
-            <span className="gradient-text">magic</span>
+          <h2 className="text-4xl md:text-5xl font-bold">
+            See It Work. <span className="gradient-text">Your Way.</span>
           </h2>
-          <p className="text-xl text-muted-foreground">
-            Watch how Axio connects your questions to your knowledge.
+          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+            Choose your scenario—office teams or field operations.
           </p>
         </motion.div>
 
-        <div className="max-w-5xl mx-auto">
-          {/* Mobile: Vertical Stack / Desktop: Side by Side */}
-          <div className="flex flex-col lg:flex-row gap-8 relative">
-            {/* Chat Panel */}
-            <motion.div
-              ref={chatRef}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="flex-1 order-1 lg:order-2"
+        {/* Tab Toggle */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.4 }}
+          className="flex justify-center mb-10"
+        >
+          <div className="inline-flex p-1 rounded-full bg-white/5 border border-white/10">
+            <button
+              onClick={() => setActiveTab('teams')}
+              className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all ${
+                activeTab === 'teams'
+                  ? 'bg-gradient-to-r from-axio-violet to-axio-cyan text-white'
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
             >
-              <div className="glass-card p-6 h-full min-h-[300px]">
-                <div className="flex items-center gap-2 pb-4 border-b border-white/10 mb-4">
-                  <div className="w-2 h-2 rounded-full bg-primary animate-pulse-glow" />
-                  <span className="text-sm font-medium text-foreground">Axio Chat</span>
-                </div>
-
-                <div className="space-y-4">
-                  {/* User query */}
-                  <AnimatePresence mode="wait">
-                    {displayedQuery && (
-                      <motion.div
-                        key="query"
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="flex justify-end"
-                      >
-                        <div className="bg-primary/20 px-4 py-2 rounded-xl max-w-[80%]">
-                          <p className="text-sm text-foreground">
-                            {displayedQuery}
-                            {isTypingQuery && <span className="inline-block w-0.5 h-4 ml-0.5 bg-foreground animate-typing-cursor" />}
-                          </p>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-
-                  {/* Response */}
-                  <AnimatePresence mode="wait">
-                    {displayedResponse && (
-                      <motion.div
-                        key="response"
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="flex justify-start"
-                      >
-                        <div className="bg-muted px-4 py-2 rounded-xl max-w-[80%]">
-                          <p className="text-sm text-foreground">
-                            {displayedResponse}
-                            {isTypingResponse && <span className="inline-block w-0.5 h-4 ml-0.5 bg-foreground animate-typing-cursor" />}
-                          </p>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-
-                  {/* Citations */}
-                  <AnimatePresence>
-                    {activeSources.length > 0 && (
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        className="flex flex-wrap gap-2"
-                      >
-                        {activeSources.map((sourceId, i) => {
-                          const source = sources.find(s => s.id === sourceId);
-                          if (!source) return null;
-                          return (
-                            <motion.span
-                              key={sourceId}
-                              initial={{ opacity: 0, scale: 0.8 }}
-                              animate={{ opacity: 1, scale: 1 }}
-                              transition={{ delay: i * 0.05, duration: 0.1 }}
-                              className="inline-flex items-center gap-1 px-2 py-1 text-xs rounded-md bg-secondary/20 text-secondary border border-secondary/30"
-                            >
-                              <source.icon size={12} />
-                              {source.name}
-                            </motion.span>
-                          );
-                        })}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-
-                {/* Fake input */}
-                <div className="mt-6 flex items-center gap-2 bg-muted/50 rounded-xl px-4 py-3">
-                  <input
-                    type="text"
-                    placeholder="Ask anything..."
-                    className="flex-1 bg-transparent text-sm text-foreground placeholder:text-muted-foreground outline-none"
-                    disabled
-                  />
-                  <Send size={18} className="text-muted-foreground" />
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Sources Panel */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="flex-1 order-2 lg:order-1"
+              <Users className="w-4 h-4" />
+              For Teams
+            </button>
+            <button
+              onClick={() => setActiveTab('operations')}
+              className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all ${
+                activeTab === 'operations'
+                  ? 'bg-gradient-to-r from-axio-violet to-axio-cyan text-white'
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
             >
-              <div className="glass-card p-6 h-full">
-                <div className="flex items-center gap-2 pb-4 border-b border-white/10 mb-4">
-                  <span className="text-sm font-medium text-foreground">Connected Sources</span>
-                </div>
-
-                <div className="space-y-3">
-                  {sources.map((source) => {
-                    const isActive = activeSources.includes(source.id);
-                    return (
-                      <motion.div
-                        key={source.id}
-                        ref={(el) => el && sourceRefs.current.set(source.id, el)}
-                        animate={{
-                          scale: isActive ? 1.02 : 1,
-                          boxShadow: isActive ? '0 0 20px rgba(6, 182, 212, 0.4)' : '0 0 0px rgba(0,0,0,0)',
-                        }}
-                        transition={{ duration: 0.15 }}
-                        className={`flex items-center gap-3 p-3 rounded-lg transition-colors ${
-                          isActive ? 'bg-secondary/10 border border-secondary/30' : 'bg-muted/30 border border-transparent'
-                        }`}
-                      >
-                        <source.icon size={18} className={isActive ? 'text-secondary' : 'text-muted-foreground'} />
-                        <span className={`text-sm ${isActive ? 'text-foreground' : 'text-muted-foreground'}`}>
-                          {source.name}
-                        </span>
-                        {isActive && (
-                          <motion.span
-                            initial={{ opacity: 0, scale: 0 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            className="ml-auto w-2 h-2 rounded-full bg-secondary animate-pulse-glow"
-                          />
-                        )}
-                      </motion.div>
-                    );
-                  })}
-                </div>
-              </div>
-            </motion.div>
+              <Factory className="w-4 h-4" />
+              For Operations
+            </button>
           </div>
-        </div>
+        </motion.div>
+
+        {/* Demo Container */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3, duration: 0.6 }}
+          className="max-w-5xl mx-auto"
+        >
+          <div className="grid lg:grid-cols-5 gap-6">
+            {/* Chat Panel - 3 cols */}
+            <div className="lg:col-span-3 glass-card rounded-2xl p-6 min-h-[400px]">
+              <div className="flex items-center gap-2 mb-6 pb-4 border-b border-white/10">
+                <div className="w-3 h-3 rounded-full bg-red-500/80" />
+                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                <span className="ml-3 text-sm text-muted-foreground">Axio Chat</span>
+              </div>
+
+              <div ref={chatRef} className="space-y-6">
+                {/* User Query */}
+                <AnimatePresence mode="wait">
+                  {displayedQuery && (
+                    <motion.div
+                      key={`query-${currentStep}-${activeTab}`}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0 }}
+                      className="flex justify-end"
+                    >
+                      <div className="bg-axio-violet/30 rounded-2xl rounded-br-sm px-4 py-3 max-w-[85%]">
+                        <p className="text-foreground">
+                          {displayedQuery}
+                          {isTypingQuery && (
+                            <span className="inline-block w-0.5 h-4 bg-axio-cyan ml-0.5 animate-pulse" />
+                          )}
+                        </p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                {/* AI Response */}
+                <AnimatePresence mode="wait">
+                  {displayedResponse && (
+                    <motion.div
+                      key={`response-${currentStep}-${activeTab}`}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0 }}
+                      className="flex justify-start"
+                    >
+                      <div className="bg-white/5 rounded-2xl rounded-bl-sm px-4 py-3 max-w-[85%] border border-white/10">
+                        <p className="text-foreground leading-relaxed">
+                          {renderFormattedText(displayedResponse)}
+                        </p>
+                        
+                        {/* Cited sources badges */}
+                        {activeSources.length > 0 && displayedResponse.length > 50 && (
+                          <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            className="flex flex-wrap gap-2 mt-3 pt-3 border-t border-white/10"
+                          >
+                            {activeSources.map(sourceId => {
+                              const source = sources.find(s => s.id === sourceId);
+                              if (!source) return null;
+                              return (
+                                <span
+                                  key={sourceId}
+                                  className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md bg-axio-cyan/20 text-axio-cyan text-xs"
+                                >
+                                  <source.icon className="w-3 h-3" />
+                                  {source.name.split('.')[0]}
+                                </span>
+                              );
+                            })}
+                          </motion.div>
+                        )}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </div>
+
+            {/* Sources Panel - 2 cols */}
+            <div className="lg:col-span-2 glass-card rounded-2xl p-6">
+              <h4 className="text-sm font-medium text-muted-foreground mb-4">Connected Sources</h4>
+              
+              <div className="space-y-3">
+                {sources.map((source) => {
+                  const isActive = activeSources.includes(source.id);
+                  return (
+                    <motion.div
+                      key={`${source.id}-${activeTab}`}
+                      animate={{
+                        borderColor: isActive ? 'rgba(34, 211, 238, 0.5)' : 'rgba(255, 255, 255, 0.1)',
+                        backgroundColor: isActive ? 'rgba(34, 211, 238, 0.1)' : 'rgba(255, 255, 255, 0.02)',
+                      }}
+                      transition={{ duration: 0.15 }}
+                      className="flex items-center gap-3 p-3 rounded-xl border"
+                    >
+                      <div className={`p-2 rounded-lg ${isActive ? 'bg-axio-cyan/20' : 'bg-white/5'}`}>
+                        <source.icon className={`w-4 h-4 ${isActive ? 'text-axio-cyan' : 'text-muted-foreground'}`} />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className={`text-sm font-medium truncate ${isActive ? 'text-foreground' : 'text-muted-foreground'}`}>
+                          {source.name}
+                        </p>
+                        {source.size && (
+                          <p className="text-xs text-muted-foreground">{source.size}</p>
+                        )}
+                      </div>
+                      {isActive && (
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          className="w-5 h-5 rounded-full bg-axio-cyan flex items-center justify-center"
+                        >
+                          <Check className="w-3 h-3 text-axio-void" />
+                        </motion.div>
+                      )}
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

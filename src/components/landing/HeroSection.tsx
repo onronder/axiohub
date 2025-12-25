@@ -17,11 +17,12 @@ export const HeroSection = () => {
             className="flex-1 text-center lg:text-left"
           >
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-[0.9] tracking-tight">
-              <span className="block text-foreground">Stop</span>
-              <span className="block text-foreground">Searching.</span>
-              <span className="block mt-2 gradient-text">Start</span>
-              <span className="block gradient-text">Knowing.</span>
+              <span className="block text-foreground">Your Knowledge,</span>
+              <span className="block gradient-text">Unified.</span>
             </h1>
+            <p className="mt-4 text-xl md:text-2xl text-muted-foreground font-medium">
+              From Personal Projects to Field Ops.
+            </p>
             
             <motion.p
               initial={{ opacity: 0 }}
@@ -29,8 +30,9 @@ export const HeroSection = () => {
               transition={{ delay: 0.3, duration: 0.6 }}
               className="mt-8 text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0"
             >
-              Your knowledge base, unified. Ask anything, get answers from 
-              everywhere—Notion, PDFs, Slack, Drive—in one intelligent hub.
+              The intelligence layer for your files. Whether you're a{' '}
+              <span className="text-foreground font-medium">Freelancer</span> checking a contract or a{' '}
+              <span className="text-foreground font-medium">Field Crew</span> fixing a turbine—Axio answers instantly.
             </motion.p>
 
             <motion.div
@@ -40,10 +42,10 @@ export const HeroSection = () => {
               className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
               <button className="holographic-glow px-8 py-4 rounded-full text-lg font-semibold text-white transition-transform hover:scale-105 active:scale-95">
-                Get Early Access
+                Start Free
               </button>
               <button className="px-8 py-4 rounded-full text-lg font-medium text-foreground border border-white/20 hover:bg-white/5 transition-all">
-                Watch Demo
+                See Enterprise Demo
               </button>
             </motion.div>
           </motion.div>
