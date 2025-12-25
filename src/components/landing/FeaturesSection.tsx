@@ -26,8 +26,8 @@ const features = [
   {
     icon: Plug,
     title: 'Universal Connector',
-    tagline: 'If it has data, we connect.',
-    description: 'SharePoint, SFTP, Google Drive, Notion—if your data lives there, Axio reads it.',
+    tagline: 'Connects to Modern Clouds, Project Boards & Legacy Systems.',
+    description: "Your data isn't just in files. Axio indexes Jira tickets, Monday.com boards, Confluence wikis, Slack threads, and even Legacy SFTP servers.",
     gradient: 'from-orange-400 to-rose-500',
   },
 ];

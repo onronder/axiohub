@@ -11,7 +11,7 @@ const useCases = [
   {
     icon: Factory,
     title: 'Empower the Field',
-    description: 'Give technicians instant access to 200MB+ manuals and safety protocols on mobile. No more downtime.',
+    description: "Don't let field crews waste hours. Axio connects to Monday.com schedules, Jira issue trackers, and SFTP maintenance logs to give instant troubleshooting answers.",
     gradient: 'from-axio-cyan to-emerald-500',
   },
   {

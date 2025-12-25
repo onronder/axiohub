@@ -1,5 +1,6 @@
 import { Header } from '@/components/landing/Header';
 import { HeroSection } from '@/components/landing/HeroSection';
+import { IntegrationMarquee } from '@/components/landing/IntegrationMarquee';
 import { ProblemSection } from '@/components/landing/ProblemSection';
 import { FeaturesSection } from '@/components/landing/FeaturesSection';
 import { ZeroCopySection } from '@/components/landing/ZeroCopySection';
@@ -13,6 +14,7 @@ const Index = () => {
     <main className="bg-background">
       <Header />
       <HeroSection />
+      <IntegrationMarquee />
       <ProblemSection />
       <section id="features">
         <FeaturesSection />
