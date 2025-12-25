@@ -4,9 +4,9 @@ import { RefreshCw, Brain, Shield, Plug } from 'lucide-react';
 const features = [
   {
     icon: RefreshCw,
-    title: 'Notion Lifecycle',
-    tagline: "We don't just import. We sync.",
-    description: 'Real-time two-way sync keeps your knowledge base always current. Changes in Notion? Instantly reflected.',
+    title: 'Live Data Sync',
+    tagline: 'Fresh data. Always.',
+    description: "We don't just import once. We track changes across Notion, Google Drive, and Websites. When your team edits a doc, Axio updates instantly.",
     gradient: 'from-violet-500 to-purple-600',
   },
   {
