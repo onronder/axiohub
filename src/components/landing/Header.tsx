@@ -73,8 +73,8 @@ export const Header = () => {
               <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
                 Sign In
               </Button>
-              <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground">
-                Sign Up
+              <Button size="sm" className="bg-gradient-to-r from-violet-500 to-cyan-500 hover:from-violet-600 hover:to-cyan-600 text-white border-0 rounded-full px-6">
+                Start Free
               </Button>
             </div>
 
@@ -114,8 +114,8 @@ export const Header = () => {
                   <Button variant="ghost" className="w-full justify-center text-muted-foreground">
                     Sign In
                   </Button>
-                  <Button className="w-full justify-center bg-primary hover:bg-primary/90 text-primary-foreground">
-                    Sign Up
+                  <Button className="w-full justify-center bg-gradient-to-r from-violet-500 to-cyan-500 hover:from-violet-600 hover:to-cyan-600 text-white border-0 rounded-full">
+                    Start Free
                   </Button>
                 </div>
               </nav>
