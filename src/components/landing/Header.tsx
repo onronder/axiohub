@@ -74,7 +74,7 @@ export const Header = () => {
                 Sign In
               </Button>
               <Button size="sm" className="bg-gradient-to-r from-violet-500 to-cyan-500 hover:from-violet-600 hover:to-cyan-600 text-white border-0 rounded-full px-6">
-                Start Free
+                Sign Up
               </Button>
             </div>
 
@@ -115,7 +115,7 @@ export const Header = () => {
                     Sign In
                   </Button>
                   <Button className="w-full justify-center bg-gradient-to-r from-violet-500 to-cyan-500 hover:from-violet-600 hover:to-cyan-600 text-white border-0 rounded-full">
-                    Start Free
+                    Sign Up
                   </Button>
                 </div>
               </nav>
