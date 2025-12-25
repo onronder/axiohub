@@ -1,3 +1,4 @@
+import { Header } from '@/components/landing/Header';
 import { HeroSection } from '@/components/landing/HeroSection';
 import { ProblemSection } from '@/components/landing/ProblemSection';
 import { FeaturesSection } from '@/components/landing/FeaturesSection';
@@ -10,13 +11,22 @@ import { Footer } from '@/components/landing/Footer';
 const Index = () => {
   return (
     <main className="bg-background">
+      <Header />
       <HeroSection />
       <ProblemSection />
-      <FeaturesSection />
-      <ZeroCopySection />
-      <LiveDemoSection />
+      <section id="features">
+        <FeaturesSection />
+      </section>
+      <section id="zero-copy">
+        <ZeroCopySection />
+      </section>
+      <section id="demo">
+        <LiveDemoSection />
+      </section>
       <BuiltForSection />
-      <PricingSection />
+      <section id="pricing">
+        <PricingSection />
+      </section>
       <Footer />
     </main>
   );
