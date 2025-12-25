@@ -41,12 +41,22 @@ export const HeroSection = () => {
               transition={{ delay: 0.5, duration: 0.4 }}
               className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
-              <button className="holographic-glow px-8 py-4 rounded-full text-lg font-semibold text-white transition-transform hover:scale-105 active:scale-95">
+              <a 
+                href="https://app.axiohub.io/register" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="holographic-glow px-8 py-4 rounded-full text-lg font-semibold text-white transition-transform hover:scale-105 active:scale-95 text-center"
+              >
                 Start Free
-              </button>
-              <button className="px-8 py-4 rounded-full text-lg font-medium text-foreground border border-white/20 hover:bg-white/5 transition-all">
+              </a>
+              <a 
+                href="https://app.axiohub.io/register" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="px-8 py-4 rounded-full text-lg font-medium text-foreground border border-white/20 hover:bg-white/5 transition-all text-center"
+              >
                 See Enterprise Demo
-              </button>
+              </a>
             </motion.div>
           </motion.div>
 
