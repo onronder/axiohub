@@ -1,0 +1,80 @@
+import { motion } from 'framer-motion';
+import { ParticleCanvas } from './ParticleCanvas';
+import { AutoTypingChat } from './AutoTypingChat';
+
+export const HeroSection = () => {
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <ParticleCanvas />
+      
+      <div className="relative z-10 container mx-auto px-4 py-20">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+          {/* Left: Typography */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex-1 text-center lg:text-left"
+          >
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-[0.9] tracking-tight">
+              <span className="block text-foreground">Stop</span>
+              <span className="block text-foreground">Searching.</span>
+              <span className="block mt-2 gradient-text">Start</span>
+              <span className="block gradient-text">Knowing.</span>
+            </h1>
+            
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="mt-8 text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0"
+            >
+              Your knowledge base, unified. Ask anything, get answers from 
+              everywhere—Notion, PDFs, Slack, Drive—in one intelligent hub.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.4 }}
+              className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+            >
+              <button className="holographic-glow px-8 py-4 rounded-full text-lg font-semibold text-white transition-transform hover:scale-105 active:scale-95">
+                Get Early Access
+              </button>
+              <button className="px-8 py-4 rounded-full text-lg font-medium text-foreground border border-white/20 hover:bg-white/5 transition-all">
+                Watch Demo
+              </button>
+            </motion.div>
+          </motion.div>
+
+          {/* Right: Auto-typing Chat Demo */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="flex-1 flex justify-center lg:justify-end"
+          >
+            <AutoTypingChat />
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      >
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5 }}
+          className="w-6 h-10 rounded-full border-2 border-white/20 flex items-start justify-center p-2"
+        >
+          <div className="w-1 h-2 rounded-full bg-primary" />
+        </motion.div>
+      </motion.div>
+    </section>
+  );
+};
