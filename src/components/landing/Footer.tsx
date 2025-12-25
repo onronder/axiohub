@@ -42,9 +42,6 @@ export const Footer = () => {
             <Link to="/terms" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Terms of Service
             </Link>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Twitter
-            </a>
           </nav>
 
           <p className="text-xs text-muted-foreground">
