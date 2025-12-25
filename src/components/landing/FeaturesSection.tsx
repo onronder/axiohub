@@ -6,7 +6,7 @@ const features = [
     icon: RefreshCw,
     title: 'Live Data Sync',
     tagline: 'Fresh data. Always.',
-    description: "We only synchronize once. When you or someone on your team updates a file or content, it automatically updates in Axio.",
+    description: "We don't just synchronize once. When you or someone on your team updates a file or content, it automatically updates in Axio.",
     gradient: 'from-violet-500 to-purple-600',
   },
   {
