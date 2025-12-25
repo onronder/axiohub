@@ -51,7 +51,7 @@ export const Header = () => {
               <img 
                 src={logo} 
                 alt="Axio Hub" 
-                className="h-20 w-auto object-contain"
+                className="h-28 w-auto object-contain"
               />
             </Link>
 
