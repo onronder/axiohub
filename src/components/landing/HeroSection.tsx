@@ -49,14 +49,6 @@ export const HeroSection = () => {
               >
                 Start Free
               </a>
-              <a 
-                href="https://app.axiohub.io/register" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="px-8 py-4 rounded-full text-lg font-medium text-foreground border border-white/20 hover:bg-white/5 transition-all text-center"
-              >
-                See Enterprise Demo
-              </a>
             </motion.div>
           </motion.div>
 
