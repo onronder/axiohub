@@ -27,7 +27,7 @@ const features = [
     icon: Plug,
     title: 'Universal Connector',
     tagline: 'If it has data, we connect.',
-    description: 'PDF, Notion, Slack, Drive, Confluence—one unified pipeline. No more context switching.',
+    description: 'SharePoint, SFTP, Google Drive, Notion—if your data lives there, Axio reads it.',
     gradient: 'from-orange-400 to-rose-500',
   },
 ];
