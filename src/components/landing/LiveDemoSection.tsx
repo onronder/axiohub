@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FileText, MessageSquare, Database, Wrench, AlertTriangle, FileSpreadsheet, Check, Users, Factory } from 'lucide-react';
+import { FileText, MessageSquare, Database, Wrench, AlertTriangle, FileSpreadsheet, Check, Users, Factory, User } from 'lucide-react';
 
 interface Source {
   id: string;
@@ -10,6 +10,29 @@ interface Source {
   size?: string;
 }
 
+// Personal/Freelancer scenario
+const personalScenario: { sources: Source[]; demoSequence: { query: string; response: string; citedSources: string[] }[] } = {
+  sources: [
+    { id: '1', name: 'Client-Contract-2025.pdf', type: 'pdf', icon: FileText },
+    { id: '2', name: 'Project-Notes.md', type: 'markdown', icon: FileText },
+    { id: '3', name: 'Research-Archive', type: 'notion', icon: Database },
+    { id: '4', name: 'Invoices-Folder', type: 'drive', icon: FileSpreadsheet },
+  ],
+  demoSequence: [
+    {
+      query: "What's the payment terms in my latest client contract?",
+      response: "According to **Client-Contract-2025.pdf (Section 5)**, payment is due **Net 30** after invoice submission. The total project value is **$15,000** paid in 3 milestones.",
+      citedSources: ['1'],
+    },
+    {
+      query: "Summarize my research notes on AI trends",
+      response: "From your **Research-Archive**: Key trends include multimodal AI, edge computing, and RAG systems. Your **Project-Notes.md** mentions integrating these into the Q1 proposal.",
+      citedSources: ['2', '3'],
+    },
+  ],
+};
+
+// Teams scenario (office use case)
 const teamsScenario: { sources: Source[]; demoSequence: { query: string; response: string; citedSources: string[] }[] } = {
   sources: [
     { id: '1', name: 'Marketing-Plan-Q4.pdf', type: 'pdf', icon: FileText },
@@ -31,6 +54,7 @@ const teamsScenario: { sources: Source[]; demoSequence: { query: string; respons
   ],
 };
 
+// Operations scenario (field ops use case)
 const operationsScenario: { sources: Source[]; demoSequence: { query: string; response: string; citedSources: string[] }[] } = {
   sources: [
     { id: '1', name: 'Turbine-Maintenance-Manual.pdf', type: 'pdf', icon: Wrench, size: '200MB' },
@@ -53,7 +77,7 @@ const operationsScenario: { sources: Source[]; demoSequence: { query: string; re
 };
 
 export const LiveDemoSection = () => {
-  const [activeTab, setActiveTab] = useState<'teams' | 'operations'>('teams');
+  const [activeTab, setActiveTab] = useState<'personal' | 'teams' | 'operations'>('personal');
   const [currentStep, setCurrentStep] = useState(0);
   const [displayedQuery, setDisplayedQuery] = useState('');
   const [displayedResponse, setDisplayedResponse] = useState('');
@@ -61,7 +85,11 @@ export const LiveDemoSection = () => {
   const [activeSources, setActiveSources] = useState<string[]>([]);
   const chatRef = useRef<HTMLDivElement>(null);
 
-  const scenario = activeTab === 'teams' ? teamsScenario : operationsScenario;
+  const scenario = activeTab === 'personal' 
+    ? personalScenario 
+    : activeTab === 'teams' 
+      ? teamsScenario 
+      : operationsScenario;
   const sources = scenario.sources;
   const demoSequence = scenario.demoSequence;
 
@@ -158,7 +186,7 @@ export const LiveDemoSection = () => {
             See It Work. <span className="gradient-text">Your Way.</span>
           </h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-            Choose your scenario—office teams or field operations.
+            Choose your scenario—personal projects, office teams, or field operations.
           </p>
         </motion.div>
 
@@ -172,8 +200,19 @@ export const LiveDemoSection = () => {
         >
           <div className="inline-flex p-1 rounded-full bg-white/5 border border-white/10">
             <button
+              onClick={() => setActiveTab('personal')}
+              className={`flex items-center gap-2 px-5 py-3 rounded-full text-sm font-medium transition-all ${
+                activeTab === 'personal'
+                  ? 'bg-gradient-to-r from-axio-violet to-axio-cyan text-white'
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              <User className="w-4 h-4" />
+              For Personal
+            </button>
+            <button
               onClick={() => setActiveTab('teams')}
-              className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all ${
+              className={`flex items-center gap-2 px-5 py-3 rounded-full text-sm font-medium transition-all ${
                 activeTab === 'teams'
                   ? 'bg-gradient-to-r from-axio-violet to-axio-cyan text-white'
                   : 'text-muted-foreground hover:text-foreground'
@@ -184,7 +223,7 @@ export const LiveDemoSection = () => {
             </button>
             <button
               onClick={() => setActiveTab('operations')}
-              className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all ${
+              className={`flex items-center gap-2 px-5 py-3 rounded-full text-sm font-medium transition-all ${
                 activeTab === 'operations'
                   ? 'bg-gradient-to-r from-axio-violet to-axio-cyan text-white'
                   : 'text-muted-foreground hover:text-foreground'
