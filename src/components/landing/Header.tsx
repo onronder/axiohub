@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import logo from '@/assets/logo.png';
 
 const navItems = [
   { label: 'Features', href: '#features' },
@@ -46,18 +47,12 @@ export const Header = () => {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-2 group">
-              <div className="relative w-8 h-8">
-                <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-primary to-cyan-500 opacity-80 group-hover:opacity-100 transition-opacity" />
-                <div className="absolute inset-[2px] rounded-[6px] bg-background flex items-center justify-center">
-                  <span className="text-sm font-bold bg-gradient-to-r from-primary to-cyan-400 bg-clip-text text-transparent">
-                    A
-                  </span>
-                </div>
-              </div>
-              <span className="text-lg font-semibold text-foreground">
-                Axio Hub
-              </span>
+            <Link to="/" className="flex items-center group">
+              <img 
+                src={logo} 
+                alt="Axio Hub" 
+                className="h-8 md:h-10 w-auto object-contain"
+              />
             </Link>
 
             {/* Desktop Navigation */}
