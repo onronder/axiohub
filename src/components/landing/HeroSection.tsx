@@ -1,13 +1,11 @@
 import { motion } from 'framer-motion';
 import { ParticleCanvas } from './ParticleCanvas';
 import { AutoTypingChat } from './AutoTypingChat';
-import { FloatingIcons } from './FloatingIcons';
 
 export const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <ParticleCanvas />
-      <FloatingIcons />
       
       <div className="relative z-10 container mx-auto px-4 py-20">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
