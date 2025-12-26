@@ -47,7 +47,7 @@ export const HeroSection = () => {
                 rel="noopener noreferrer"
                 className="holographic-glow px-8 py-4 rounded-full text-lg font-semibold text-white transition-transform hover:scale-105 active:scale-95 text-center"
               >
-                Start Free
+                Join Now
               </a>
             </motion.div>
           </motion.div>

@@ -70,12 +70,16 @@ export const Header = () => {
 
             {/* Desktop Auth Buttons */}
             <div className="hidden md:flex items-center gap-3">
-              <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
-                Sign In
-              </Button>
-              <Button size="sm" className="bg-gradient-to-r from-violet-500 to-cyan-500 hover:from-violet-600 hover:to-cyan-600 text-white border-0 rounded-full px-6">
-                Sign Up
-              </Button>
+              <a href="https://app.axiohub.io/login" target="_blank" rel="noopener noreferrer">
+                <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
+                  Sign In
+                </Button>
+              </a>
+              <a href="https://app.axiohub.io/register" target="_blank" rel="noopener noreferrer">
+                <Button size="sm" className="bg-gradient-to-r from-violet-500 to-cyan-500 hover:from-violet-600 hover:to-cyan-600 text-white border-0 rounded-full px-6">
+                  Sign Up
+                </Button>
+              </a>
             </div>
 
             {/* Mobile Menu Button */}
@@ -111,12 +115,16 @@ export const Header = () => {
                   </button>
                 ))}
                 <div className="border-t border-border/50 pt-4 mt-2 flex flex-col gap-2">
-                  <Button variant="ghost" className="w-full justify-center text-muted-foreground">
-                    Sign In
-                  </Button>
-                  <Button className="w-full justify-center bg-gradient-to-r from-violet-500 to-cyan-500 hover:from-violet-600 hover:to-cyan-600 text-white border-0 rounded-full">
-                    Sign Up
-                  </Button>
+                  <a href="https://app.axiohub.io/login" target="_blank" rel="noopener noreferrer" className="w-full">
+                    <Button variant="ghost" className="w-full justify-center text-muted-foreground">
+                      Sign In
+                    </Button>
+                  </a>
+                  <a href="https://app.axiohub.io/register" target="_blank" rel="noopener noreferrer" className="w-full">
+                    <Button className="w-full justify-center bg-gradient-to-r from-violet-500 to-cyan-500 hover:from-violet-600 hover:to-cyan-600 text-white border-0 rounded-full">
+                      Sign Up
+                    </Button>
+                  </a>
                 </div>
               </nav>
             </div>
