@@ -88,7 +88,7 @@ export const ProblemSection = () => {
             className="text-center"
           >
             <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
-              Your data is <span className="text-primary">everywhere</span>.
+              Your documents are <span className="text-primary">everywhere</span>.
             </h2>
             <p className="text-xl md:text-2xl text-muted-foreground">
               Your answers are <span className="text-secondary">nowhere</span>.
