@@ -36,6 +36,9 @@ export const Footer = () => {
           </div>
 
           <nav className="flex items-center gap-8">
+            <Link to="/faq" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              FAQ
+            </Link>
             <Link to="/privacy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Privacy Policy
             </Link>
