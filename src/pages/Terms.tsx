@@ -80,7 +80,7 @@ const Terms = () => {
 
       <LegalSection id="subscription" title="6. Subscription & Termination">
         <ul className="list-disc pl-6 space-y-2">
-          <li><strong className="text-foreground">Free Tier:</strong> Provided "as is" without warranty.</li>
+          <li><strong className="text-foreground">Trial Period:</strong> Provided "as is" without warranty. Access is revoked if no valid subscription is active after the trial.</li>
           <li><strong className="text-foreground">Paid Subscriptions:</strong> Billed in advance. Refunds are subject to our Refund Policy.</li>
           <li><strong className="text-foreground">Termination:</strong> We reserve the right to suspend accounts that violate these Terms.</li>
         </ul>
