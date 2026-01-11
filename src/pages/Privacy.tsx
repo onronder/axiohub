@@ -1,5 +1,6 @@
 import { SEO } from '@/components/SEO';
 import { LegalPageLayout, LegalSection, LegalCallout } from '@/components/legal/LegalPageLayout';
+import { getBreadcrumbSchema } from '@/lib/structured-data';
 
 const sections = [
   { id: 'introduction', title: 'Introduction & Scope' },
@@ -12,6 +13,11 @@ const sections = [
   { id: 'contact', title: 'Contact Us' },
 ];
 
+const breadcrumbData = getBreadcrumbSchema([
+  { name: "Home", url: "https://axiohub.io" },
+  { name: "Privacy Policy", url: "https://axiohub.io/privacy" }
+]);
+
 const Privacy = () => {
   return (
     <>
@@ -19,6 +25,7 @@ const Privacy = () => {
         title="Privacy Policy"
         description="Learn how Axio Hub protects your data with Zero-Copy Architecture. We process your files without storing originals, ensuring maximum privacy and compliance with GDPR, KVKK, and CCPA."
         canonical="/privacy"
+        structuredData={breadcrumbData}
       />
       <LegalPageLayout
         title="Privacy Policy"

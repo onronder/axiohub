@@ -9,6 +9,12 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
 import { SEO } from "@/components/SEO";
+import { getBreadcrumbSchema } from "@/lib/structured-data";
+
+const breadcrumbData = getBreadcrumbSchema([
+  { name: "Home", url: "https://axiohub.io" },
+  { name: "Contact", url: "https://axiohub.io/contact" }
+]);
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
@@ -76,6 +82,7 @@ const Contact = () => {
         title="Contact Us"
         description="Get in touch with the Axio Hub team. We're here to help with questions about our AI-powered knowledge management platform."
         canonical="/contact"
+        structuredData={breadcrumbData}
       />
       <div className="min-h-screen bg-background text-foreground">
         {/* Header */}
