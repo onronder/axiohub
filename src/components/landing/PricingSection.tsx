@@ -3,8 +3,8 @@ import { Check, Sparkles } from 'lucide-react';
 
 const plans = [
   {
-    name: 'Individual',
-    price: '$0',
+    name: 'Starter',
+    price: '$4.99',
     period: '/month',
     description: 'For personal use',
     features: [
@@ -13,8 +13,8 @@ const plans = [
       'PDF, Notion, Drive',
       'Community support',
     ],
-    cta: 'Start Free',
-    highlight: 'No credit card required',
+    cta: 'Get Started',
+    highlight: 'Best value to start',
     popular: false,
   },
   {
