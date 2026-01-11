@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Check, Sparkles } from 'lucide-react';
+import { Check, Sparkles, Gift } from 'lucide-react';
 
 const plans = [
   {
@@ -107,7 +107,15 @@ export const PricingSection = () => {
                   plan.popular ? 'cyberpunk-border' : ''
                 }`}
               >
-                <h3 className="text-xl font-bold text-foreground mb-2">{plan.name}</h3>
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-xl font-bold text-foreground">{plan.name}</h3>
+                  {plan.hasFreeTrial && (
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary/20 text-secondary text-xs font-medium">
+                      <Gift size={12} />
+                      3-day trial
+                    </span>
+                  )}
+                </div>
                 <p className="text-sm text-muted-foreground mb-6">{plan.description}</p>
 
                 <div className="mb-6">
