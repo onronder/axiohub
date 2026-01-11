@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Check, Sparkles, Gift } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const plans = [
   {
@@ -17,6 +18,8 @@ const plans = [
     highlight: '3-day free trial',
     popular: false,
     hasFreeTrial: true,
+    ctaUrl: 'https://app.axiohub.io/register?plan=starter',
+    isExternal: true,
   },
   {
     name: 'Pro',
@@ -34,6 +37,8 @@ const plans = [
     highlight: '3-day free trial',
     popular: true,
     hasFreeTrial: true,
+    ctaUrl: 'https://app.axiohub.io/register?plan=pro',
+    isExternal: true,
   },
   {
     name: 'Enterprise',
@@ -52,10 +57,22 @@ const plans = [
     highlight: '',
     popular: false,
     hasFreeTrial: false,
+    ctaUrl: '/contact',
+    isExternal: false,
   },
 ];
 
 export const PricingSection = () => {
+  const navigate = useNavigate();
+
+  const handleCtaClick = (plan: typeof plans[0]) => {
+    if (plan.isExternal) {
+      window.location.href = plan.ctaUrl;
+    } else {
+      navigate(plan.ctaUrl);
+    }
+  };
+
   return (
     <section className="py-32 bg-background relative overflow-hidden">
       {/* Grid background */}
@@ -133,6 +150,7 @@ export const PricingSection = () => {
                 </ul>
 
                 <button
+                  onClick={() => handleCtaClick(plan)}
                   className={`w-full py-3 rounded-xl font-semibold transition-all ${
                     plan.popular
                       ? 'holographic-glow text-white'
