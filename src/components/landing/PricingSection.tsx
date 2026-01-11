@@ -13,9 +13,10 @@ const plans = [
       'PDF, Notion, Drive',
       'Community support',
     ],
-    cta: 'Get Started',
-    highlight: 'Best value to start',
+    cta: 'Start Free Trial',
+    highlight: '3-day free trial',
     popular: false,
+    hasFreeTrial: true,
   },
   {
     name: 'Pro',
@@ -29,9 +30,10 @@ const plans = [
       'Unlimited team members',
       'Priority support',
     ],
-    cta: 'Go Pro',
-    highlight: 'Most popular',
+    cta: 'Start Free Trial',
+    highlight: '3-day free trial',
     popular: true,
+    hasFreeTrial: true,
   },
   {
     name: 'Enterprise',
@@ -47,8 +49,9 @@ const plans = [
       'On-premise option',
     ],
     cta: 'Contact Sales',
-    highlight: 'White-glove onboarding',
+    highlight: '',
     popular: false,
+    hasFreeTrial: false,
   },
 ];
 
