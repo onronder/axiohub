@@ -47,11 +47,12 @@ export const Header = () => {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
-            <Link to="/" className="flex items-center group">
+            <Link to="/" className="flex items-center group" aria-label="Axio Hub - Return to homepage">
               <img 
                 src={logo} 
-                alt="Axio Hub" 
+                alt="Axio Hub logo" 
                 className="h-28 w-auto object-contain"
+                loading="lazy"
               />
             </Link>
 
@@ -86,8 +87,11 @@ export const Header = () => {
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="md:hidden p-2 text-muted-foreground hover:text-foreground transition-colors"
+              aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu"
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMobileMenuOpen ? <X className="w-6 h-6" aria-hidden="true" /> : <Menu className="w-6 h-6" aria-hidden="true" />}
             </button>
           </div>
         </div>
@@ -102,9 +106,10 @@ export const Header = () => {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
             className="fixed inset-x-0 top-16 z-40 md:hidden"
+            id="mobile-menu"
           >
-            <div className="bg-background/95 backdrop-blur-xl border-b border-border/50 p-4">
-              <nav className="flex flex-col gap-2">
+            <nav className="bg-background/95 backdrop-blur-xl border-b border-border/50 p-4" aria-label="Mobile navigation">
+              <div className="flex flex-col gap-2">
                 {navItems.map((item) => (
                   <button
                     key={item.label}
@@ -126,8 +131,8 @@ export const Header = () => {
                     </Button>
                   </a>
                 </div>
-              </nav>
-            </div>
+              </div>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>

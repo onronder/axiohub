@@ -127,6 +127,7 @@ export const PricingSection = () => {
                       ? 'holographic-glow text-white'
                       : 'border border-white/20 text-foreground hover:bg-white/5'
                   }`}
+                  aria-label={`${plan.cta} - ${plan.name} plan${plan.price !== 'Custom' ? ` at ${plan.price}${plan.period}` : ''}`}
                 >
                   {plan.cta}
                 </button>
