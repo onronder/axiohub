@@ -1,3 +1,4 @@
+import { SEO } from '@/components/SEO';
 import { LegalPageLayout, LegalSection, LegalCallout } from '@/components/legal/LegalPageLayout';
 
 const sections = [
@@ -13,11 +14,17 @@ const sections = [
 
 const Privacy = () => {
   return (
-    <LegalPageLayout
-      title="Privacy Policy"
-      subtitle="Effective Date: December 25, 2025 · Data Controller: FITTECHS YAZILIM ANONIM ŞİRKETİ"
-      sections={sections}
-    >
+    <>
+      <SEO 
+        title="Privacy Policy"
+        description="Learn how Axio Hub protects your data with Zero-Copy Architecture. We process your files without storing originals, ensuring maximum privacy and compliance with GDPR, KVKK, and CCPA."
+        canonical="/privacy"
+      />
+      <LegalPageLayout
+        title="Privacy Policy"
+        subtitle="Effective Date: December 25, 2025 · Data Controller: FITTECHS YAZILIM ANONIM ŞİRKETİ"
+        sections={sections}
+      >
       <LegalSection id="introduction" title="1. Introduction & Scope">
         <p>
           Welcome to Axio Hub. We are committed to protecting your personal data. This Privacy Policy 
@@ -110,7 +117,8 @@ const Privacy = () => {
           <p><strong className="text-foreground">Address:</strong> Gayrettepe Mahallesi Yildiz Posta Caddesi Akin Sitesi 8/34 Besiktas İstanbul Türkiye</p>
         </div>
       </LegalSection>
-    </LegalPageLayout>
+      </LegalPageLayout>
+    </>
   );
 };
 

@@ -1,3 +1,4 @@
+import { SEO } from '@/components/SEO';
 import { LegalPageLayout, LegalSection, LegalCallout } from '@/components/legal/LegalPageLayout';
 
 const sections = [
@@ -13,11 +14,17 @@ const sections = [
 
 const Terms = () => {
   return (
-    <LegalPageLayout
-      title="Terms of Service"
-      subtitle="Last Updated: December 25, 2025 · Contracting Entity: FITTECHS YAZILIM ANONIM ŞİRKETİ"
-      sections={sections}
-    >
+    <>
+      <SEO 
+        title="Terms of Service"
+        description="Read the Terms of Service for Axio Hub. Understand your rights and responsibilities when using our AI-powered knowledge management platform."
+        canonical="/terms"
+      />
+      <LegalPageLayout
+        title="Terms of Service"
+        subtitle="Last Updated: December 25, 2025 · Contracting Entity: FITTECHS YAZILIM ANONIM ŞİRKETİ"
+        sections={sections}
+      >
       <LegalSection id="acceptance" title="1. Acceptance of Terms">
         <p>
           By accessing or using Axio Hub ("the Service"), you agree to be bound by these Terms. 
@@ -108,7 +115,8 @@ const Terms = () => {
           <p><strong className="text-foreground">Address:</strong> Gayrettepe Mahallesi Yildiz Posta Caddesi Akin Sitesi 8/34 Besiktas İstanbul Türkiye</p>
         </div>
       </LegalSection>
-    </LegalPageLayout>
+      </LegalPageLayout>
+    </>
   );
 };
 
