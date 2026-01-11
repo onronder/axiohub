@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ChevronDown } from 'lucide-react';
 import { SEO } from '@/components/SEO';
+import { getFAQSchema, getBreadcrumbSchema } from '@/lib/structured-data';
 
 interface FAQItem {
   question: string;
@@ -152,12 +153,21 @@ const FAQ = () => {
     });
   };
 
+  const structuredData = useMemo(() => [
+    getFAQSchema(faqData.map(item => ({ question: item.question, answer: item.answer }))),
+    getBreadcrumbSchema([
+      { name: "Home", url: "https://axiohub.io" },
+      { name: "FAQ", url: "https://axiohub.io/faq" }
+    ])
+  ], []);
+
   return (
     <>
       <SEO 
         title="FAQ"
         description="Find answers to frequently asked questions about Axio Hub. Learn about Zero-Copy Architecture, data security, integrations, pricing, and more."
         canonical="/faq"
+        structuredData={structuredData}
       />
       <div className="min-h-screen bg-background">
         {/* Header */}

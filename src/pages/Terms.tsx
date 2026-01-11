@@ -1,5 +1,6 @@
 import { SEO } from '@/components/SEO';
 import { LegalPageLayout, LegalSection, LegalCallout } from '@/components/legal/LegalPageLayout';
+import { getBreadcrumbSchema } from '@/lib/structured-data';
 
 const sections = [
   { id: 'acceptance', title: 'Acceptance of Terms' },
@@ -12,6 +13,11 @@ const sections = [
   { id: 'contact', title: 'Contact' },
 ];
 
+const breadcrumbData = getBreadcrumbSchema([
+  { name: "Home", url: "https://axiohub.io" },
+  { name: "Terms of Service", url: "https://axiohub.io/terms" }
+]);
+
 const Terms = () => {
   return (
     <>
@@ -19,6 +25,7 @@ const Terms = () => {
         title="Terms of Service"
         description="Read the Terms of Service for Axio Hub. Understand your rights and responsibilities when using our AI-powered knowledge management platform."
         canonical="/terms"
+        structuredData={breadcrumbData}
       />
       <LegalPageLayout
         title="Terms of Service"

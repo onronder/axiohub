@@ -7,6 +7,7 @@ interface SEOProps {
   ogImage?: string;
   ogType?: 'website' | 'article';
   noIndex?: boolean;
+  structuredData?: object | object[];
 }
 
 const SITE_NAME = 'Axio Hub';
@@ -21,10 +22,17 @@ export const SEO = ({
   ogImage = DEFAULT_OG_IMAGE,
   ogType = 'website',
   noIndex = false,
+  structuredData,
 }: SEOProps) => {
   const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} | AI-Powered Knowledge Management`;
   const fullCanonical = canonical ? `${BASE_URL}${canonical}` : undefined;
   const fullOgImage = ogImage.startsWith('http') ? ogImage : `${BASE_URL}${ogImage}`;
+
+  const jsonLdData = structuredData
+    ? Array.isArray(structuredData)
+      ? structuredData
+      : [structuredData]
+    : null;
 
   return (
     <Helmet>
@@ -47,6 +55,13 @@ export const SEO = ({
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={fullOgImage} />
+
+      {/* Structured Data (JSON-LD) */}
+      {jsonLdData?.map((data, index) => (
+        <script key={index} type="application/ld+json">
+          {JSON.stringify(data)}
+        </script>
+      ))}
     </Helmet>
   );
 };
