@@ -198,38 +198,54 @@ export const LiveDemoSection = () => {
           transition={{ delay: 0.2, duration: 0.4 }}
           className="flex justify-center mb-10"
         >
-          <div className="inline-flex p-1 rounded-full bg-white/5 border border-white/10">
+          <div 
+            className="inline-flex p-1 rounded-full bg-white/5 border border-white/10"
+            role="tablist"
+            aria-label="Demo scenario selection"
+          >
             <button
               onClick={() => setActiveTab('personal')}
+              role="tab"
+              aria-selected={activeTab === 'personal'}
+              aria-controls="demo-panel"
+              id="tab-personal"
               className={`flex items-center gap-2 px-5 py-3 rounded-full text-sm font-medium transition-all ${
                 activeTab === 'personal'
                   ? 'bg-gradient-to-r from-axio-violet to-axio-cyan text-white'
                   : 'text-muted-foreground hover:text-foreground'
               }`}
             >
-              <User className="w-4 h-4" />
+              <User className="w-4 h-4" aria-hidden="true" />
               For Personal
             </button>
             <button
               onClick={() => setActiveTab('teams')}
+              role="tab"
+              aria-selected={activeTab === 'teams'}
+              aria-controls="demo-panel"
+              id="tab-teams"
               className={`flex items-center gap-2 px-5 py-3 rounded-full text-sm font-medium transition-all ${
                 activeTab === 'teams'
                   ? 'bg-gradient-to-r from-axio-violet to-axio-cyan text-white'
                   : 'text-muted-foreground hover:text-foreground'
               }`}
             >
-              <Users className="w-4 h-4" />
+              <Users className="w-4 h-4" aria-hidden="true" />
               For Teams
             </button>
             <button
               onClick={() => setActiveTab('operations')}
+              role="tab"
+              aria-selected={activeTab === 'operations'}
+              aria-controls="demo-panel"
+              id="tab-operations"
               className={`flex items-center gap-2 px-5 py-3 rounded-full text-sm font-medium transition-all ${
                 activeTab === 'operations'
                   ? 'bg-gradient-to-r from-axio-violet to-axio-cyan text-white'
                   : 'text-muted-foreground hover:text-foreground'
               }`}
             >
-              <Factory className="w-4 h-4" />
+              <Factory className="w-4 h-4" aria-hidden="true" />
               For Operations
             </button>
           </div>
@@ -243,7 +259,12 @@ export const LiveDemoSection = () => {
           transition={{ delay: 0.3, duration: 0.6 }}
           className="max-w-5xl mx-auto"
         >
-          <div className="grid lg:grid-cols-5 gap-6">
+          <div 
+            className="grid lg:grid-cols-5 gap-6"
+            role="tabpanel"
+            id="demo-panel"
+            aria-labelledby={`tab-${activeTab}`}
+          >
             {/* Chat Panel - 3 cols */}
             <div className="lg:col-span-3 glass-card rounded-2xl p-6 min-h-[400px]">
               <div className="flex items-center gap-2 mb-6 pb-4 border-b border-white/10">
