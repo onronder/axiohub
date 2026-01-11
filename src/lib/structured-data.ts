@@ -45,13 +45,13 @@ export const getSoftwareApplicationSchema = () => ({
   "offers": [
     {
       "@type": "Offer",
-      "name": "Individual",
-      "price": "0",
+      "name": "Starter",
+      "price": "4.99",
       "priceCurrency": "USD",
       "priceValidUntil": "2026-12-31",
       "availability": "https://schema.org/InStock",
       "url": `${BASE_URL}/#pricing`,
-      "description": "Free plan with 500MB storage and 50 queries/month"
+      "description": "Starter plan with 3 connected sources and 100 queries/month"
     },
     {
       "@type": "Offer",
