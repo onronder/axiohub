@@ -1,7 +1,8 @@
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { ArrowLeft, Plus, Minus } from 'lucide-react';
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { ArrowLeft, ChevronDown } from 'lucide-react';
+import { SEO } from '@/components/SEO';
 
 interface FAQItem {
   question: string;
@@ -84,40 +85,57 @@ const faqData: FAQItem[] = [
 
 const categories = [...new Set(faqData.map(item => item.category))];
 
-const FAQAccordionItem = ({ item, isOpen, onToggle }: { item: FAQItem; isOpen: boolean; onToggle: () => void }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 10 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    className="border-b border-border/50"
-  >
-    <button
-      onClick={onToggle}
-      className="w-full py-5 flex items-center justify-between text-left group"
-    >
-      <span className="text-foreground font-medium pr-4 group-hover:text-primary transition-colors">
-        {item.question}
-      </span>
-      <span className="flex-shrink-0 w-6 h-6 rounded-full bg-muted/50 flex items-center justify-center">
-        {isOpen ? (
-          <Minus className="w-4 h-4 text-primary" />
-        ) : (
-          <Plus className="w-4 h-4 text-muted-foreground" />
-        )}
-      </span>
-    </button>
+const FAQAccordionItem = ({ item, isOpen, onToggle }: { item: FAQItem; isOpen: boolean; onToggle: () => void }) => {
+  const panelId = `faq-panel-${item.question.replace(/\s+/g, '-').toLowerCase().slice(0, 20)}`;
+  const buttonId = `faq-button-${item.question.replace(/\s+/g, '-').toLowerCase().slice(0, 20)}`;
+  
+  return (
     <motion.div
-      initial={false}
-      animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
-      transition={{ duration: 0.3, ease: 'easeInOut' }}
-      className="overflow-hidden"
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="border-b border-border/50"
     >
-      <p className="pb-5 text-muted-foreground leading-relaxed">
-        {item.answer}
-      </p>
+      <button
+        id={buttonId}
+        onClick={onToggle}
+        aria-expanded={isOpen}
+        aria-controls={panelId}
+        className="w-full py-5 flex items-center justify-between text-left group focus:outline-none focus:ring-2 focus:ring-ring focus:ring-inset"
+      >
+        <span className="text-foreground font-medium pr-4 group-hover:text-primary transition-colors">
+          {item.question}
+        </span>
+        <motion.span 
+          className="flex-shrink-0 w-6 h-6 rounded-full bg-muted/50 flex items-center justify-center"
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.2 }}
+          aria-hidden="true"
+        >
+          <ChevronDown className="w-4 h-4 text-muted-foreground" />
+        </motion.span>
+      </button>
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            id={panelId}
+            role="region"
+            aria-labelledby={buttonId}
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="overflow-hidden"
+          >
+            <p className="pb-5 text-muted-foreground leading-relaxed">
+              {item.answer}
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
-  </motion.div>
-);
+  );
+};
 
 const FAQ = () => {
   const [openItems, setOpenItems] = useState<Set<string>>(new Set());
@@ -135,21 +153,28 @@ const FAQ = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
-        <div className="container mx-auto px-4 py-4">
-          <Link 
-            to="/" 
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to Home
-          </Link>
-        </div>
-      </header>
+    <>
+      <SEO 
+        title="FAQ"
+        description="Find answers to frequently asked questions about Axio Hub. Learn about Zero-Copy Architecture, data security, integrations, pricing, and more."
+        canonical="/faq"
+      />
+      <div className="min-h-screen bg-background">
+        {/* Header */}
+        <header className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
+          <div className="container mx-auto px-4 py-4">
+            <Link 
+              to="/" 
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background rounded-md"
+              aria-label="Back to Home page"
+            >
+              <ArrowLeft className="w-4 h-4" aria-hidden="true" />
+              Back to Home
+            </Link>
+          </div>
+        </header>
 
-      <div className="container mx-auto px-4 py-12 max-w-4xl">
+        <main id="main-content" className="container mx-auto px-4 py-12 max-w-4xl">
         {/* Hero */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -211,11 +236,12 @@ const FAQ = () => {
             href="mailto:support@fittechs.com"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-medium hover:opacity-90 transition-opacity"
           >
-            Contact Support
-          </a>
-        </motion.div>
+              Contact Support
+            </a>
+          </motion.div>
+        </main>
       </div>
-    </div>
+    </>
   );
 };
 

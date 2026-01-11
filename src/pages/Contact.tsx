@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
+import { SEO } from "@/components/SEO";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
@@ -70,18 +71,28 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      {/* Header */}
-      <header className="border-b border-border/50 bg-background/80 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
-            <ArrowLeft className="w-4 h-4" />
-            <span>Back to Home</span>
-          </Link>
-        </div>
-      </header>
+    <>
+      <SEO 
+        title="Contact Us"
+        description="Get in touch with the Axio Hub team. We're here to help with questions about our AI-powered knowledge management platform."
+        canonical="/contact"
+      />
+      <div className="min-h-screen bg-background text-foreground">
+        {/* Header */}
+        <header className="border-b border-border/50 bg-background/80 backdrop-blur-sm sticky top-0 z-50">
+          <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+            <Link 
+              to="/" 
+              className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background rounded-md"
+              aria-label="Back to Home page"
+            >
+              <ArrowLeft className="w-4 h-4" aria-hidden="true" />
+              <span>Back to Home</span>
+            </Link>
+          </div>
+        </header>
 
-      <main className="container mx-auto px-4 py-16">
+        <main id="main-content" className="container mx-auto px-4 py-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -116,10 +127,12 @@ const Contact = () => {
                     placeholder="Your name"
                     value={formData.name}
                     onChange={handleChange}
+                    aria-describedby={errors.name ? "name-error" : undefined}
+                    aria-invalid={errors.name ? "true" : undefined}
                     className={errors.name ? "border-destructive" : ""}
                   />
                   {errors.name && (
-                    <p className="text-sm text-destructive">{errors.name}</p>
+                    <p id="name-error" className="text-sm text-destructive" role="alert">{errors.name}</p>
                   )}
                 </div>
 
@@ -132,10 +145,12 @@ const Contact = () => {
                     placeholder="your@email.com"
                     value={formData.email}
                     onChange={handleChange}
+                    aria-describedby={errors.email ? "email-error" : undefined}
+                    aria-invalid={errors.email ? "true" : undefined}
                     className={errors.email ? "border-destructive" : ""}
                   />
                   {errors.email && (
-                    <p className="text-sm text-destructive">{errors.email}</p>
+                    <p id="email-error" className="text-sm text-destructive" role="alert">{errors.email}</p>
                   )}
                 </div>
 
@@ -147,10 +162,12 @@ const Contact = () => {
                     placeholder="What is this about?"
                     value={formData.subject}
                     onChange={handleChange}
+                    aria-describedby={errors.subject ? "subject-error" : undefined}
+                    aria-invalid={errors.subject ? "true" : undefined}
                     className={errors.subject ? "border-destructive" : ""}
                   />
                   {errors.subject && (
-                    <p className="text-sm text-destructive">{errors.subject}</p>
+                    <p id="subject-error" className="text-sm text-destructive" role="alert">{errors.subject}</p>
                   )}
                 </div>
 
@@ -163,10 +180,12 @@ const Contact = () => {
                     rows={5}
                     value={formData.message}
                     onChange={handleChange}
+                    aria-describedby={errors.message ? "message-error" : undefined}
+                    aria-invalid={errors.message ? "true" : undefined}
                     className={errors.message ? "border-destructive" : ""}
                   />
                   {errors.message && (
-                    <p className="text-sm text-destructive">{errors.message}</p>
+                    <p id="message-error" className="text-sm text-destructive" role="alert">{errors.message}</p>
                   )}
                 </div>
 
@@ -252,10 +271,11 @@ const Contact = () => {
                 </p>
               </div>
             </motion.div>
-          </div>
-        </motion.div>
-      </main>
-    </div>
+            </div>
+          </motion.div>
+        </main>
+      </div>
+    </>
   );
 };
 
