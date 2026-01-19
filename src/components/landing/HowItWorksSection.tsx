@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Plug, ShieldCheck, MessageSquareText } from 'lucide-react';
+import { Plug, ShieldCheck, MessageSquareText, ArrowRight } from 'lucide-react';
 
 const steps = [
   {
@@ -25,23 +25,15 @@ const steps = [
 export const HowItWorksSection = () => {
   return (
     <section className="py-24 bg-background relative overflow-hidden">
-      {/* Subtle grid background */}
-      <div className="absolute inset-0 opacity-5">
-        <div 
-          className="absolute inset-0" 
-          style={{
-            backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
-            backgroundSize: '60px 60px'
-          }} 
-        />
-      </div>
+      {/* Background gradient */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/5 rounded-full blur-[100px]" />
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="text-foreground">How It </span>
@@ -52,39 +44,94 @@ export const HowItWorksSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {steps.map((step, i) => (
-            <motion.div
-              key={step.step}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              className="relative pt-4"
-            >
-              {/* Step number badge - positioned outside the card */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 z-10">
-                <span className="px-4 py-1.5 rounded-full bg-primary/20 text-primary text-xs font-bold border border-primary/30">
-                  STEP {step.step}
-                </span>
-              </div>
+        {/* Desktop: Horizontal Timeline */}
+        <div className="hidden lg:block max-w-6xl mx-auto">
+          {/* Timeline line */}
+          <div className="relative">
+            <div className="absolute top-8 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+            
+            <div className="grid grid-cols-3 gap-12">
+              {steps.map((step, i) => (
+                <motion.div
+                  key={step.step}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.15 }}
+                  className="relative"
+                >
+                  {/* Step number circle */}
+                  <div className="flex justify-center mb-8">
+                    <div className="relative">
+                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                        <span className="text-xl font-bold text-white">{step.step}</span>
+                      </div>
+                      {/* Glow effect */}
+                      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-secondary blur-lg opacity-40" />
+                    </div>
+                  </div>
 
-              {/* Connector line (desktop only) */}
-              {i < steps.length - 1 && (
-                <div className="hidden md:block absolute top-20 left-[60%] w-[80%] h-px bg-gradient-to-r from-primary/50 to-transparent" />
-              )}
+                  {/* Arrow connector (except last) */}
+                  {i < steps.length - 1 && (
+                    <div className="absolute top-8 left-[calc(50%+40px)] w-[calc(100%-40px)] flex items-center justify-center">
+                      <ArrowRight className="w-5 h-5 text-primary/50" />
+                    </div>
+                  )}
 
-              <div className="glass-card p-8 pt-10 h-full text-center group hover:border-primary/30 transition-colors">
-                {/* Icon */}
-                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <step.icon className="w-8 h-8 text-primary" />
-                </div>
+                  {/* Content card */}
+                  <div className="text-center">
+                    <div className="w-14 h-14 mx-auto mb-5 rounded-xl bg-muted/50 border border-border/50 flex items-center justify-center">
+                      <step.icon className="w-7 h-7 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-bold text-foreground mb-3">{step.title}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">{step.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
 
-                <h3 className="text-xl font-bold text-foreground mb-3">{step.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{step.description}</p>
-              </div>
-            </motion.div>
-          ))}
+        {/* Mobile/Tablet: Vertical Timeline */}
+        <div className="lg:hidden max-w-md mx-auto">
+          <div className="relative">
+            {/* Vertical line */}
+            <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-primary/50 via-secondary/50 to-transparent" />
+
+            <div className="space-y-12">
+              {steps.map((step, i) => (
+                <motion.div
+                  key={step.step}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.15 }}
+                  className="relative flex gap-6"
+                >
+                  {/* Step number */}
+                  <div className="flex-shrink-0">
+                    <div className="relative">
+                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                        <span className="text-xl font-bold text-white">{step.step}</span>
+                      </div>
+                      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-secondary blur-lg opacity-30" />
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="pt-2">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-10 h-10 rounded-lg bg-muted/50 border border-border/50 flex items-center justify-center">
+                        <step.icon className="w-5 h-5 text-primary" />
+                      </div>
+                      <h3 className="text-lg font-bold text-foreground">{step.title}</h3>
+                    </div>
+                    <p className="text-muted-foreground text-sm leading-relaxed">{step.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
