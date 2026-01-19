@@ -14,6 +14,11 @@ const Privacy = lazy(() => import("./pages/Privacy"));
 const Terms = lazy(() => import("./pages/Terms"));
 const FAQ = lazy(() => import("./pages/FAQ"));
 const Contact = lazy(() => import("./pages/Contact"));
+const Features = lazy(() => import("./pages/Features"));
+const Security = lazy(() => import("./pages/Security"));
+const Pricing = lazy(() => import("./pages/Pricing"));
+const Integrations = lazy(() => import("./pages/Integrations"));
+const About = lazy(() => import("./pages/About"));
 
 const queryClient = new QueryClient();
 
@@ -39,6 +44,11 @@ const App = () => (
               <Route path="/terms" element={<Terms />} />
               <Route path="/faq" element={<FAQ />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/features" element={<Features />} />
+              <Route path="/security" element={<Security />} />
+              <Route path="/pricing" element={<Pricing />} />
+              <Route path="/integrations" element={<Integrations />} />
+              <Route path="/about" element={<About />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

@@ -1,20 +1,21 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import logo from '@/assets/logo.png';
 
 const navItems = [
-  { label: 'Features', href: '#features' },
-  { label: 'Security', href: '#zero-copy' },
-  { label: 'Demo', href: '#demo' },
-  { label: 'Pricing', href: '#pricing' },
+  { label: 'Features', href: '/features' },
+  { label: 'Integrations', href: '/integrations' },
+  { label: 'Security', href: '/security' },
+  { label: 'Pricing', href: '/pricing' },
 ];
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,13 +25,10 @@ export const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+  // Close mobile menu on route change
+  useEffect(() => {
     setIsMobileMenuOpen(false);
-  };
+  }, [location.pathname]);
 
   return (
     <>
@@ -59,13 +57,17 @@ export const Header = () => {
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-1">
               {navItems.map((item) => (
-                <button
+                <Link
                   key={item.label}
-                  onClick={() => scrollToSection(item.href)}
-                  className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-muted/50"
+                  to={item.href}
+                  className={`px-4 py-2 text-sm transition-colors rounded-lg hover:bg-muted/50 ${
+                    location.pathname === item.href 
+                      ? 'text-foreground font-medium' 
+                      : 'text-muted-foreground hover:text-foreground'
+                  }`}
                 >
                   {item.label}
-                </button>
+                </Link>
               ))}
             </nav>
 
@@ -111,13 +113,17 @@ export const Header = () => {
             <nav className="bg-background/95 backdrop-blur-xl border-b border-border/50 p-4" aria-label="Mobile navigation">
               <div className="flex flex-col gap-2">
                 {navItems.map((item) => (
-                  <button
+                  <Link
                     key={item.label}
-                    onClick={() => scrollToSection(item.href)}
-                    className="w-full text-left px-4 py-3 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-muted/50"
+                    to={item.href}
+                    className={`w-full text-left px-4 py-3 text-sm transition-colors rounded-lg hover:bg-muted/50 ${
+                      location.pathname === item.href 
+                        ? 'text-foreground font-medium bg-muted/30' 
+                        : 'text-muted-foreground hover:text-foreground'
+                    }`}
                   >
                     {item.label}
-                  </button>
+                  </Link>
                 ))}
                 <div className="border-t border-border/50 pt-4 mt-2 flex flex-col gap-2">
                   <a href="https://app.axiohub.io/login" target="_blank" rel="noopener noreferrer" className="w-full">
