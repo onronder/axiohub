@@ -35,7 +35,6 @@ const plans = [
       'Smart AI model (GPT-4o)',
       'Team collaboration (5 members)',
       'Priority support',
-      'API access',
       'Everything in Starter',
     ],
     cta: 'Start Free Trial',
