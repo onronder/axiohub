@@ -96,8 +96,8 @@ const Features = () => {
   return (
     <>
       <SEO 
-        title="Features - Axio Hub"
-        description="Everything you need to chat with your data. Powerful features, enterprise security, simple pricing."
+        title="Features"
+        description="Everything you need to chat with your data. 12 native integrations, AI chat with citations, Ghost Protocol security, and team collaboration."
         canonical="/features"
       />
       <main className="bg-background min-h-screen">
