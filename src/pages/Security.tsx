@@ -52,8 +52,8 @@ const Security = () => {
   return (
     <>
       <SEO 
-        title="Security - Axio Hub"
-        description="Ghost Protocol: The industry's first zero-retention AI knowledge platform. Your data disappears after processing."
+        title="Security"
+        description="Ghost Protocol: The industry's first zero-retention AI knowledge platform. AES-256 encryption, forensic-grade wipe, malware scanning. Your data disappears after processing."
         canonical="/security"
       />
       <main className="bg-background min-h-screen">

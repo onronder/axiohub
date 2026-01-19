@@ -165,8 +165,8 @@ const Integrations = () => {
   return (
     <>
       <SEO 
-        title="Integrations - Axio Hub"
-        description="Connect everything. 12 integrations today, more coming soon. One unified knowledge base."
+        title="Integrations"
+        description="Connect Google Drive, Notion, GitHub, Dropbox, OneDrive, SharePoint, Box, S3, SFTP and more. 12 integrations today, more coming soon."
         canonical="/integrations"
       />
       <main className="bg-background min-h-screen">

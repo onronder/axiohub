@@ -131,8 +131,8 @@ const Pricing = () => {
   return (
     <>
       <SEO 
-        title="Pricing - Axio Hub"
-        description="Simple, transparent pricing. Start free, scale as you grow. Enterprise features when you need them."
+        title="Pricing"
+        description="Simple, transparent pricing. Starter at $4.99/mo, Pro at $29/mo, Enterprise custom. All plans include Ghost Protocol security and AES-256 encryption."
         canonical="/pricing"
       />
       <main className="bg-background min-h-screen">

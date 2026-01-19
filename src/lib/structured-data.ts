@@ -12,20 +12,23 @@ export const getOrganizationSchema = () => ({
     "width": 512,
     "height": 512
   },
-  "description": "AI-powered knowledge management platform with Zero-Copy Architecture",
-  "email": "support@fittechs.com",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Gayrettepe Mahallesi Yildiz Posta Caddesi Akin Sitesi 8/34",
-    "addressLocality": "Besiktas",
-    "addressRegion": "Istanbul",
-    "addressCountry": "TR"
-  },
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "contactType": "customer support",
-    "email": "support@fittechs.com"
-  }
+  "description": "AI-powered knowledge management platform with Ghost Protocol zero-retention security",
+  "email": "hello@axiohub.io",
+  "sameAs": [
+    "https://twitter.com/axiohub"
+  ],
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "email": "support@axiohub.io"
+    },
+    {
+      "@type": "ContactPoint",
+      "contactType": "sales",
+      "email": "sales@axiohub.io"
+    }
+  ]
 });
 
 export const getSoftwareApplicationSchema = () => ({
@@ -36,7 +39,7 @@ export const getSoftwareApplicationSchema = () => ({
   "applicationCategory": "BusinessApplication",
   "applicationSubCategory": "Knowledge Management",
   "operatingSystem": "Web Browser",
-  "description": "The intelligence layer for your files—from personal projects to field ops. AI-powered knowledge management that works with your existing tools.",
+  "description": "The intelligence layer for your files—from personal projects to field ops. AI-powered knowledge management with Ghost Protocol zero-retention security.",
   "url": BASE_URL,
   "image": `${BASE_URL}/favicon.png`,
   "provider": {
@@ -50,8 +53,8 @@ export const getSoftwareApplicationSchema = () => ({
       "priceCurrency": "USD",
       "priceValidUntil": "2026-12-31",
       "availability": "https://schema.org/InStock",
-      "url": `${BASE_URL}/#pricing`,
-      "description": "Starter plan with 3 connected sources and 100 queries/month"
+      "url": `${BASE_URL}/pricing`,
+      "description": "50 files, 100MB storage, 5 data sources, 1M AI tokens/month"
     },
     {
       "@type": "Offer",
@@ -60,16 +63,17 @@ export const getSoftwareApplicationSchema = () => ({
       "priceCurrency": "USD",
       "priceValidUntil": "2026-12-31",
       "availability": "https://schema.org/InStock",
-      "url": `${BASE_URL}/#pricing`,
-      "description": "Pro plan with 25GB storage and unlimited queries"
+      "url": `${BASE_URL}/pricing`,
+      "description": "2,000 files, 10GB storage, 100 data sources, 10M AI tokens/month, 5 team members"
     }
   ],
   "featureList": [
-    "Zero-Copy Architecture",
-    "AI-Powered Search",
-    "Multiple Integrations (Notion, Google Drive, Confluence)",
-    "End-to-End Encryption",
-    "Real-time Sync"
+    "Ghost Protocol Zero-Retention Security",
+    "AES-256 Encryption",
+    "12 Native Integrations",
+    "Scope Guard Intelligence",
+    "Source Citations",
+    "Hybrid AI Search"
   ]
 });
 
@@ -79,17 +83,9 @@ export const getWebSiteSchema = () => ({
   "@id": `${BASE_URL}/#website`,
   "name": "Axio Hub",
   "url": BASE_URL,
-  "description": "Your Knowledge, Unified. The intelligence layer for your files.",
+  "description": "Your Knowledge, Unified. AI-powered knowledge management with Ghost Protocol zero-retention security.",
   "publisher": {
     "@id": `${BASE_URL}/#organization`
-  },
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": {
-      "@type": "EntryPoint",
-      "urlTemplate": `${BASE_URL}/search?q={search_term_string}`
-    },
-    "query-input": "required name=search_term_string"
   }
 });
 
@@ -116,4 +112,34 @@ export const getBreadcrumbSchema = (items: { name: string; url: string }[]) => (
     "name": item.name,
     "item": item.url
   }))
+});
+
+export const getProductSchema = () => ({
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Axio Hub",
+  "description": "AI-powered knowledge management with Ghost Protocol zero-retention security",
+  "brand": {
+    "@type": "Brand",
+    "name": "Axio Hub"
+  },
+  "offers": {
+    "@type": "AggregateOffer",
+    "lowPrice": "4.99",
+    "highPrice": "29",
+    "priceCurrency": "USD",
+    "offerCount": "3"
+  }
+});
+
+export const getServiceSchema = () => ({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Axio Hub Knowledge Management",
+  "description": "Connect your data sources, let AI process and secure them with Ghost Protocol, and chat with your knowledge base.",
+  "provider": {
+    "@id": `${BASE_URL}/#organization`
+  },
+  "serviceType": "Knowledge Management Platform",
+  "areaServed": "Worldwide"
 });

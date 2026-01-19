@@ -38,8 +38,8 @@ const About = () => {
   return (
     <>
       <SEO 
-        title="About - Axio Hub"
-        description="We believe AI should amplify human intelligence without compromising privacy. Axio Hub exists to make enterprise knowledge accessible while keeping your data under your control."
+        title="About"
+        description="We believe AI should amplify human intelligence without compromising privacy. Axio Hub makes enterprise knowledge accessible while keeping your data under your control."
         canonical="/about"
       />
       <main className="bg-background min-h-screen">
