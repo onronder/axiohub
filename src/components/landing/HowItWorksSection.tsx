@@ -60,21 +60,21 @@ export const HowItWorksSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15 }}
-              className="relative"
+              className="relative pt-4"
             >
+              {/* Step number badge - positioned outside the card */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 z-10">
+                <span className="px-4 py-1.5 rounded-full bg-primary/20 text-primary text-xs font-bold border border-primary/30">
+                  STEP {step.step}
+                </span>
+              </div>
+
               {/* Connector line (desktop only) */}
               {i < steps.length - 1 && (
-                <div className="hidden md:block absolute top-16 left-[60%] w-[80%] h-px bg-gradient-to-r from-primary/50 to-transparent" />
+                <div className="hidden md:block absolute top-20 left-[60%] w-[80%] h-px bg-gradient-to-r from-primary/50 to-transparent" />
               )}
 
-              <div className="glass-card p-8 h-full text-center group hover:border-primary/30 transition-colors">
-                {/* Step number */}
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-bold">
-                    STEP {step.step}
-                  </span>
-                </div>
-
+              <div className="glass-card p-8 pt-10 h-full text-center group hover:border-primary/30 transition-colors">
                 {/* Icon */}
                 <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center group-hover:scale-110 transition-transform">
                   <step.icon className="w-8 h-8 text-primary" />
