@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Check, Sparkles, Gift } from 'lucide-react';
+import { Check, Sparkles } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const plans = [
@@ -7,17 +7,19 @@ const plans = [
     name: 'Starter',
     price: '$4.99',
     period: '/month',
-    description: 'For personal use',
+    description: 'Perfect for individuals and small projects',
     features: [
-      '3 connected sources',
-      '100 queries/month',
-      'PDF, Notion, Drive',
+      '50 files, 100 MB storage',
+      '5 connected data sources',
+      '1 million AI tokens/month',
+      'All 12 connectors (except S3)',
+      'Ghost Protocol security',
+      'Hybrid AI search',
+      'Source citations',
       'Community support',
     ],
-    cta: 'Start Free Trial',
-    highlight: '3-day free trial',
+    cta: 'Get Started',
     popular: false,
-    hasFreeTrial: true,
     ctaUrl: 'https://app.axiohub.io/register?plan=starter',
     isExternal: true,
   },
@@ -25,18 +27,19 @@ const plans = [
     name: 'Pro',
     price: '$29',
     period: '/month',
-    description: 'For power users & teams',
+    description: 'For professionals and growing teams',
     features: [
-      'Unlimited sources',
-      'Unlimited queries',
-      'Advanced AI analysis',
-      'Unlimited team members',
+      '2,000 files, 10 GB storage',
+      '100 connected data sources',
+      '10 million AI tokens/month',
+      'Smart AI model (GPT-4o)',
+      'Team collaboration (5 members)',
       'Priority support',
+      'API access',
+      'Everything in Starter',
     ],
     cta: 'Start Free Trial',
-    highlight: '3-day free trial',
     popular: true,
-    hasFreeTrial: true,
     ctaUrl: 'https://app.axiohub.io/register?plan=pro',
     isExternal: true,
   },
@@ -44,19 +47,20 @@ const plans = [
     name: 'Enterprise',
     price: 'Custom',
     period: '',
-    description: 'For field ops & large orgs',
+    description: 'For organizations at scale',
     features: [
-      'Everything in Pro',
-      'SSO & SAML',
-      'SharePoint & SFTP',
+      '100,000 files, 1 TB storage',
+      '1,000 data sources',
+      '100 million AI tokens/month',
+      '100 team members',
+      'Amazon S3 connector',
+      'DoD 5220.22-M secure wipe',
       'Dedicated support',
       'SLA guarantee',
-      'On-premise option',
+      'Custom retention policies',
     ],
     cta: 'Contact Sales',
-    highlight: '',
     popular: false,
-    hasFreeTrial: false,
     ctaUrl: '/contact',
     isExternal: false,
   },
@@ -91,15 +95,15 @@ export const PricingSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-6xl font-bold mb-4">
-            <span className="text-foreground">Simple </span>
-            <span className="gradient-text">pricing</span>
+            <span className="text-foreground">Simple, </span>
+            <span className="gradient-text">Transparent Pricing</span>
           </h2>
           <p className="text-xl text-muted-foreground">
-            Start free. Scale as you grow.
+            Start free. Scale as you grow. Enterprise features when you need them.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {plans.map((plan, i) => (
             <motion.div
               key={plan.name}
@@ -124,15 +128,7 @@ export const PricingSection = () => {
                   plan.popular ? 'cyberpunk-border' : ''
                 }`}
               >
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-xl font-bold text-foreground">{plan.name}</h3>
-                  {plan.hasFreeTrial && (
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary/20 text-secondary text-xs font-medium">
-                      <Gift size={12} />
-                      3-day trial
-                    </span>
-                  )}
-                </div>
+                <h3 className="text-xl font-bold text-foreground mb-1">{plan.name}</h3>
                 <p className="text-sm text-muted-foreground mb-6">{plan.description}</p>
 
                 <div className="mb-6">
@@ -142,9 +138,9 @@ export const PricingSection = () => {
 
                 <ul className="space-y-3 mb-8">
                   {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <Check size={16} className="text-secondary flex-shrink-0" />
-                      {feature}
+                    <li key={feature} className="flex items-start gap-2 text-sm text-muted-foreground">
+                      <Check size={16} className="text-secondary flex-shrink-0 mt-0.5" />
+                      <span>{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -164,6 +160,16 @@ export const PricingSection = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* Note about included features */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-center text-sm text-muted-foreground mt-8 max-w-2xl mx-auto"
+        >
+          All plans include Ghost Protocol zero-retention security, AES-256 encryption, and malware scanning.
+        </motion.p>
       </div>
     </section>
   );
