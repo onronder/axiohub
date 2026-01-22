@@ -12,6 +12,7 @@ interface FAQItem {
 }
 
 const faqData: FAQItem[] = [
+  // Getting Started
   {
     category: "Getting Started",
     question: "What is Axio Hub?",
@@ -25,12 +26,45 @@ const faqData: FAQItem[] = [
   {
     category: "Getting Started",
     question: "What integrations does Axio Hub support?",
-    answer: "Axio Hub currently supports Notion, Google Drive, Confluence, Slack, and more. We're constantly adding new integrations based on user feedback."
+    answer: "Axio Hub currently supports Google Drive, Dropbox, OneDrive, SharePoint, Box, Amazon S3, Notion, GitHub, SFTP, Web Crawler, YouTube transcription, and direct file uploads. We're constantly adding new integrations based on user feedback."
+  },
+  // Intelligence & Context (NEW)
+  {
+    category: "Intelligence & Context",
+    question: "What happens when my question matches multiple sources?",
+    answer: "Axio's Scope Dominance Guard analyzes the distribution of relevant content across your sources. If one source clearly dominates (≥85% of matches), we answer from that source and tell you. If sources are contested (60-84%), we answer from the primary but show alternatives. If truly fragmented (<60%), we list the sources and ask you to choose."
+  },
+  {
+    category: "Intelligence & Context",
+    question: "What is 'Sticky Scope'?",
+    answer: "When you select a source during clarification, or when one source dominates your queries 3 times in a row, we 'lock' that scope for the rest of your conversation. You won't be asked the same clarification question repeatedly. Say 'search all sources' to unlock anytime."
+  },
+  {
+    category: "Intelligence & Context",
+    question: "Does Axio mix up answers from different projects?",
+    answer: "No. This is exactly the problem we built Axio to solve. Traditional RAG tools retrieve chunks from all documents indiscriminately, leading to confused answers mixing context from different projects. Our Scope Dominance Guard prevents this by detecting conflicts and either asking for clarification or clearly attributing answers to specific sources."
+  },
+  // Reliability (NEW)
+  {
+    category: "Reliability",
+    question: "What happens if your AI provider goes down?",
+    answer: "Your work continues uninterrupted. Axio uses a circuit breaker pattern with automatic failover to backup providers. If the primary experiences issues (5 consecutive failures), queries automatically route to backups. After 60 seconds, we test the primary again and resume normal operation if healthy. You may never notice an outage."
+  },
+  {
+    category: "Reliability",
+    question: "Do you depend on a single AI provider?",
+    answer: "No. We use a primary provider with multiple backup providers for redundancy. This triple-redundant architecture means your team stays productive even during major API outages."
+  },
+  // Security & Privacy
+  {
+    category: "Security & Privacy",
+    question: "What is Ghost Protocol?",
+    answer: "Ghost Protocol is our zero-retention security architecture. We never store your raw documents—content is encrypted, chunked, and indexed while originals stay in your storage. Delete anytime, and it's truly gone."
   },
   {
     category: "Security & Privacy",
     question: "Is my data safe with Axio Hub?",
-    answer: "Absolutely. Axio Hub uses a Zero-Copy Architecture, meaning your original files never leave their source platforms. We only create encrypted vector embeddings for search functionality. All data is encrypted in transit (TLS 1.2+) and at rest (AES-256)."
+    answer: "Absolutely. Axio Hub uses a Zero-Copy Architecture, meaning your original files never leave their source platforms. We only create encrypted vector embeddings for search functionality. All data is encrypted in transit (TLS 1.3) and at rest (AES-256)."
   },
   {
     category: "Security & Privacy",
@@ -39,28 +73,30 @@ const faqData: FAQItem[] = [
   },
   {
     category: "Security & Privacy",
+    question: "Is my data used to train AI models?",
+    answer: "Absolutely not. Your data is never used for training. It's processed, encrypted, and used only to serve your queries. Ghost Protocol ensures zero data retention beyond what's needed for your knowledge base. We have Zero-Data Retention agreements with all our AI providers."
+  },
+  {
+    category: "Security & Privacy",
     question: "Is Axio Hub compliant with GDPR and other regulations?",
     answer: "Yes, Axio Hub is fully compliant with GDPR (EU), KVKK (Turkey), and CCPA (California). We take data protection seriously and provide all required user rights including access, rectification, erasure, and data portability."
   },
+  // AI & Technology
   {
     category: "AI & Technology",
     question: "How accurate are the AI responses?",
-    answer: "Axio Hub uses state-of-the-art Large Language Models (LLMs) to provide highly accurate responses based on your knowledge base. However, like all AI systems, it may occasionally produce incorrect information. We always recommend verifying critical information from the original source."
-  },
-  {
-    category: "AI & Technology",
-    question: "Does your AI provider train on my data?",
-    answer: "No. We have Zero-Data Retention agreements with all our AI providers (OpenAI, etc.). They do not store or train on your data. Your information is processed and immediately discarded."
+    answer: "Axio Hub uses state-of-the-art Large Language Models (LLMs) to provide highly accurate responses based on your knowledge base. Every answer includes source citations so you can verify. However, like all AI systems, it may occasionally produce incorrect information. We always recommend verifying critical information from the original source."
   },
   {
     category: "AI & Technology",
     question: "What are vector embeddings?",
     answer: "Vector embeddings are mathematical representations of your text content that enable semantic search. Instead of just matching keywords, Axio Hub understands the meaning behind your queries to find the most relevant information across all your documents."
   },
+  // Billing & Plans
   {
     category: "Billing & Plans",
     question: "Is there a free trial?",
-    answer: "Yes! We offer a trial period so you can explore Axio Hub's features before committing to a paid plan. Access is revoked if no valid subscription is active after the trial ends."
+    answer: "Yes! We offer a 3-day trial period so you can explore Axio Hub's features before committing to a paid plan. Access is revoked if no valid subscription is active after the trial ends."
   },
   {
     category: "Billing & Plans",
@@ -72,6 +108,7 @@ const faqData: FAQItem[] = [
     question: "Can I cancel my subscription anytime?",
     answer: "Yes, you can cancel your subscription at any time. Your access will continue until the end of your current billing period. Refunds are subject to our Refund Policy."
   },
+  // Support
   {
     category: "Support",
     question: "How can I contact support?",
