@@ -38,7 +38,7 @@ export const HeroSection = () => {
               transition={{ delay: 0.3, duration: 0.6 }}
               className="mt-8 text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0"
             >
-              Connect 12 data sources. Ask anything. Get answers from the{' '}
+              Connect all your data sources and file systems. Ask anything. Get answers from the{' '}
               <span className="text-foreground font-medium">right context</span>—not a confused mix of everything.
             </motion.p>
 

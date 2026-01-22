@@ -9,7 +9,6 @@ import { DataConnectorsSection } from '@/components/landing/DataConnectorsSectio
 import { ReliabilitySection } from '@/components/landing/ReliabilitySection';
 import { GhostProtocolSection } from '@/components/landing/GhostProtocolSection';
 import { LiveDemoSection } from '@/components/landing/LiveDemoSection';
-import { SocialProofSection } from '@/components/landing/SocialProofSection';
 import { PricingSection } from '@/components/landing/PricingSection';
 import { FinalCTASection } from '@/components/landing/FinalCTASection';
 import { Footer } from '@/components/landing/Footer';
@@ -48,7 +47,6 @@ const Index = () => {
         <section id="demo">
           <LiveDemoSection />
         </section>
-        <SocialProofSection />
         <section id="pricing">
           <PricingSection />
         </section>
