@@ -169,6 +169,7 @@ const Integrations = () => {
         description="Connect Google Drive, Notion, GitHub, SharePoint and more to your AI knowledge base. Multi-source document AI with one unified search."
         canonical="/integrations"
         keywords={['multi-source document AI', 'chat with documents', 'AI knowledge base', 'document integrations']}
+        ogImage="/og-integrations.png"
       />
       <main className="bg-background min-h-screen">
         <Header />

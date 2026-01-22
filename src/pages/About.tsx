@@ -42,6 +42,7 @@ const About = () => {
         description="Axio Hub: The enterprise RAG platform that amplifies human intelligence without compromising privacy. AI-powered knowledge management for teams."
         canonical="/about"
         keywords={['enterprise RAG platform', 'AI knowledge base', 'AI-powered knowledge management']}
+        ogImage="/og-about.png"
       />
       <main className="bg-background min-h-screen">
         <Header />
