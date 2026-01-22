@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { User, Users, Building2, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { trackQuickNavClick } from '@/lib/analytics';
 
 const navOptions = [
   {
@@ -8,18 +9,21 @@ const navOptions = [
     title: 'For Individuals',
     description: 'Personal knowledge base',
     href: '/solutions/individuals',
+    userType: 'individuals' as const,
   },
   {
     icon: Users,
     title: 'For Teams',
     description: 'Collaborative workspace',
     href: '/solutions/teams',
+    userType: 'teams' as const,
   },
   {
     icon: Building2,
     title: 'For Enterprise',
     description: 'Organization-wide AI',
     href: '/solutions/enterprise',
+    userType: 'enterprise' as const,
   },
 ];
 
@@ -38,6 +42,7 @@ export const QuickNavSection = () => {
             >
               <Link
                 to={option.href}
+                onClick={() => trackQuickNavClick(option.userType)}
                 className="group glass-card p-6 flex flex-col items-center text-center hover:border-primary/50 transition-all duration-300 hover:scale-[1.02]"
               >
                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">

@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Check, ArrowRight } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { trackPricingAction, trackExternalLink } from '@/lib/analytics';
 
 const plans = [
   {
@@ -89,7 +90,9 @@ export const PricingSectionSimplified = () => {
   const [expandedPlan, setExpandedPlan] = useState<string | null>(null);
 
   const handleCtaClick = (plan: typeof plans[0]) => {
+    trackPricingAction(plan.name, 'click_cta');
     if (plan.isExternal) {
+      trackExternalLink(plan.ctaUrl, `pricing_${plan.name.toLowerCase()}`);
       window.open(plan.ctaUrl, '_blank', 'noopener,noreferrer');
     } else {
       navigate(plan.ctaUrl);
@@ -97,6 +100,9 @@ export const PricingSectionSimplified = () => {
   };
 
   const toggleExpand = (planName: string) => {
+    if (expandedPlan !== planName) {
+      trackPricingAction(planName, 'expand');
+    }
     setExpandedPlan(expandedPlan === planName ? null : planName);
   };
 
