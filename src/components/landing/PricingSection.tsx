@@ -12,7 +12,7 @@ const plans = [
       '50 files, 100 MB storage',
       '5 connected data sources',
       '1 million AI tokens/month',
-      'All 12 connectors (except S3)',
+      'All connectors (except S3)',
       'Ghost Protocol security',
       'Hybrid AI search',
       'Source citations',
