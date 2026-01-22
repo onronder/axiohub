@@ -79,9 +79,10 @@ const Contact = () => {
   return (
     <>
       <SEO 
-        title="Contact Us"
-        description="Get in touch with the Axio Hub team. We're here to help with questions about our AI-powered knowledge management platform."
+        title="Contact"
+        description="Contact Axio Hub for questions about our AI knowledge base and enterprise RAG platform. Sales, support, and partnership inquiries."
         canonical="/contact"
+        keywords={['AI knowledge base', 'enterprise RAG platform', 'contact Axio Hub']}
         structuredData={breadcrumbData}
       />
       <div className="min-h-screen bg-background text-foreground">

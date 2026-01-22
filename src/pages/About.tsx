@@ -39,8 +39,9 @@ const About = () => {
     <>
       <SEO 
         title="About"
-        description="We believe AI should amplify human intelligence without compromising privacy. Axio Hub makes enterprise knowledge accessible while keeping your data under your control."
+        description="Axio Hub: The enterprise RAG platform that amplifies human intelligence without compromising privacy. AI-powered knowledge management for teams."
         canonical="/about"
+        keywords={['enterprise RAG platform', 'AI knowledge base', 'AI-powered knowledge management']}
       />
       <main className="bg-background min-h-screen">
         <Header />

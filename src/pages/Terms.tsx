@@ -23,8 +23,9 @@ const Terms = () => {
     <>
       <SEO 
         title="Terms of Service"
-        description="Read the Terms of Service for Axio Hub. Understand your rights and responsibilities when using our AI-powered knowledge management platform."
+        description="Read the Terms of Service for Axio Hub. Understand your rights and responsibilities when using our AI knowledge base and enterprise RAG platform."
         canonical="/terms"
+        keywords={['AI knowledge base', 'enterprise RAG platform', 'terms of service']}
         structuredData={breadcrumbData}
       />
       <LegalPageLayout

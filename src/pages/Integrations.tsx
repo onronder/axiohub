@@ -165,9 +165,10 @@ const Integrations = () => {
   return (
     <>
       <SEO 
-        title="Integrations"
-        description="Connect Google Drive, Notion, GitHub, Dropbox, OneDrive, SharePoint, Box, S3, SFTP and more. Multiple integrations today, more coming soon."
+        title="Data Integrations"
+        description="Connect Google Drive, Notion, GitHub, SharePoint and more to your AI knowledge base. Multi-source document AI with one unified search."
         canonical="/integrations"
+        keywords={['multi-source document AI', 'chat with documents', 'AI knowledge base', 'document integrations']}
       />
       <main className="bg-background min-h-screen">
         <Header />

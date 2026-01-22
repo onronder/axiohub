@@ -202,8 +202,9 @@ const FAQ = () => {
     <>
       <SEO 
         title="FAQ"
-        description="Find answers to frequently asked questions about Axio Hub. Learn about Zero-Copy Architecture, data security, integrations, pricing, and more."
+        description="Frequently asked questions about Axio Hub, the AI knowledge base for enterprises. Learn about security, integrations, pricing, and how to chat with documents."
         canonical="/faq"
+        keywords={['AI knowledge base', 'chat with documents', 'enterprise RAG platform', 'document AI FAQ']}
         structuredData={structuredData}
       />
       <div className="min-h-screen bg-background">
