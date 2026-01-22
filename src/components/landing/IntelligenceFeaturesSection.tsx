@@ -37,11 +37,15 @@ const additionalFeatures = [
     icon: Quote,
     title: 'Source Citations',
     description: 'Every answer includes clickable citations to the exact document and passage. Verify AI responses instantly. Never wonder "where did that come from?"',
+    highlight: '📎 Sources: auth-guide.md, api-docs.pdf',
+    note: 'Click any citation to jump to the original',
   },
   {
     icon: Search,
     title: 'Hybrid Search',
     description: "Combines keyword matching with semantic understanding. Find information even when you don't know the exact words.",
+    highlight: '🔍 "login flow" → auth, SSO, OAuth docs',
+    note: 'Semantic + keyword matching combined',
   },
 ];
 

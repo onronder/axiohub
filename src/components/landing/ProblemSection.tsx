@@ -46,14 +46,14 @@ export const ProblemSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15 }}
-              className="relative glass-card p-8 border-l-4 border-l-scope-contested"
+              className="relative glass-card p-8 border-l-4 border-l-scope-contested h-full flex flex-col"
             >
               {/* Problem number badge */}
               <div className="absolute -top-3 -left-3 w-12 h-12 rounded-full bg-scope-contested/20 border border-scope-contested/50 flex items-center justify-center">
                 <span className="text-scope-contested font-bold text-lg">#{i + 1}</span>
               </div>
 
-              <div className="pt-4">
+              <div className="pt-4 flex flex-col flex-grow">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-lg bg-scope-contested/20 flex items-center justify-center">
                     <problem.icon className="w-5 h-5 text-scope-contested" />
@@ -61,17 +61,19 @@ export const ProblemSection = () => {
                   <h3 className="text-xl font-bold text-foreground">{problem.title}</h3>
                 </div>
 
-                <p className="text-muted-foreground mb-4 leading-relaxed">
+                <p className="text-muted-foreground mb-4 leading-relaxed flex-grow">
                   {problem.description}
                 </p>
 
-                <p className="text-foreground font-medium mb-3 p-3 rounded-lg bg-muted/30 border border-border/50">
-                  {problem.consequence}
-                </p>
+                <div className="mt-auto">
+                  <p className="text-foreground font-medium mb-3 p-3 rounded-lg bg-muted/30 border border-border/50">
+                    {problem.consequence}
+                  </p>
 
-                <p className="text-scope-contested font-semibold text-lg">
-                  {problem.emphasis}
-                </p>
+                  <p className="text-scope-contested font-semibold text-lg">
+                    {problem.emphasis}
+                  </p>
+                </div>
               </div>
             </motion.div>
           ))}
