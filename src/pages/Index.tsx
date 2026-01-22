@@ -4,7 +4,7 @@ import { HeroSection } from '@/components/landing/HeroSection';
 import { QuickNavSection } from '@/components/landing/QuickNavSection';
 import { ProblemSectionSimplified } from '@/components/landing/ProblemSectionSimplified';
 import { GhostProtocolSection } from '@/components/landing/GhostProtocolSection';
-import { LiveDemoSectionSimplified } from '@/components/landing/LiveDemoSectionSimplified';
+import { LiveDemoStatic } from '@/components/landing/LiveDemoStatic';
 import { PricingSectionSimplified } from '@/components/landing/PricingSectionSimplified';
 import { FinalCTASection } from '@/components/landing/FinalCTASection';
 import { Footer } from '@/components/landing/Footer';
@@ -35,9 +35,7 @@ const Index = () => {
         <section id="security">
           <GhostProtocolSection />
         </section>
-        <section id="demo">
-          <LiveDemoSectionSimplified />
-        </section>
+        <LiveDemoStatic />
         <section id="pricing">
           <PricingSectionSimplified />
         </section>
