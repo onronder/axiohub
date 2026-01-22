@@ -21,6 +21,9 @@ const Integrations = lazy(() => import("./pages/Integrations"));
 const About = lazy(() => import("./pages/About"));
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
+const SolutionsTeams = lazy(() => import("./pages/solutions/Teams"));
+const SolutionsIndividuals = lazy(() => import("./pages/solutions/Individuals"));
+const SolutionsEnterprise = lazy(() => import("./pages/solutions/Enterprise"));
 const queryClient = new QueryClient();
 
 // Loading fallback for lazy-loaded routes
@@ -52,6 +55,9 @@ const App = () => (
               <Route path="/about" element={<About />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/solutions/teams" element={<SolutionsTeams />} />
+              <Route path="/solutions/individuals" element={<SolutionsIndividuals />} />
+              <Route path="/solutions/enterprise" element={<SolutionsEnterprise />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

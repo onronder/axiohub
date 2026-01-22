@@ -1,14 +1,11 @@
 import { SEO } from '@/components/SEO';
 import { Header } from '@/components/landing/Header';
 import { HeroSection } from '@/components/landing/HeroSection';
-import { TrustBadgesRow } from '@/components/landing/TrustBadgesRow';
-import { ProblemSection } from '@/components/landing/ProblemSection';
-import { IntelligenceFeaturesSection } from '@/components/landing/IntelligenceFeaturesSection';
-import { HowItWorksSection } from '@/components/landing/HowItWorksSection';
-import { DataConnectorsSection } from '@/components/landing/DataConnectorsSection';
+import { QuickNavSection } from '@/components/landing/QuickNavSection';
+import { ProblemSectionSimplified } from '@/components/landing/ProblemSectionSimplified';
 import { GhostProtocolSection } from '@/components/landing/GhostProtocolSection';
-import { LiveDemoSection } from '@/components/landing/LiveDemoSection';
-import { PricingSection } from '@/components/landing/PricingSection';
+import { LiveDemoSectionSimplified } from '@/components/landing/LiveDemoSectionSimplified';
+import { PricingSectionSimplified } from '@/components/landing/PricingSectionSimplified';
 import { FinalCTASection } from '@/components/landing/FinalCTASection';
 import { Footer } from '@/components/landing/Footer';
 import { 
@@ -33,21 +30,16 @@ const Index = () => {
       <main id="main-content" className="bg-background">
         <Header />
         <HeroSection />
-        <TrustBadgesRow />
-        <ProblemSection />
-        <section id="features">
-          <IntelligenceFeaturesSection />
-        </section>
-        <HowItWorksSection />
-        <DataConnectorsSection />
+        <QuickNavSection />
+        <ProblemSectionSimplified />
         <section id="security">
           <GhostProtocolSection />
         </section>
         <section id="demo">
-          <LiveDemoSection />
+          <LiveDemoSectionSimplified />
         </section>
         <section id="pricing">
-          <PricingSection />
+          <PricingSectionSimplified />
         </section>
         <FinalCTASection />
         <Footer />
