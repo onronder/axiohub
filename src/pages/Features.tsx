@@ -9,7 +9,9 @@ import {
   Shield, 
   Users, 
   Building2,
-  Check
+  Check,
+  X,
+  AlertTriangle
 } from 'lucide-react';
 
 const featureSections = [
@@ -92,12 +94,33 @@ const featureSections = [
   },
 ];
 
+const comparisonData = [
+  { capability: 'Multi-source ingestion', traditional: 'limited', others: 'varies', axio: 'yes', axioLabel: '12 connectors' },
+  { capability: 'Source disambiguation', traditional: 'no', others: 'no', axio: 'yes', axioLabel: 'Scope Guard' },
+  { capability: 'Asks before assuming', traditional: 'no', others: 'no', axio: 'yes', axioLabel: 'Clarification flow' },
+  { capability: 'Conversation scope memory', traditional: 'no', others: 'no', axio: 'yes', axioLabel: 'Sticky scope' },
+  { capability: 'Multi-provider failover', traditional: 'no', others: 'no', axio: 'yes', axioLabel: '3 providers' },
+  { capability: 'Zero-retention security', traditional: 'no', others: 'varies', axio: 'yes', axioLabel: 'Ghost Protocol' },
+  { capability: 'Token quota management', traditional: 'no', others: 'varies', axio: 'yes', axioLabel: 'Per-plan limits' },
+];
+
+const StatusIcon = ({ status }: { status: string }) => {
+  if (status === 'yes') {
+    return <Check className="w-5 h-5 text-scope-dominant" />;
+  } else if (status === 'no') {
+    return <X className="w-5 h-5 text-destructive" />;
+  } else if (status === 'limited' || status === 'varies') {
+    return <AlertTriangle className="w-5 h-5 text-scope-contested" />;
+  }
+  return null;
+};
+
 const Features = () => {
   return (
     <>
       <SEO 
         title="Features"
-        description="Everything you need to chat with your data. 12 native integrations, AI chat with citations, Ghost Protocol security, and team collaboration."
+        description="Context intelligence no other RAG tool has. Scope Dominance Guard, Sticky Scope Sessions, and Ghost Protocol security. 12 native connectors."
         canonical="/features"
       />
       <main className="bg-background min-h-screen">
@@ -113,13 +136,115 @@ const Features = () => {
               className="text-center max-w-3xl mx-auto"
             >
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                <span className="text-foreground">Everything You Need to </span>
-                <span className="gradient-text">Chat With Your Data</span>
+                <span className="text-foreground">Features That Actually </span>
+                <span className="gradient-text">Solve the Problem</span>
               </h1>
               <p className="text-xl text-muted-foreground">
-                Powerful features. Enterprise security. Simple pricing.
+                Context intelligence no other tool has. Enterprise security. 12 native connectors.
               </p>
             </motion.div>
+          </div>
+        </section>
+
+        {/* Comparison Table */}
+        <section className="py-16 bg-muted/10">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                <span className="text-foreground">How We </span>
+                <span className="gradient-text">Compare</span>
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Comparison based on standard RAG implementations and publicly documented features as of January 2026.
+              </p>
+            </motion.div>
+
+            {/* Desktop Table */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="hidden md:block max-w-4xl mx-auto"
+            >
+              <div className="glass-card rounded-2xl overflow-hidden">
+                <table className="w-full">
+                  <thead>
+                    <tr className="border-b border-border/50">
+                      <th className="text-left p-4 text-muted-foreground font-medium">Capability</th>
+                      <th className="text-center p-4 text-muted-foreground font-medium">Traditional RAG</th>
+                      <th className="text-center p-4 text-muted-foreground font-medium">Other AI Tools</th>
+                      <th className="text-center p-4 text-secondary font-semibold bg-secondary/10">Axio Hub</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {comparisonData.map((row, i) => (
+                      <tr key={row.capability} className={i !== comparisonData.length - 1 ? 'border-b border-border/30' : ''}>
+                        <td className="p-4 text-foreground font-medium">{row.capability}</td>
+                        <td className="p-4 text-center">
+                          <div className="flex items-center justify-center gap-2">
+                            <StatusIcon status={row.traditional} />
+                            {row.traditional !== 'no' && row.traditional !== 'yes' && (
+                              <span className="text-sm text-muted-foreground capitalize">{row.traditional}</span>
+                            )}
+                          </div>
+                        </td>
+                        <td className="p-4 text-center">
+                          <div className="flex items-center justify-center gap-2">
+                            <StatusIcon status={row.others} />
+                            {row.others !== 'no' && row.others !== 'yes' && (
+                              <span className="text-sm text-muted-foreground capitalize">{row.others}</span>
+                            )}
+                          </div>
+                        </td>
+                        <td className="p-4 text-center bg-secondary/5">
+                          <div className="flex items-center justify-center gap-2">
+                            <StatusIcon status={row.axio} />
+                            <span className="text-sm text-secondary font-medium">{row.axioLabel}</span>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </motion.div>
+
+            {/* Mobile Cards */}
+            <div className="md:hidden space-y-4">
+              {comparisonData.map((row) => (
+                <motion.div
+                  key={row.capability}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="glass-card rounded-xl p-4"
+                >
+                  <h3 className="font-semibold text-foreground mb-3">{row.capability}</h3>
+                  <div className="grid grid-cols-3 gap-2 text-sm">
+                    <div className="text-center">
+                      <p className="text-muted-foreground text-xs mb-1">Traditional</p>
+                      <StatusIcon status={row.traditional} />
+                    </div>
+                    <div className="text-center">
+                      <p className="text-muted-foreground text-xs mb-1">Others</p>
+                      <StatusIcon status={row.others} />
+                    </div>
+                    <div className="text-center bg-secondary/10 rounded-lg py-1">
+                      <p className="text-secondary text-xs mb-1 font-medium">Axio</p>
+                      <div className="flex flex-col items-center">
+                        <StatusIcon status={row.axio} />
+                        <span className="text-xs text-secondary mt-1">{row.axioLabel}</span>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
 

@@ -167,7 +167,7 @@ export const PricingSection = () => {
           viewport={{ once: true }}
           className="text-center text-sm text-muted-foreground mt-8 max-w-2xl mx-auto"
         >
-          All plans include Ghost Protocol zero-retention security, AES-256 encryption, and malware scanning.
+          All plans include Ghost Protocol zero-retention security, AES-256 encryption, malware scanning, multi-provider AI failover, and source citations.
         </motion.p>
       </div>
     </section>
