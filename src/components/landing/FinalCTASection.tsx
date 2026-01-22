@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { trackCTA, trackExternalLink } from '@/lib/analytics';
 
 export const FinalCTASection = () => {
   return (
@@ -34,6 +35,10 @@ export const FinalCTASection = () => {
               href="https://app.axiohub.io/auth/register"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => {
+                trackCTA('start_free_trial', 'final_cta');
+                trackExternalLink('https://app.axiohub.io/auth/register', 'final_cta');
+              }}
               className="inline-flex items-center gap-2 holographic-glow px-8 py-4 rounded-full text-lg font-semibold text-white transition-transform hover:scale-105 active:scale-95"
             >
               Start Your Free Trial

@@ -13,8 +13,10 @@ import {
   getSoftwareApplicationSchema, 
   getWebSiteSchema 
 } from '@/lib/structured-data';
+import { useScrollTracking } from '@/hooks/use-scroll-tracking';
 
 const Index = () => {
+  useScrollTracking();
   return (
     <>
       <SEO 

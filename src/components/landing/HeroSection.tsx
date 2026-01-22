@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
 import { ParticleCanvas } from './ParticleCanvas';
+import { trackCTA, trackScrollToSection } from '@/lib/analytics';
 
 const scrollToDemo = () => {
+  trackScrollToSection('demo');
+  trackCTA('see_how_it_works', 'hero');
   document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' });
 };
 

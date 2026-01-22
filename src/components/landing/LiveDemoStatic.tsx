@@ -4,6 +4,7 @@ import { X, Check, Search, Clock, HelpCircle, Sparkles, FileText, MessageSquare,
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { LiveDemoSectionSimplified } from './LiveDemoSectionSimplified';
+import { trackDemoOpen, trackCTA } from '@/lib/analytics';
 
 const oldWayItems = [
   { icon: Search, text: "Search through 5+ tools separately" },
@@ -80,7 +81,15 @@ export const LiveDemoStatic = () => {
 
         {/* CTA */}
         <div className="text-center mt-10">
-          <Button size="lg" onClick={() => setShowDemo(true)} className="holographic-glow">
+          <Button 
+            size="lg" 
+            onClick={() => {
+              trackDemoOpen();
+              trackCTA('try_interactive_demo', 'demo_section');
+              setShowDemo(true);
+            }} 
+            className="holographic-glow"
+          >
             Try Interactive Demo <Sparkles className="ml-2 w-4 h-4" />
           </Button>
           <p className="text-xs text-muted-foreground mt-3">See Axio in action with real examples</p>
