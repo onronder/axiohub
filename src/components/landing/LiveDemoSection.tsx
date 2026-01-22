@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FileText, MessageSquare, Database, Wrench, AlertTriangle, FileSpreadsheet, Check, Users, Factory, User } from 'lucide-react';
+import { FileText, MessageSquare, Database, Wrench, AlertTriangle, FileSpreadsheet, Check, Users, Factory, User, Lock, HelpCircle } from 'lucide-react';
 
 interface Source {
   id: string;
@@ -11,7 +11,7 @@ interface Source {
 }
 
 // Personal/Freelancer scenario
-const personalScenario: { sources: Source[]; demoSequence: { query: string; response: string; citedSources: string[] }[] } = {
+const personalScenario: { sources: Source[]; demoSequence: { query: string; response: string; citedSources: string[]; isDisambiguation?: boolean; options?: string[] }[] } = {
   sources: [
     { id: '1', name: 'Client-Contract-2025.pdf', type: 'pdf', icon: FileText },
     { id: '2', name: 'Project-Notes.md', type: 'markdown', icon: FileText },
@@ -32,24 +32,27 @@ const personalScenario: { sources: Source[]; demoSequence: { query: string; resp
   ],
 };
 
-// Teams scenario (office use case)
-const teamsScenario: { sources: Source[]; demoSequence: { query: string; response: string; citedSources: string[] }[] } = {
+// Teams scenario with disambiguation demo
+const teamsScenario: { sources: Source[]; demoSequence: { query: string; response: string; citedSources: string[]; isDisambiguation?: boolean; options?: string[]; scopeLock?: string }[] } = {
   sources: [
-    { id: '1', name: 'Marketing-Plan-Q4.pdf', type: 'pdf', icon: FileText },
-    { id: '2', name: 'Budget-2025.xlsx', type: 'excel', icon: FileSpreadsheet },
+    { id: '1', name: 'Customer Support Wiki', type: 'notion', icon: Database },
+    { id: '2', name: 'HR Policy Handbook', type: 'pdf', icon: FileText },
     { id: '3', name: 'Product Roadmap', type: 'notion', icon: Database },
     { id: '4', name: '#marketing-chat', type: 'slack', icon: MessageSquare },
   ],
   demoSequence: [
     {
-      query: "What's our Q4 marketing budget?",
-      response: "Based on **Budget-2025.xlsx** and the **Marketing Plan**, the Q4 budget is **$125,000** allocated across digital ads ($75k), events ($30k), and content ($20k).",
+      query: "How do we handle refunds?",
+      response: "I found relevant information in **2 sources**:\n\n📁 **Customer Support Wiki** (12 matches)\n📁 **HR Policy Handbook** (4 matches)\n\nWhich should I focus on?",
       citedSources: ['1', '2'],
+      isDisambiguation: true,
+      options: ['Customer Support Wiki', 'HR Policy Handbook', 'Search All'],
     },
     {
-      query: "When is the product launch?",
-      response: "According to the **Product Roadmap**, the v2.0 launch is scheduled for **March 15th**. The #marketing-chat confirms the campaign starts **2 weeks prior**.",
-      citedSources: ['3', '4'],
+      query: "",
+      response: "Based on **Customer Support Wiki**:\n\nRefunds are processed within **5-7 business days**. For orders over $500, manager approval is required. See the **Escalation Matrix** for edge cases.",
+      citedSources: ['1'],
+      scopeLock: 'Customer Support Wiki',
     },
   ],
 };
@@ -77,12 +80,14 @@ const operationsScenario: { sources: Source[]; demoSequence: { query: string; re
 };
 
 export const LiveDemoSection = () => {
-  const [activeTab, setActiveTab] = useState<'personal' | 'teams' | 'operations'>('personal');
+  const [activeTab, setActiveTab] = useState<'personal' | 'teams' | 'operations'>('teams');
   const [currentStep, setCurrentStep] = useState(0);
   const [displayedQuery, setDisplayedQuery] = useState('');
   const [displayedResponse, setDisplayedResponse] = useState('');
   const [isTypingQuery, setIsTypingQuery] = useState(true);
   const [activeSources, setActiveSources] = useState<string[]>([]);
+  const [showOptions, setShowOptions] = useState(false);
+  const [scopeLock, setScopeLock] = useState<string | null>(null);
   const chatRef = useRef<HTMLDivElement>(null);
 
   const scenario = activeTab === 'personal' 
@@ -100,6 +105,8 @@ export const LiveDemoSection = () => {
     setDisplayedResponse('');
     setIsTypingQuery(true);
     setActiveSources([]);
+    setShowOptions(false);
+    setScopeLock(null);
   }, [activeTab]);
 
   useEffect(() => {
@@ -110,6 +117,8 @@ export const LiveDemoSection = () => {
         setDisplayedResponse('');
         setIsTypingQuery(true);
         setActiveSources([]);
+        setShowOptions(false);
+        setScopeLock(null);
       }, 4000);
       return () => clearTimeout(resetTimer);
     }
@@ -118,10 +127,39 @@ export const LiveDemoSection = () => {
     let queryIndex = 0;
     let responseIndex = 0;
 
+    // Handle steps without query (like disambiguation follow-up)
+    if (!currentDemo.query) {
+      setDisplayedQuery('');
+      setIsTypingQuery(false);
+      setShowOptions(false);
+      
+      if ((currentDemo as any).scopeLock) {
+        setScopeLock((currentDemo as any).scopeLock);
+      }
+      
+      setTimeout(() => {
+        setActiveSources(currentDemo.citedSources);
+      }, 200);
+
+      setTimeout(() => {
+        const responseInterval = setInterval(() => {
+          if (responseIndex < currentDemo.response.length) {
+            setDisplayedResponse(currentDemo.response.slice(0, responseIndex + 1));
+            responseIndex++;
+          } else {
+            clearInterval(responseInterval);
+            setTimeout(() => setCurrentStep(prev => prev + 1), 3000);
+          }
+        }, 15);
+      }, 400);
+      return;
+    }
+
     setIsTypingQuery(true);
     setDisplayedQuery('');
     setDisplayedResponse('');
     setActiveSources([]);
+    setShowOptions(false);
 
     // Type query fast
     const queryInterval = setInterval(() => {
@@ -145,7 +183,18 @@ export const LiveDemoSection = () => {
               responseIndex++;
             } else {
               clearInterval(responseInterval);
-              setTimeout(() => setCurrentStep(prev => prev + 1), 2500);
+              
+              // Show disambiguation options if applicable
+              if ((currentDemo as any).isDisambiguation) {
+                setTimeout(() => setShowOptions(true), 300);
+                // Auto-click after showing options
+                setTimeout(() => {
+                  setShowOptions(false);
+                  setCurrentStep(prev => prev + 1);
+                }, 2500);
+              } else {
+                setTimeout(() => setCurrentStep(prev => prev + 1), 2500);
+              }
             }
           }, 15);
         }, 400);
@@ -159,7 +208,7 @@ export const LiveDemoSection = () => {
     return text.split(/(\*\*[^*]+\*\*)/).map((part, index) => {
       if (part.startsWith('**') && part.endsWith('**')) {
         return (
-          <span key={index} className="text-axio-cyan font-semibold">
+          <span key={index} className="text-secondary font-semibold">
             {part.slice(2, -2)}
           </span>
         );
@@ -171,7 +220,7 @@ export const LiveDemoSection = () => {
   return (
     <section className="relative py-32 overflow-hidden">
       {/* Background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-axio-violet/10 rounded-full blur-[120px]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px]" />
       
       <div className="relative z-10 container mx-auto px-4">
         {/* Header */}
@@ -211,7 +260,7 @@ export const LiveDemoSection = () => {
               id="tab-personal"
               className={`flex items-center gap-2 px-5 py-3 rounded-full text-sm font-medium transition-all ${
                 activeTab === 'personal'
-                  ? 'bg-gradient-to-r from-axio-violet to-axio-cyan text-white'
+                  ? 'bg-gradient-to-r from-primary to-secondary text-white'
                   : 'text-muted-foreground hover:text-foreground'
               }`}
             >
@@ -226,7 +275,7 @@ export const LiveDemoSection = () => {
               id="tab-teams"
               className={`flex items-center gap-2 px-5 py-3 rounded-full text-sm font-medium transition-all ${
                 activeTab === 'teams'
-                  ? 'bg-gradient-to-r from-axio-violet to-axio-cyan text-white'
+                  ? 'bg-gradient-to-r from-primary to-secondary text-white'
                   : 'text-muted-foreground hover:text-foreground'
               }`}
             >
@@ -241,7 +290,7 @@ export const LiveDemoSection = () => {
               id="tab-operations"
               className={`flex items-center gap-2 px-5 py-3 rounded-full text-sm font-medium transition-all ${
                 activeTab === 'operations'
-                  ? 'bg-gradient-to-r from-axio-violet to-axio-cyan text-white'
+                  ? 'bg-gradient-to-r from-primary to-secondary text-white'
                   : 'text-muted-foreground hover:text-foreground'
               }`}
             >
@@ -267,11 +316,25 @@ export const LiveDemoSection = () => {
           >
             {/* Chat Panel - 3 cols */}
             <div className="lg:col-span-3 glass-card rounded-2xl p-6 min-h-[400px]">
-              <div className="flex items-center gap-2 mb-6 pb-4 border-b border-white/10">
-                <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                <div className="w-3 h-3 rounded-full bg-green-500/80" />
-                <span className="ml-3 text-sm text-muted-foreground">Axio Chat</span>
+              <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/10">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-red-500/80" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                  <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                  <span className="ml-3 text-sm text-muted-foreground">Axio Chat</span>
+                </div>
+                
+                {/* Scope Lock Indicator */}
+                {scopeLock && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary/20 border border-secondary/30"
+                  >
+                    <Lock className="w-3 h-3 text-secondary" />
+                    <span className="text-xs text-secondary font-medium">Searching in: {scopeLock}</span>
+                  </motion.div>
+                )}
               </div>
 
               <div ref={chatRef} className="space-y-6">
@@ -285,11 +348,11 @@ export const LiveDemoSection = () => {
                       exit={{ opacity: 0 }}
                       className="flex justify-end"
                     >
-                      <div className="bg-axio-violet/30 rounded-2xl rounded-br-sm px-4 py-3 max-w-[85%]">
+                      <div className="bg-primary/30 rounded-2xl rounded-br-sm px-4 py-3 max-w-[85%]">
                         <p className="text-foreground">
                           {displayedQuery}
                           {isTypingQuery && (
-                            <span className="inline-block w-0.5 h-4 bg-axio-cyan ml-0.5 animate-pulse" />
+                            <span className="inline-block w-0.5 h-4 bg-secondary ml-0.5 animate-pulse" />
                           )}
                         </p>
                       </div>
@@ -308,12 +371,37 @@ export const LiveDemoSection = () => {
                       className="flex justify-start"
                     >
                       <div className="bg-white/5 rounded-2xl rounded-bl-sm px-4 py-3 max-w-[85%] border border-white/10">
-                        <p className="text-foreground leading-relaxed">
+                        <p className="text-foreground leading-relaxed whitespace-pre-line">
                           {renderFormattedText(displayedResponse)}
                         </p>
                         
-                        {/* Cited sources badges */}
-                        {activeSources.length > 0 && displayedResponse.length > 50 && (
+                        {/* Disambiguation Options */}
+                        {showOptions && (demoSequence[currentStep] as any).options && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="flex flex-wrap gap-2 mt-4 pt-3 border-t border-white/10"
+                          >
+                            {(demoSequence[currentStep] as any).options.map((option: string, i: number) => (
+                              <motion.button
+                                key={option}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: i * 0.1 }}
+                                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                                  i === 0 
+                                    ? 'bg-secondary/20 text-secondary border border-secondary/50 animate-pulse' 
+                                    : 'bg-muted/30 text-muted-foreground border border-border/50 hover:border-primary/50'
+                                }`}
+                              >
+                                {option}
+                              </motion.button>
+                            ))}
+                          </motion.div>
+                        )}
+                        
+                        {/* Cited sources badges (for non-disambiguation) */}
+                        {activeSources.length > 0 && displayedResponse.length > 50 && !(demoSequence[currentStep] as any).isDisambiguation && (
                           <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
@@ -325,7 +413,7 @@ export const LiveDemoSection = () => {
                               return (
                                 <span
                                   key={sourceId}
-                                  className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md bg-axio-cyan/20 text-axio-cyan text-xs"
+                                  className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md bg-secondary/20 text-secondary text-xs"
                                 >
                                   <source.icon className="w-3 h-3" />
                                   {source.name.split('.')[0]}
@@ -348,40 +436,65 @@ export const LiveDemoSection = () => {
               <div className="space-y-3">
                 {sources.map((source) => {
                   const isActive = activeSources.includes(source.id);
+                  const isLocked = scopeLock === source.name;
                   return (
                     <motion.div
                       key={`${source.id}-${activeTab}`}
                       animate={{
-                        borderColor: isActive ? 'rgba(34, 211, 238, 0.5)' : 'rgba(255, 255, 255, 0.1)',
-                        backgroundColor: isActive ? 'rgba(34, 211, 238, 0.1)' : 'rgba(255, 255, 255, 0.02)',
+                        borderColor: isActive || isLocked ? 'hsl(var(--secondary) / 0.5)' : 'hsl(var(--border) / 0.3)',
+                        backgroundColor: isActive || isLocked ? 'hsl(var(--secondary) / 0.1)' : 'hsl(var(--muted) / 0.1)',
                       }}
                       transition={{ duration: 0.15 }}
                       className="flex items-center gap-3 p-3 rounded-xl border"
                     >
-                      <div className={`p-2 rounded-lg ${isActive ? 'bg-axio-cyan/20' : 'bg-white/5'}`}>
-                        <source.icon className={`w-4 h-4 ${isActive ? 'text-axio-cyan' : 'text-muted-foreground'}`} />
+                      <div className={`p-2 rounded-lg ${isActive || isLocked ? 'bg-secondary/20' : 'bg-white/5'}`}>
+                        <source.icon className={`w-4 h-4 ${isActive || isLocked ? 'text-secondary' : 'text-muted-foreground'}`} />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className={`text-sm font-medium truncate ${isActive ? 'text-foreground' : 'text-muted-foreground'}`}>
+                        <p className={`text-sm font-medium truncate ${isActive || isLocked ? 'text-foreground' : 'text-muted-foreground'}`}>
                           {source.name}
                         </p>
                         {source.size && (
                           <p className="text-xs text-muted-foreground">{source.size}</p>
                         )}
                       </div>
-                      {isActive && (
+                      {isLocked && (
                         <motion.div
                           initial={{ scale: 0 }}
                           animate={{ scale: 1 }}
-                          className="w-5 h-5 rounded-full bg-axio-cyan flex items-center justify-center"
+                          className="w-5 h-5 rounded-full bg-secondary flex items-center justify-center"
                         >
-                          <Check className="w-3 h-3 text-axio-void" />
+                          <Lock className="w-3 h-3 text-background" />
+                        </motion.div>
+                      )}
+                      {isActive && !isLocked && (
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          className="w-5 h-5 rounded-full bg-secondary flex items-center justify-center"
+                        >
+                          <Check className="w-3 h-3 text-background" />
                         </motion.div>
                       )}
                     </motion.div>
                   );
                 })}
               </div>
+              
+              {/* Tip for Teams tab */}
+              {activeTab === 'teams' && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                  className="mt-4 p-3 rounded-lg bg-primary/10 border border-primary/30"
+                >
+                  <p className="text-xs text-primary flex items-start gap-2">
+                    <HelpCircle className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                    <span>Watch how Axio asks which source to use when information exists in multiple places.</span>
+                  </p>
+                </motion.div>
+              )}
             </div>
           </div>
         </motion.div>

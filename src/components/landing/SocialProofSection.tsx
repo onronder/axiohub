@@ -3,19 +3,19 @@ import { Quote } from 'lucide-react';
 
 const testimonials = [
   {
-    quote: "Finally, an AI tool our legal team approved. Ghost Protocol was the deciding factor.",
-    author: "Enterprise Legal Team",
-    role: "Fortune 500 Company",
+    quote: "Finally, an AI that doesn't mix up our internal docs with client materials. The clarification feature alone saved us from embarrassing mistakes.",
+    author: "Engineering Manager",
+    role: "SaaS Company",
   },
   {
-    quote: "We connected our entire documentation in minutes. Support tickets dropped 40%.",
-    author: "SaaS Startup CTO",
-    role: "Series A Startup",
+    quote: "Our old AI tool went down during a client presentation. Embarrassing. With Axio's failover, we've never had that problem again.",
+    author: "Operations Director",
+    role: "Consulting Firm",
   },
   {
-    quote: "The source citations alone save us hours of fact-checking.",
-    author: "Research Team Lead",
-    role: "Research Institution",
+    quote: "I connect my Google Drive, Notion, and GitHub. Ask one question, get the right answer from the right source. That's it. That's the product.",
+    author: "Solo Developer",
+    role: "Freelancer",
   },
 ];
 

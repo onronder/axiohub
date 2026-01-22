@@ -2,10 +2,12 @@ import { SEO } from '@/components/SEO';
 import { Header } from '@/components/landing/Header';
 import { HeroSection } from '@/components/landing/HeroSection';
 import { TrustBadgesRow } from '@/components/landing/TrustBadgesRow';
+import { ProblemSection } from '@/components/landing/ProblemSection';
+import { IntelligenceFeaturesSection } from '@/components/landing/IntelligenceFeaturesSection';
 import { HowItWorksSection } from '@/components/landing/HowItWorksSection';
 import { DataConnectorsSection } from '@/components/landing/DataConnectorsSection';
+import { ReliabilitySection } from '@/components/landing/ReliabilitySection';
 import { GhostProtocolSection } from '@/components/landing/GhostProtocolSection';
-import { IntelligenceFeaturesSection } from '@/components/landing/IntelligenceFeaturesSection';
 import { LiveDemoSection } from '@/components/landing/LiveDemoSection';
 import { SocialProofSection } from '@/components/landing/SocialProofSection';
 import { PricingSection } from '@/components/landing/PricingSection';
@@ -22,7 +24,7 @@ const Index = () => {
     <>
       <SEO 
         canonical="/"
-        description="Your Knowledge, Unified. The intelligence layer for your files—from personal projects to field ops. AI-powered knowledge management with Ghost Protocol zero-retention security."
+        description="Your Knowledge, Unified. Axio Hub connects 12 data sources and delivers answers that cite the right source—never a confused mix. AI-powered knowledge management with Ghost Protocol zero-retention security."
         structuredData={[
           getOrganizationSchema(),
           getSoftwareApplicationSchema(),
@@ -33,13 +35,15 @@ const Index = () => {
         <Header />
         <HeroSection />
         <TrustBadgesRow />
-        <HowItWorksSection />
-        <DataConnectorsSection />
-        <section id="security">
-          <GhostProtocolSection />
-        </section>
+        <ProblemSection />
         <section id="features">
           <IntelligenceFeaturesSection />
+        </section>
+        <HowItWorksSection />
+        <DataConnectorsSection />
+        <ReliabilitySection />
+        <section id="security">
+          <GhostProtocolSection />
         </section>
         <section id="demo">
           <LiveDemoSection />
