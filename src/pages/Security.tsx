@@ -11,7 +11,13 @@ import {
   Database,
   Shield,
   XCircle,
-  Check
+  Check,
+  FileX2,
+  KeyRound,
+  Building2,
+  ShieldX,
+  ClipboardList,
+  UserCheck
 } from 'lucide-react';
 
 const flowSteps = [
@@ -21,6 +27,45 @@ const flowSteps = [
   { icon: Lock, label: 'Encrypt', description: 'AES-256 encryption' },
   { icon: Trash2, label: 'Wipe', description: 'Cryptographic overwrite' },
   { icon: Database, label: 'Store', description: 'Only encrypted vectors remain' },
+];
+
+const ghostProtocolCategories = [
+  {
+    title: 'Zero-Retention Architecture',
+    features: [
+      { icon: FileX2, text: 'We never store your raw documents' },
+      { icon: Lock, text: 'Content is encrypted, chunked, and indexed' },
+      { icon: FileX2, text: 'Original files remain in your storage' },
+      { icon: FileX2, text: 'Delete anytime—truly gone' },
+    ],
+  },
+  {
+    title: 'Encryption Standards',
+    features: [
+      { icon: KeyRound, text: 'AES-256 encryption at rest' },
+      { icon: Lock, text: 'TLS 1.3 in transit' },
+      { icon: KeyRound, text: 'Key rotation support' },
+      { icon: Shield, text: 'SOC 2 compliance ready' },
+    ],
+  },
+  {
+    title: 'Enterprise Controls',
+    features: [
+      { icon: Building2, text: 'Row-Level Security (RLS)' },
+      { icon: Building2, text: 'Organization isolation' },
+      { icon: ClipboardList, text: 'Audit logging' },
+      { icon: UserCheck, text: 'SSO integration ready' },
+    ],
+  },
+  {
+    title: 'Malware Protection',
+    features: [
+      { icon: ShieldX, text: 'Real-time ClamAV scanning' },
+      { icon: ShieldX, text: 'Infected files quarantined' },
+      { icon: ShieldX, text: 'Admin notifications' },
+      { icon: ShieldX, text: 'Automatic file rejection' },
+    ],
+  },
 ];
 
 const specifications = [
@@ -70,18 +115,18 @@ const Security = () => {
             >
               <span className="text-5xl mb-6 block">🔐</span>
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                <span className="text-foreground">Security You </span>
-                <span className="gradient-text">Can Trust</span>
+                <span className="gradient-text">Ghost Protocol™</span>
+                <span className="text-foreground"> Security</span>
               </h1>
               <p className="text-xl text-muted-foreground">
-                Ghost Protocol: The industry's first zero-retention AI knowledge platform.
+                The industry's first zero-retention AI knowledge platform. Your data stays yours.
               </p>
             </motion.div>
           </div>
         </section>
 
         {/* How Ghost Protocol Works */}
-        <section className="py-16">
+        <section className="py-20">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -118,8 +163,55 @@ const Security = () => {
           </div>
         </section>
 
+        {/* Ghost Protocol Categories */}
+        <section className="py-20 bg-void relative overflow-hidden">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px]" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-[120px]" />
+
+          <div className="container mx-auto px-4 relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <h2 className="text-3xl font-bold text-foreground mb-4">Security Pillars</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Four core categories that make Ghost Protocol the most secure AI knowledge platform.
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+              {ghostProtocolCategories.map((category, i) => (
+                <motion.div
+                  key={category.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="glass-card p-6"
+                >
+                  <h3 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-primary" />
+                    {category.title}
+                  </h3>
+                  
+                  <ul className="space-y-3">
+                    {category.features.map((feature, j) => (
+                      <li key={j} className="flex items-center gap-3 text-muted-foreground">
+                        <feature.icon className="w-4 h-4 text-primary/70 flex-shrink-0" />
+                        <span className="text-sm">{feature.text}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Technical Specifications */}
-        <section className="py-16 bg-muted/20">
+        <section className="py-20 bg-muted/20">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -161,7 +253,7 @@ const Security = () => {
         </section>
 
         {/* Data Isolation */}
-        <section className="py-16">
+        <section className="py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
               <motion.div
@@ -202,7 +294,7 @@ const Security = () => {
         </section>
 
         {/* Compliance */}
-        <section className="py-16 bg-muted/20">
+        <section className="py-20 bg-muted/20">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -231,7 +323,7 @@ const Security = () => {
         </section>
 
         {/* What We Don't Store */}
-        <section className="py-16">
+        <section className="py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-2xl mx-auto">
               <motion.div
@@ -259,6 +351,29 @@ const Security = () => {
                 ))}
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="py-24 bg-void">
+          <div className="container mx-auto px-4 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                Ready to secure your knowledge?
+              </h2>
+              <a
+                href="https://app.axiohub.io/register"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex holographic-glow px-8 py-4 rounded-full text-lg font-semibold text-white transition-transform hover:scale-105"
+              >
+                Start Your Free Trial
+              </a>
+            </motion.div>
           </div>
         </section>
 
