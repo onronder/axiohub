@@ -376,7 +376,7 @@ export const LiveDemoSection = () => {
                         </p>
                         
                         {/* Disambiguation Options */}
-                        {showOptions && (demoSequence[currentStep] as any).options && (
+                        {showOptions && demoSequence[currentStep] && (demoSequence[currentStep] as any).options && (
                           <motion.div
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -401,7 +401,7 @@ export const LiveDemoSection = () => {
                         )}
                         
                         {/* Cited sources badges (for non-disambiguation) */}
-                        {activeSources.length > 0 && displayedResponse.length > 50 && !(demoSequence[currentStep] as any).isDisambiguation && (
+                        {activeSources.length > 0 && displayedResponse.length > 50 && demoSequence[currentStep] && !(demoSequence[currentStep] as any).isDisambiguation && (
                           <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
