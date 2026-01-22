@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Axio Hub Blog</title>
+    <description>Insights on AI knowledge bases, document AI, and enterprise RAG platforms. Learn how to chat with documents, improve productivity, and unlock value from your data.</description>
+    <link>https://axiohub.io/blog</link>
+    <atom:link href="https://axiohub.io/rss.xml" rel="self" type="application/rss+xml"/>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 22 Jan 2026 00:00:00 GMT</lastBuildDate>
+    <managingEditor>hello@axiohub.io (Axio Hub)</managingEditor>
+    <webMaster>hello@axiohub.io (Axio Hub)</webMaster>
+    <image>
+      <url>https://axiohub.io/favicon.png</url>
+      <title>Axio Hub Blog</title>
+      <link>https://axiohub.io/blog</link>
+    </image>
+    
+    <item>
+      <title>What Is an AI Knowledge Base? A Complete Guide for 2026</title>
+      <description>Learn what an AI knowledge base is, how it differs from traditional document storage, and why businesses are rapidly adopting this technology to unlock insights from their data.</description>
+      <link>https://axiohub.io/blog/what-is-an-ai-knowledge-base</link>
+      <guid isPermaLink="true">https://axiohub.io/blog/what-is-an-ai-knowledge-base</guid>
+      <pubDate>Wed, 15 Jan 2026 00:00:00 GMT</pubDate>
+      <category>Fundamentals</category>
+      <author>hello@axiohub.io (Axio Hub Team)</author>
+    </item>
+    
+    <item>
+      <title>How to Chat with Documents Using AI: A Practical Guide</title>
+      <description>A step-by-step guide to chatting with your documents using AI. Learn how document AI works, what to expect, and how to get the most accurate answers from your files.</description>
+      <link>https://axiohub.io/blog/how-to-chat-with-documents-using-ai</link>
+      <guid isPermaLink="true">https://axiohub.io/blog/how-to-chat-with-documents-using-ai</guid>
+      <pubDate>Fri, 10 Jan 2026 00:00:00 GMT</pubDate>
+      <category>How-To</category>
+      <author>hello@axiohub.io (Axio Hub Team)</author>
+    </item>
+    
+    <item>
+      <title>Enterprise RAG vs ChatGPT: What Your Business Actually Needs</title>
+      <description>Understand the crucial differences between general-purpose AI like ChatGPT and enterprise RAG platforms. Learn which approach is right for your company documents and data.</description>
+      <link>https://axiohub.io/blog/enterprise-rag-vs-chatgpt-for-business</link>
+      <guid isPermaLink="true">https://axiohub.io/blog/enterprise-rag-vs-chatgpt-for-business</guid>
+      <pubDate>Sun, 05 Jan 2026 00:00:00 GMT</pubDate>
+      <category>Comparison</category>
+      <author>hello@axiohub.io (Axio Hub Team)</author>
+    </item>
+    
+    <item>
+      <title>Multi-Source Document AI: Why Connecting All Your Data Matters</title>
+      <description>Explore why connecting multiple data sources to a single AI platform dramatically improves productivity and decision-making. A deep dive into the future of unified knowledge.</description>
+      <link>https://axiohub.io/blog/multi-source-document-ai-why-it-matters</link>
+      <guid isPermaLink="true">https://axiohub.io/blog/multi-source-document-ai-why-it-matters</guid>
+      <pubDate>Sat, 28 Dec 2025 00:00:00 GMT</pubDate>
+      <category>Strategy</category>
+      <author>hello@axiohub.io (Axio Hub Team)</author>
+    </item>
+    
+  </channel>
+</rss>

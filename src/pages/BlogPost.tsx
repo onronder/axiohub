@@ -57,6 +57,7 @@ const BlogPost = () => {
         canonical={`/blog/${post.slug}`}
         keywords={post.tags}
         ogType="article"
+        ogImage={post.ogImage || '/og-blog.png'}
         structuredData={[breadcrumbData, articleSchema]}
       />
       <main className="bg-background min-h-screen">

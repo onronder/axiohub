@@ -9,6 +9,7 @@ export interface BlogPost {
   category: string;
   tags: string[];
   featured?: boolean;
+  ogImage?: string;
 }
 
 export const blogPosts: BlogPost[] = [
@@ -22,6 +23,7 @@ export const blogPosts: BlogPost[] = [
     readTime: '8 min read',
     tags: ['AI knowledge base', 'enterprise AI', 'document management'],
     featured: true,
+    ogImage: '/og-blog-ai-knowledge-base.png',
     content: `
 ## The Problem We All Know Too Well
 
@@ -113,6 +115,7 @@ The tools exist. The technology works. The only thing left is deciding to make t
     readTime: '10 min read',
     tags: ['chat with documents', 'document AI', 'productivity'],
     featured: true,
+    ogImage: '/og-blog-chat-documents.png',
     content: `
 ## The Magic of Talking to Your Documents
 
@@ -237,6 +240,7 @@ The future of how we work with information is conversational. And honestly? It's
     readTime: '9 min read',
     tags: ['enterprise RAG platform', 'ChatGPT for company documents', 'AI comparison'],
     featured: false,
+    ogImage: '/og-blog-rag-vs-chatgpt.png',
     content: `
 ## The Question Every Business Is Asking
 
@@ -383,6 +387,7 @@ Most businesses above a certain size will find that the answer isn't "one or the
     readTime: '7 min read',
     tags: ['multi-source document AI', 'enterprise AI', 'data integration'],
     featured: false,
+    ogImage: '/og-blog-multi-source.png',
     content: `
 ## The Scattered Reality of Modern Work
 
