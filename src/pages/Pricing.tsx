@@ -132,8 +132,9 @@ const Pricing = () => {
     <>
       <SEO 
         title="Pricing"
-        description="Simple, transparent pricing. Starter at $4.99/mo, Pro at $29/mo, Enterprise custom. All plans include Ghost Protocol security and AES-256 encryption."
+        description="Simple pricing for AI knowledge base software. Starter at $4.99/mo, Pro at $29/mo. Chat with documents securely. All plans include Ghost Protocol."
         canonical="/pricing"
+        keywords={['AI knowledge base', 'ChatGPT for company documents', 'enterprise RAG platform', 'document AI pricing']}
       />
       <main className="bg-background min-h-screen">
         <Header />

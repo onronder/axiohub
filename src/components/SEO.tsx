@@ -8,10 +8,12 @@ interface SEOProps {
   ogType?: 'website' | 'article';
   noIndex?: boolean;
   structuredData?: object | object[];
+  keywords?: string[];
 }
 
 const SITE_NAME = 'Axio Hub';
-const DEFAULT_DESCRIPTION = 'Your Knowledge, Unified. The intelligence layer for your files—from personal projects to field ops.';
+const DEFAULT_DESCRIPTION = 'Connect all your data sources to one AI knowledge base. Chat with documents securely. Enterprise RAG platform with zero-retention security.';
+const DEFAULT_KEYWORDS = ['AI knowledge base', 'chat with documents', 'enterprise RAG platform', 'multi-source document AI', 'ChatGPT for company documents'];
 const DEFAULT_OG_IMAGE = '/favicon.png';
 const BASE_URL = 'https://axiohub.io';
 
@@ -23,8 +25,9 @@ export const SEO = ({
   ogType = 'website',
   noIndex = false,
   structuredData,
+  keywords = DEFAULT_KEYWORDS,
 }: SEOProps) => {
-  const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} | AI-Powered Knowledge Management`;
+  const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} | AI Knowledge Base - Chat with Documents`;
   const fullCanonical = canonical ? `${BASE_URL}${canonical}` : undefined;
   const fullOgImage = ogImage.startsWith('http') ? ogImage : `${BASE_URL}${ogImage}`;
 
@@ -38,9 +41,11 @@ export const SEO = ({
     <Helmet>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
+      <meta name="keywords" content={keywords.join(', ')} />
+      <meta name="author" content="Axio Hub" />
       
       {fullCanonical && <link rel="canonical" href={fullCanonical} />}
-      {noIndex && <meta name="robots" content="noindex,nofollow" />}
+      {noIndex ? <meta name="robots" content="noindex,nofollow" /> : <meta name="robots" content="index,follow" />}
       
       {/* Open Graph */}
       <meta property="og:title" content={fullTitle} />

@@ -22,7 +22,8 @@ const Index = () => {
     <>
       <SEO 
         canonical="/"
-        description="Your Knowledge, Unified. Axio Hub connects all your data sources and delivers answers that cite the right source—never a confused mix. AI-powered knowledge management with Ghost Protocol zero-retention security."
+        description="Connect all your data sources to one AI. Get answers that cite the right source—not a confused mix. Chat with documents securely. Try Axio Hub free."
+        keywords={['AI knowledge base', 'chat with documents', 'enterprise RAG platform', 'multi-source document AI', 'ChatGPT for company documents']}
         structuredData={[
           getOrganizationSchema(),
           getSoftwareApplicationSchema(),

@@ -12,7 +12,7 @@ export const getOrganizationSchema = () => ({
     "width": 512,
     "height": 512
   },
-  "description": "AI-powered knowledge management platform with Ghost Protocol zero-retention security",
+  "description": "Enterprise RAG platform and AI knowledge base. Chat with documents securely using multi-source document AI with Ghost Protocol zero-retention security.",
   "email": "hello@axiohub.io",
   "sameAs": [
     "https://twitter.com/axiohub"
@@ -39,7 +39,8 @@ export const getSoftwareApplicationSchema = () => ({
   "applicationCategory": "BusinessApplication",
   "applicationSubCategory": "Knowledge Management",
   "operatingSystem": "Web Browser",
-  "description": "The intelligence layer for your files—from personal projects to field ops. AI-powered knowledge management with Ghost Protocol zero-retention security.",
+  "keywords": "AI knowledge base, chat with documents, enterprise RAG platform, multi-source document AI",
+  "description": "Enterprise RAG platform and AI knowledge base. Chat with documents from multiple sources securely with Ghost Protocol zero-retention security.",
   "url": BASE_URL,
   "image": `${BASE_URL}/favicon.png`,
   "provider": {
@@ -83,7 +84,7 @@ export const getWebSiteSchema = () => ({
   "@id": `${BASE_URL}/#website`,
   "name": "Axio Hub",
   "url": BASE_URL,
-  "description": "Your Knowledge, Unified. AI-powered knowledge management with Ghost Protocol zero-retention security.",
+  "description": "AI knowledge base that lets you chat with documents from multiple sources. Enterprise RAG platform with Ghost Protocol zero-retention security.",
   "publisher": {
     "@id": `${BASE_URL}/#organization`
   }
@@ -118,7 +119,7 @@ export const getProductSchema = () => ({
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "Axio Hub",
-  "description": "AI-powered knowledge management with Ghost Protocol zero-retention security",
+  "description": "AI knowledge base that lets you chat with documents. Enterprise RAG platform with Ghost Protocol zero-retention security.",
   "brand": {
     "@type": "Brand",
     "name": "Axio Hub"
@@ -136,7 +137,7 @@ export const getServiceSchema = () => ({
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Axio Hub Knowledge Management",
-  "description": "Connect your data sources, let AI process and secure them with Ghost Protocol, and chat with your knowledge base.",
+  "description": "Enterprise RAG platform and AI knowledge base. Connect your data sources, chat with documents securely, and get answers with source citations.",
   "provider": {
     "@id": `${BASE_URL}/#organization`
   },
