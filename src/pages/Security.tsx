@@ -101,6 +101,7 @@ const Security = () => {
         description="Ghost Protocol: Zero-retention AI knowledge base with AES-256 encryption. Enterprise-grade security for document AI. Your data disappears after processing."
         canonical="/security"
         keywords={['enterprise RAG platform', 'AI knowledge base', 'secure document AI', 'zero-retention security']}
+        ogImage="/og-security.png"
       />
       <main className="bg-background min-h-screen">
         <Header />

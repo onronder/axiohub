@@ -135,6 +135,7 @@ const Pricing = () => {
         description="Simple pricing for AI knowledge base software. Starter at $4.99/mo, Pro at $29/mo. Chat with documents securely. All plans include Ghost Protocol."
         canonical="/pricing"
         keywords={['AI knowledge base', 'ChatGPT for company documents', 'enterprise RAG platform', 'document AI pricing']}
+        ogImage="/og-pricing.png"
       />
       <main className="bg-background min-h-screen">
         <Header />

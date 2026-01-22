@@ -172,6 +172,7 @@ const Features = () => {
         description="Scope Dominance Guard, sticky scope sessions, multi-provider failover. Enterprise RAG features that actually solve real problems. The AI knowledge base built for teams."
         canonical="/features"
         keywords={['enterprise RAG platform', 'AI knowledge base', 'chat with documents', 'multi-source document AI']}
+        ogImage="/og-features.png"
       />
       <main className="bg-background min-h-screen">
         <Header />
