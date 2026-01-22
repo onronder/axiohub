@@ -1,5 +1,13 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { Shield, Lock, Trash2, Building2 } from 'lucide-react';
+
+const trustBadges = [
+  { icon: Shield, label: 'Ghost Protocol', emoji: '🔒' },
+  { icon: Lock, label: 'AES-256', emoji: '🛡️' },
+  { icon: Trash2, label: 'Zero-Retention', emoji: '🧹' },
+  { icon: Building2, label: 'SOC 2 Ready', emoji: '🏢' },
+];
 
 const footerLinks = {
   product: [
@@ -52,8 +60,23 @@ export const Footer = () => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
+        {/* Trust Badges Row */}
+        <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6 mb-12 pb-12 border-b border-white/10">
+          {trustBadges.map((badge) => (
+            <div
+              key={badge.label}
+              className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-muted/30 border border-border/30"
+            >
+              <span className="text-sm">{badge.emoji}</span>
+              <span className="text-xs text-muted-foreground whitespace-nowrap">
+                {badge.label}
+              </span>
+            </div>
+          ))}
+        </div>
+
         {/* 4-column links */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12 border-t border-white/10 pt-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
           {/* Product */}
           <div>
             <h4 className="text-sm font-semibold text-foreground mb-4">Product</h4>

@@ -35,7 +35,7 @@ export const ParticleCanvas = () => {
     };
 
     const initParticles = () => {
-      const particleCount = Math.min(80, Math.floor(window.innerWidth / 20));
+      const particleCount = Math.min(40, Math.floor(window.innerWidth / 30));
       particlesRef.current = [];
 
       for (let i = 0; i < particleCount; i++) {
