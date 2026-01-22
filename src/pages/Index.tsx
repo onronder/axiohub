@@ -6,7 +6,6 @@ import { ProblemSection } from '@/components/landing/ProblemSection';
 import { IntelligenceFeaturesSection } from '@/components/landing/IntelligenceFeaturesSection';
 import { HowItWorksSection } from '@/components/landing/HowItWorksSection';
 import { DataConnectorsSection } from '@/components/landing/DataConnectorsSection';
-import { ReliabilitySection } from '@/components/landing/ReliabilitySection';
 import { GhostProtocolSection } from '@/components/landing/GhostProtocolSection';
 import { LiveDemoSection } from '@/components/landing/LiveDemoSection';
 import { PricingSection } from '@/components/landing/PricingSection';
@@ -40,7 +39,6 @@ const Index = () => {
         </section>
         <HowItWorksSection />
         <DataConnectorsSection />
-        <ReliabilitySection />
         <section id="security">
           <GhostProtocolSection />
         </section>

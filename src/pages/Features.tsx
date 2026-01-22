@@ -11,8 +11,69 @@ import {
   Building2,
   Check,
   X,
-  AlertTriangle
+  AlertTriangle,
+  ShieldCheck,
+  Lock,
+  Quote,
+  Search,
+  Zap,
+  RefreshCw,
+  Clock
 } from 'lucide-react';
+
+const scopeThresholds = [
+  {
+    threshold: '≥85%',
+    label: 'DOMINANT',
+    color: 'scope-dominant',
+    description: 'Answer confidently. Cite the source. Move on.',
+    example: '"Based on Backend Docs: Here\'s how authentication works…"',
+  },
+  {
+    threshold: '60-84%',
+    label: 'CONTESTED',
+    color: 'scope-contested',
+    description: 'Answer from primary. Show alternatives.',
+    example: '"Based on Backend Docs: [answer]\nAlso found in: Product Manual, Engineering Wiki"',
+  },
+  {
+    threshold: '<60%',
+    label: 'FRAGMENTED',
+    color: 'scope-fragmented',
+    description: "Don't guess. Clarify.",
+    example: '"I found relevant information in 3 sources.\nWhich should I focus on?"',
+  },
+];
+
+const intelligenceFeatures = [
+  {
+    icon: Lock,
+    title: 'Sticky Scope Sessions',
+    description: 'Tell us once. We remember. When you select a scope—or when one source dominates 3 times in a row—we lock it for the entire conversation.',
+    highlight: '🔒 Searching in: Engineering Wiki',
+    note: 'Say "search all sources" anytime to unlock',
+  },
+  {
+    icon: Quote,
+    title: 'Source Citations',
+    description: 'Every answer includes clickable citations to the exact document and passage. Verify AI responses instantly. Never wonder "where did that come from?"',
+    highlight: '📎 Sources: auth-guide.md, api-docs.pdf',
+    note: 'Click any citation to jump to the original',
+  },
+  {
+    icon: Search,
+    title: 'Hybrid Search',
+    description: "Combines keyword matching with semantic understanding. Find information even when you don't know the exact words.",
+    highlight: '🔍 "login flow" → auth, SSO, OAuth docs',
+    note: 'Semantic + keyword matching combined',
+  },
+];
+
+const reliabilityStats = [
+  { value: '99.9%', label: 'Uptime SLA', icon: Zap },
+  { value: '3', label: 'AI Providers', icon: RefreshCw },
+  { value: '<30s', label: 'Failover Time', icon: Clock },
+];
 
 const featureSections = [
   {
@@ -39,18 +100,6 @@ const featureSections = [
       'Source citations with links',
       'Multiple AI model support',
       'Token usage tracking',
-    ],
-  },
-  {
-    icon: ShieldAlert,
-    title: 'Scope-Aware Intelligence',
-    description: 'Our unique Scope Guard technology prevents context collision. When your question could match multiple projects or sources, Axio asks for clarification before answering.',
-    features: [
-      'Scope Dominance Guard',
-      'Smart Clarification Flow',
-      'Multi-source search',
-      'Scope identity cards',
-      'Context sticky sessions',
     ],
   },
   {
@@ -146,8 +195,190 @@ const Features = () => {
           </div>
         </section>
 
+        {/* Scope Dominance Guard - Deep Dive */}
+        <section className="py-20 bg-void relative overflow-hidden">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[100px]" />
+          
+          <div className="container mx-auto px-4 relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                <span className="gradient-text">Scope Dominance Guard™</span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Our AI doesn't guess—it calculates. For every query, we analyze which sources the answer comes from.
+              </p>
+            </motion.div>
+
+            {/* Decision Tree */}
+            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-12">
+              {scopeThresholds.map((item, i) => (
+                <motion.div
+                  key={item.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="p-6 rounded-xl border-2 glass-card"
+                  style={{
+                    borderColor: `hsl(var(--${item.color}) / 0.5)`,
+                    backgroundColor: `hsl(var(--${item.color}) / 0.1)`,
+                  }}
+                >
+                  <div className="flex items-center gap-2 mb-4">
+                    <span 
+                      className="text-3xl font-bold"
+                      style={{ color: `hsl(var(--${item.color}))` }}
+                    >
+                      {item.threshold}
+                    </span>
+                    <span 
+                      className="px-2 py-1 rounded text-xs font-semibold uppercase"
+                      style={{ 
+                        backgroundColor: `hsl(var(--${item.color}) / 0.2)`,
+                        color: `hsl(var(--${item.color}))` 
+                      }}
+                    >
+                      {item.label}
+                    </span>
+                  </div>
+                  
+                  <p className="text-foreground font-medium mb-4">{item.description}</p>
+                  
+                  <div className="p-3 rounded-lg bg-muted/30 border border-border/50">
+                    <p className="text-sm text-muted-foreground font-mono whitespace-pre-line">
+                      {item.example}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="text-center text-lg font-medium"
+            >
+              <span className="text-foreground">No other AI knowledge tool does this. </span>
+              <span className="text-muted-foreground">They all blend and hope.</span>
+            </motion.p>
+          </div>
+        </section>
+
+        {/* Additional Intelligence Features */}
+        <section className="py-20">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                <span className="text-foreground">More </span>
+                <span className="gradient-text">Intelligent Features</span>
+              </h2>
+            </motion.div>
+
+            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              {intelligenceFeatures.map((feature, i) => (
+                <motion.div
+                  key={feature.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="glass-card p-6 group hover:border-primary/30 transition-colors"
+                >
+                  <div className="w-12 h-12 mb-4 rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <feature.icon className="w-6 h-6 text-primary" />
+                  </div>
+                  
+                  <h3 className="text-lg font-bold text-foreground mb-2">{feature.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">{feature.description}</p>
+                  
+                  <div className="p-3 rounded-lg bg-secondary/10 border border-secondary/30 mb-2">
+                    <p className="text-sm text-secondary font-mono">{feature.highlight}</p>
+                  </div>
+                  
+                  <p className="text-xs text-muted-foreground italic">{feature.note}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Always-On Reliability */}
+        <section className="py-20 bg-muted/10">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                <span className="text-foreground">Always-On </span>
+                <span className="gradient-text">Reliability</span>
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Triple-redundant AI ensures you're never left without answers. When one provider fails, we automatically switch to the next.
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto mb-12">
+              {reliabilityStats.map((stat, i) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="glass-card p-6 text-center"
+                >
+                  <stat.icon className="w-8 h-8 text-primary mx-auto mb-3" />
+                  <p className="text-3xl font-bold gradient-text mb-1">{stat.value}</p>
+                  <p className="text-sm text-muted-foreground">{stat.label}</p>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="glass-card p-6 max-w-2xl mx-auto"
+            >
+              <h3 className="font-semibold text-foreground mb-4">How It Works</h3>
+              <ol className="space-y-3 text-muted-foreground">
+                <li className="flex gap-3">
+                  <span className="text-primary font-bold">1.</span>
+                  Primary provider (OpenAI) handles your query
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-primary font-bold">2.</span>
+                  If unavailable, automatic fallback to Anthropic
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-primary font-bold">3.</span>
+                  Third-tier backup (Google) for maximum uptime
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-primary font-bold">4.</span>
+                  All failovers are seamless—you never notice
+                </li>
+              </ol>
+            </motion.div>
+          </div>
+        </section>
+
         {/* Comparison Table */}
-        <section className="py-16 bg-muted/10">
+        <section className="py-20 bg-void">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -249,9 +480,21 @@ const Features = () => {
         </section>
 
         {/* Feature Sections */}
-        <section className="py-16">
+        <section className="py-20">
           <div className="container mx-auto px-4">
-            <div className="space-y-24">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                <span className="text-foreground">All </span>
+                <span className="gradient-text">Capabilities</span>
+              </h2>
+            </motion.div>
+
+            <div className="space-y-20">
               {featureSections.map((section, i) => (
                 <motion.div
                   key={section.title}
@@ -265,15 +508,15 @@ const Features = () => {
                 >
                   {/* Icon/Visual */}
                   <div className="flex-shrink-0">
-                    <div className="w-32 h-32 rounded-3xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                      <section.icon className="w-16 h-16 text-primary" />
+                    <div className="w-28 h-28 rounded-3xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+                      <section.icon className="w-14 h-14 text-primary" />
                     </div>
                   </div>
 
                   {/* Content */}
                   <div className="flex-1">
-                    <h2 className="text-3xl font-bold text-foreground mb-4">{section.title}</h2>
-                    <p className="text-lg text-muted-foreground mb-6">{section.description}</p>
+                    <h2 className="text-2xl font-bold text-foreground mb-4">{section.title}</h2>
+                    <p className="text-muted-foreground mb-6">{section.description}</p>
                     
                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
                       {section.features.map((feature) => (
