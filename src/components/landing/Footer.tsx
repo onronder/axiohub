@@ -9,8 +9,8 @@ const footerLinks = {
     { label: 'Integrations', href: '/integrations' },
   ],
   resources: [
+    { label: 'Blog', href: '/blog' },
     { label: 'Documentation', href: 'https://docs.axiohub.io', external: true },
-    { label: 'API Reference', href: 'https://docs.axiohub.io/api', external: true },
     { label: 'Help Center', href: 'https://help.axiohub.io', external: true },
     { label: 'Status', href: 'https://status.axiohub.io', external: true },
   ],
