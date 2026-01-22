@@ -81,7 +81,7 @@ const featureSections = [
     title: 'Unified Data Connectivity',
     description: 'Connect all your knowledge sources in one place. Google Drive, Notion, GitHub, Dropbox, SharePoint, Box, S3, SFTP, and more. OAuth-based authentication means your credentials are never stored.',
     features: [
-      '12 native integrations',
+      'Multiple native integrations',
       'OAuth 2.0 secure authentication',
       'Incremental sync support',
       'File upload (PDF, DOCX, TXT, CSV, XLSX)',
@@ -144,7 +144,7 @@ const featureSections = [
 ];
 
 const comparisonData = [
-  { capability: 'Multi-source ingestion', traditional: 'limited', others: 'varies', axio: 'yes', axioLabel: '12 connectors' },
+  { capability: 'Multi-source ingestion', traditional: 'limited', others: 'varies', axio: 'yes', axioLabel: 'Multiple connectors' },
   { capability: 'Source disambiguation', traditional: 'no', others: 'no', axio: 'yes', axioLabel: 'Scope Guard' },
   { capability: 'Asks before assuming', traditional: 'no', others: 'no', axio: 'yes', axioLabel: 'Clarification flow' },
   { capability: 'Conversation scope memory', traditional: 'no', others: 'no', axio: 'yes', axioLabel: 'Sticky scope' },
@@ -169,7 +169,7 @@ const Features = () => {
     <>
       <SEO 
         title="Features"
-        description="Context intelligence no other RAG tool has. Scope Dominance Guard, Sticky Scope Sessions, and Ghost Protocol security. 12 native connectors."
+        description="Context intelligence no other RAG tool has. Scope Dominance Guard, Sticky Scope Sessions, and Ghost Protocol security. Multiple native connectors."
         canonical="/features"
       />
       <main className="bg-background min-h-screen">
@@ -189,7 +189,7 @@ const Features = () => {
                 <span className="gradient-text">Solve the Problem</span>
               </h1>
               <p className="text-xl text-muted-foreground">
-                Context intelligence no other tool has. Enterprise security. 12 native connectors.
+                Context intelligence no other tool has. Enterprise security. Multiple native connectors.
               </p>
             </motion.div>
           </div>

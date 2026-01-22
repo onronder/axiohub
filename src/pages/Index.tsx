@@ -22,7 +22,7 @@ const Index = () => {
     <>
       <SEO 
         canonical="/"
-        description="Your Knowledge, Unified. Axio Hub connects 12 data sources and delivers answers that cite the right source—never a confused mix. AI-powered knowledge management with Ghost Protocol zero-retention security."
+        description="Your Knowledge, Unified. Axio Hub connects all your data sources and delivers answers that cite the right source—never a confused mix. AI-powered knowledge management with Ghost Protocol zero-retention security."
         structuredData={[
           getOrganizationSchema(),
           getSoftwareApplicationSchema(),

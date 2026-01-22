@@ -72,7 +72,7 @@ export const DataConnectorsSection = () => {
             <span className="gradient-text">Entire Ecosystem</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            12 integrations and counting. One unified knowledge base.
+            Multiple integrations and counting. One unified knowledge base.
           </p>
         </motion.div>
 

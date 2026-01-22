@@ -70,7 +70,7 @@ export const getSoftwareApplicationSchema = () => ({
   "featureList": [
     "Ghost Protocol Zero-Retention Security",
     "AES-256 Encryption",
-    "12 Native Integrations",
+    "Multiple Native Integrations",
     "Scope Guard Intelligence",
     "Source Citations",
     "Hybrid AI Search"

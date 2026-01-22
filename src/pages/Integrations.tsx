@@ -166,7 +166,7 @@ const Integrations = () => {
     <>
       <SEO 
         title="Integrations"
-        description="Connect Google Drive, Notion, GitHub, Dropbox, OneDrive, SharePoint, Box, S3, SFTP and more. 12 integrations today, more coming soon."
+        description="Connect Google Drive, Notion, GitHub, Dropbox, OneDrive, SharePoint, Box, S3, SFTP and more. Multiple integrations today, more coming soon."
         canonical="/integrations"
       />
       <main className="bg-background min-h-screen">
@@ -186,7 +186,7 @@ const Integrations = () => {
                 <span className="gradient-text">Everything</span>
               </h1>
               <p className="text-xl text-muted-foreground">
-                12 integrations today. More coming soon.
+                Multiple integrations today. More coming soon.
               </p>
             </motion.div>
           </div>
