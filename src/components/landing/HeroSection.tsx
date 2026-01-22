@@ -1,8 +1,16 @@
 import { motion } from 'framer-motion';
 import { ParticleCanvas } from './ParticleCanvas';
 import { AutoTypingChat } from './AutoTypingChat';
+import { Play } from 'lucide-react';
 
 export const HeroSection = () => {
+  const scrollToDemo = () => {
+    const demoSection = document.getElementById('demo');
+    if (demoSection) {
+      demoSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <ParticleCanvas />
@@ -18,10 +26,10 @@ export const HeroSection = () => {
           >
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-[0.9] tracking-tight">
               <span className="block text-foreground">Your Knowledge,</span>
-              <span className="block gradient-text">Unified.</span>
+              <span className="block gradient-text">Unified</span>
             </h1>
             <p className="mt-4 text-xl md:text-2xl text-muted-foreground font-medium">
-              From Personal Projects to Field Ops.
+              The AI that knows which source to trust
             </p>
             
             <motion.p
@@ -30,9 +38,8 @@ export const HeroSection = () => {
               transition={{ delay: 0.3, duration: 0.6 }}
               className="mt-8 text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0"
             >
-              The intelligence layer for your files. Whether you're a{' '}
-              <span className="text-foreground font-medium">Freelancer</span> checking a contract or a{' '}
-              <span className="text-foreground font-medium">Field Crew</span> fixing a turbine—Axio answers instantly.
+              Connect 12 data sources. Ask anything. Get answers from the{' '}
+              <span className="text-foreground font-medium">right context</span>—not a confused mix of everything.
             </motion.p>
 
             <motion.div
@@ -47,8 +54,15 @@ export const HeroSection = () => {
                 rel="noopener noreferrer"
                 className="holographic-glow px-8 py-4 rounded-full text-lg font-semibold text-white transition-transform hover:scale-105 active:scale-95 text-center"
               >
-                Join Now
+                Start Free →
               </a>
+              <button
+                onClick={scrollToDemo}
+                className="flex items-center justify-center gap-2 px-8 py-4 rounded-full text-lg font-semibold text-foreground border border-border hover:bg-muted/50 transition-colors"
+              >
+                <Play className="w-5 h-5" />
+                Watch Demo
+              </button>
             </motion.div>
           </motion.div>
 

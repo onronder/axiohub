@@ -3,42 +3,50 @@ import { Link } from 'react-router-dom';
 import { 
   FileX2, 
   KeyRound, 
-  Eraser, 
-  MemoryStick, 
-  ShieldX, 
-  AlertOctagon 
+  Shield,
+  ShieldX,
+  Lock,
+  Building2,
+  ClipboardList,
+  UserCheck
 } from 'lucide-react';
 
-const features = [
+const categories = [
   {
-    icon: FileX2,
-    title: 'Zero-Copy Processing',
-    description: 'Original files are securely wiped after knowledge extraction. Only encrypted vectors remain.',
+    title: 'Zero-Retention Architecture',
+    features: [
+      { icon: FileX2, text: 'We never store your raw documents' },
+      { icon: Lock, text: 'Content is encrypted, chunked, and indexed' },
+      { icon: FileX2, text: 'Original files remain in your storage' },
+      { icon: FileX2, text: 'Delete anytime—truly gone' },
+    ],
   },
   {
-    icon: KeyRound,
-    title: 'AES-256 Encryption',
-    description: 'All data encrypted at rest using bank-grade encryption. You control the keys.',
+    title: 'Encryption Standards',
+    features: [
+      { icon: KeyRound, text: 'AES-256 encryption at rest' },
+      { icon: Lock, text: 'TLS 1.3 in transit' },
+      { icon: KeyRound, text: 'Key rotation support' },
+      { icon: Shield, text: 'SOC 2 compliance ready' },
+    ],
   },
   {
-    icon: Eraser,
-    title: 'Forensic-Grade Wipe',
-    description: 'Files overwritten with cryptographic randomness. Unrecoverable even with forensic tools.',
+    title: 'Enterprise Controls',
+    features: [
+      { icon: Building2, text: 'Row-Level Security (RLS)' },
+      { icon: Building2, text: 'Organization isolation' },
+      { icon: ClipboardList, text: 'Audit logging' },
+      { icon: UserCheck, text: 'SSO integration ready' },
+    ],
   },
   {
-    icon: MemoryStick,
-    title: 'SmartBuffer Protection',
-    description: 'Sensitive data minimized in memory. Large files use encrypted temp storage.',
-  },
-  {
-    icon: ShieldX,
-    title: 'Malware Scanning',
-    description: 'Every upload scanned with ClamAV before processing. Infected files rejected.',
-  },
-  {
-    icon: AlertOctagon,
-    title: 'Dead Man\'s Switch',
-    description: 'Emergency cleanup triggers on any failure. No orphaned files, ever.',
+    title: 'Malware Protection',
+    features: [
+      { icon: ShieldX, text: 'Real-time ClamAV scanning' },
+      { icon: ShieldX, text: 'Infected files quarantined' },
+      { icon: ShieldX, text: 'Admin notifications' },
+      { icon: ShieldX, text: 'Automatic file rejection' },
+    ],
   },
 ];
 
@@ -81,32 +89,38 @@ export const GhostProtocolSection = () => {
         >
           <span className="text-4xl mb-4 block">🔐</span>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="gradient-text">Ghost Protocol:</span>
-            <br />
-            <span className="text-foreground">Your Data Disappears After Processing</span>
+            <span className="gradient-text">Ghost Protocol™</span>
+            <span className="text-foreground"> Security</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Unlike other AI platforms that store copies of your files indefinitely, 
-            Axio Hub uses military-grade security to ensure zero retention.
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Your Data Stays Yours
           </p>
         </motion.div>
 
-        {/* Feature Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mb-12">
-          {features.map((feature, i) => (
+        {/* Category Grid */}
+        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-12">
+          {categories.map((category, i) => (
             <motion.div
-              key={feature.title}
+              key={category.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="glass-card p-6 group hover:border-primary/30 transition-colors"
+              className="glass-card p-6"
             >
-              <div className="w-12 h-12 mb-4 rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-                <feature.icon className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-lg font-bold text-foreground mb-2">{feature.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
+              <h3 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-primary" />
+                {category.title}
+              </h3>
+              
+              <ul className="space-y-3">
+                {category.features.map((feature, j) => (
+                  <li key={j} className="flex items-center gap-3 text-muted-foreground">
+                    <feature.icon className="w-4 h-4 text-primary/70 flex-shrink-0" />
+                    <span className="text-sm">{feature.text}</span>
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           ))}
         </div>

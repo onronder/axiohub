@@ -55,6 +55,10 @@ export default {
           DEFAULT: "hsl(var(--glass))",
           border: "hsl(var(--glass-border))",
         },
+        // Scope state colors
+        "scope-dominant": "hsl(var(--scope-dominant))",
+        "scope-contested": "hsl(var(--scope-contested))",
+        "scope-fragmented": "hsl(var(--scope-fragmented))",
       },
       borderRadius: {
         lg: "var(--radius)",

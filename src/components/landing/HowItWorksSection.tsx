@@ -1,24 +1,30 @@
 import { motion } from 'framer-motion';
-import { Plug, ShieldCheck, MessageSquareText, ArrowRight } from 'lucide-react';
+import { Plug, ShieldCheck, MessageSquareText, FileCheck, ArrowRight } from 'lucide-react';
 
 const steps = [
   {
     icon: Plug,
     step: '01',
     title: 'Connect Your Data',
-    description: 'Link your Google Drive, Notion, GitHub, Dropbox, and 8 more sources in seconds. Or simply upload files directly.',
+    description: 'Link your Google Drive, Notion, GitHub, Dropbox, and 8 more sources in seconds. No complex setup. No data migration.',
   },
   {
     icon: ShieldCheck,
     step: '02',
-    title: 'AI Processes & Secures',
-    description: 'Our Ghost Protocol encrypts your data, extracts knowledge, then securely wipes original files. Only encrypted AI-ready chunks remain.',
+    title: 'AI Processes & Understands',
+    description: 'Ghost Protocol encrypts your data with zero-retention security. Our Scope Analysis maps which documents belong to which projects. Your data stays yours.',
   },
   {
     icon: MessageSquareText,
     step: '03',
     title: 'Ask Anything',
-    description: 'Chat naturally with your knowledge base. Get accurate answers with source citations. Follow up like you\'re talking to a colleague.',
+    description: "Chat naturally. When your question could come from multiple sources, we ask—we don't guess. Context-aware answers, every time.",
+  },
+  {
+    icon: FileCheck,
+    step: '04',
+    title: 'Get Trusted Answers',
+    description: 'Every response cites its source. If one source dominates, we tell you. If sources conflict, we ask you to choose. Full transparency. No hallucinations hiding in plain sight.',
   },
 ];
 
@@ -40,7 +46,7 @@ export const HowItWorksSection = () => {
             <span className="gradient-text">Works</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Three simple steps to unlock your knowledge
+            Four simple steps to unlock your knowledge
           </p>
         </motion.div>
 
@@ -50,7 +56,7 @@ export const HowItWorksSection = () => {
           <div className="relative">
             <div className="absolute top-8 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
             
-            <div className="grid grid-cols-3 gap-12">
+            <div className="grid grid-cols-4 gap-8">
               {steps.map((step, i) => (
                 <motion.div
                   key={step.step}
@@ -83,7 +89,7 @@ export const HowItWorksSection = () => {
                     <div className="w-14 h-14 mx-auto mb-5 rounded-xl bg-muted/50 border border-border/50 flex items-center justify-center">
                       <step.icon className="w-7 h-7 text-primary" />
                     </div>
-                    <h3 className="text-xl font-bold text-foreground mb-3">{step.title}</h3>
+                    <h3 className="text-lg font-bold text-foreground mb-3">{step.title}</h3>
                     <p className="text-muted-foreground text-sm leading-relaxed">{step.description}</p>
                   </div>
                 </motion.div>
