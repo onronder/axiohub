@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Shuffle, ArrowRight } from 'lucide-react';
+import { trackEvent } from '@/lib/analytics';
 
 export const ProblemSectionSimplified = () => {
   return (
@@ -35,6 +36,7 @@ export const ProblemSectionSimplified = () => {
           </p>
           <Link
             to="/features"
+            onClick={() => trackEvent('learn_more_click', { link: 'features' })}
             className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium transition-colors"
           >
             See How <ArrowRight className="w-4 h-4" />
