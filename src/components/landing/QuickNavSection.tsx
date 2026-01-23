@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { User, Users, Building2, ArrowRight, X } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
+import { trackQuickNavClick, type UserType } from '@/lib/analytics';
 
 const STORAGE_KEY = 'axiohub_path_selected';
 
@@ -12,7 +13,7 @@ const navOptions = [
     description: 'Personal knowledge base',
     detailedDescription: 'Build your personal second brain',
     href: '/solutions/individuals',
-    value: 'individuals',
+    userType: 'individuals' as UserType,
   },
   {
     icon: Users,
@@ -20,7 +21,7 @@ const navOptions = [
     description: 'Collaborative workspace',
     detailedDescription: 'Collaborate and share knowledge',
     href: '/solutions/teams',
-    value: 'teams',
+    userType: 'teams' as UserType,
   },
   {
     icon: Building2,
@@ -28,7 +29,7 @@ const navOptions = [
     description: 'Organization-wide AI',
     detailedDescription: 'Enterprise-grade security and scale',
     href: '/solutions/enterprise',
-    value: 'enterprise',
+    userType: 'enterprise' as UserType,
   },
 ];
 
@@ -63,8 +64,9 @@ export const QuickNavSection = () => {
     };
   }, [showModal]);
 
-  const handleSelection = (path: string, value: string) => {
-    localStorage.setItem(STORAGE_KEY, value);
+  const handleSelection = (path: string, userType: UserType) => {
+    localStorage.setItem(STORAGE_KEY, userType);
+    trackQuickNavClick(userType);
     setShowModal(false);
     navigate(path);
   };
@@ -141,11 +143,11 @@ export const QuickNavSection = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                   {navOptions.map((option, i) => (
                     <motion.button
-                      key={option.value}
+                      key={option.userType}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.2 + i * 0.1 }}
-                      onClick={() => handleSelection(option.href, option.value)}
+                      onClick={() => handleSelection(option.href, option.userType)}
                       className="group glass-card p-6 text-center hover:border-primary/50 transition-all duration-300 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
                     >
                       <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4 mx-auto group-hover:bg-primary/20 transition-colors">
@@ -186,9 +188,9 @@ export const QuickNavSection = () => {
       </AnimatePresence>
 
       {/* Original QuickNav Section */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-16 bg-background">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 max-w-4xl mx-auto">
             {navOptions.map((option, i) => (
               <motion.div
                 key={option.title}
@@ -199,18 +201,19 @@ export const QuickNavSection = () => {
               >
                 <Link
                   to={option.href}
-                  className="group glass-card p-6 flex flex-col items-center text-center hover:border-primary/50 transition-all duration-300 hover:scale-[1.02] min-h-[200px] sm:min-h-0"
+                  onClick={() => trackQuickNavClick(option.userType)}
+                  className="group glass-card p-5 md:p-6 flex flex-col items-center text-center hover:border-primary/50 transition-all duration-300 hover:scale-[1.02] min-h-[120px] touch-manipulation"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                    <option.icon className="w-6 h-6 text-primary" />
+                  <div className="w-11 h-11 md:w-12 md:h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-3 md:mb-4 group-hover:bg-primary/20 transition-colors">
+                    <option.icon className="w-5 h-5 md:w-6 md:h-6 text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">
+                  <h3 className="text-base md:text-lg font-semibold text-foreground mb-1 md:mb-2">
                     {option.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground mb-4">
+                  <p className="text-sm text-muted-foreground mb-3 md:mb-4">
                     {option.description}
                   </p>
-                  <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all mt-auto" />
+                  <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
                 </Link>
               </motion.div>
             ))}
