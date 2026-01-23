@@ -205,7 +205,20 @@ export const ParticleCanvas = () => {
       initParticles();
     };
 
+    // Pause animation when tab is hidden to save battery
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        if (animationRef.current) {
+          cancelAnimationFrame(animationRef.current);
+        }
+      } else {
+        startTimeRef.current = Date.now();
+        animate();
+      }
+    };
+
     window.addEventListener('resize', handleResize);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
     if (!isMobile) {
       window.addEventListener('mousemove', handleMouseMove);
     }
@@ -215,6 +228,7 @@ export const ParticleCanvas = () => {
         cancelAnimationFrame(animationRef.current);
       }
       window.removeEventListener('resize', handleResize);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
       window.removeEventListener('mousemove', handleMouseMove);
     };
   }, [isTinyScreen]);
