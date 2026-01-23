@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface Particle {
   x: number;
@@ -21,6 +21,38 @@ export const ParticleCanvas = () => {
   const connectionsRef = useRef<Connection[]>([]);
   const animationRef = useRef<number>();
   const mouseRef = useRef({ x: 0, y: 0 });
+  const [isMobile, setIsMobile] = useState(false);
+  const [isVerySmall, setIsVerySmall] = useState(false);
+  const [isTabVisible, setIsTabVisible] = useState(true);
+
+  // Detect mobile devices and screen size
+  useEffect(() => {
+    const checkDevice = () => {
+      const width = window.innerWidth;
+      setIsMobile(width < 768);
+      setIsVerySmall(width < 400);
+    };
+
+    checkDevice();
+    window.addEventListener('resize', checkDevice);
+
+    return () => {
+      window.removeEventListener('resize', checkDevice);
+    };
+  }, []);
+
+  // Pause animation when tab is not visible (performance optimization)
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      setIsTabVisible(!document.hidden);
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -29,13 +61,30 @@ export const ParticleCanvas = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    // Don't animate if tab is not visible
+    if (!isTabVisible) {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+      return;
+    }
+
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
 
     const initParticles = () => {
-      const particleCount = Math.min(40, Math.floor(window.innerWidth / 30));
+      // Reduce particle count on mobile
+      let particleCount;
+      if (isVerySmall) {
+        particleCount = 0; // No particles on very small screens
+      } else if (isMobile) {
+        particleCount = 15; // Fewer particles on mobile
+      } else {
+        particleCount = Math.min(40, Math.floor(window.innerWidth / 30));
+      }
+
       particlesRef.current = [];
 
       for (let i = 0; i < particleCount; i++) {
@@ -72,21 +121,26 @@ export const ParticleCanvas = () => {
     };
 
     const animate = () => {
+      // Speed multiplier for mobile (slower = better battery life)
+      const speedMultiplier = isMobile ? 0.5 : 1;
+
       ctx.fillStyle = 'rgba(5, 5, 5, 0.1)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Update particles
       particlesRef.current.forEach((particle) => {
-        particle.x += particle.vx;
-        particle.y += particle.vy;
+        particle.x += particle.vx * speedMultiplier;
+        particle.y += particle.vy * speedMultiplier;
 
-        // Mouse attraction (subtle)
-        const dx = mouseRef.current.x - particle.x;
-        const dy = mouseRef.current.y - particle.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        if (distance < 200 && distance > 0) {
-          particle.vx += dx / distance * 0.01;
-          particle.vy += dy / distance * 0.01;
+        // Mouse attraction (subtle) - disabled on mobile for performance
+        if (!isMobile) {
+          const dx = mouseRef.current.x - particle.x;
+          const dy = mouseRef.current.y - particle.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < 200 && distance > 0) {
+            particle.vx += (dx / distance) * 0.01 * speedMultiplier;
+            particle.vy += (dy / distance) * 0.01 * speedMultiplier;
+          }
         }
 
         // Boundary wrap
@@ -125,8 +179,12 @@ export const ParticleCanvas = () => {
       // Draw particles
       particlesRef.current.forEach((particle) => {
         const gradient = ctx.createRadialGradient(
-          particle.x, particle.y, 0,
-          particle.x, particle.y, particle.radius * 2
+          particle.x,
+          particle.y,
+          0,
+          particle.x,
+          particle.y,
+          particle.radius * 2
         );
         gradient.addColorStop(0, `rgba(139, 92, 246, ${particle.opacity})`);
         gradient.addColorStop(0.5, `rgba(6, 182, 212, ${particle.opacity * 0.5})`);
@@ -138,12 +196,22 @@ export const ParticleCanvas = () => {
         ctx.fill();
       });
 
-      // Aurora effect overlay
+      // Aurora effect overlay (lighter on mobile)
       const time = Date.now() * 0.0005;
+      const auroraOpacity = isMobile ? 0.01 : 0.02;
       const auroraGradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-      auroraGradient.addColorStop(0, `rgba(139, 92, 246, ${0.02 + Math.sin(time) * 0.01})`);
-      auroraGradient.addColorStop(0.5, `rgba(6, 182, 212, ${0.02 + Math.cos(time) * 0.01})`);
-      auroraGradient.addColorStop(1, `rgba(139, 92, 246, ${0.02 + Math.sin(time + 1) * 0.01})`);
+      auroraGradient.addColorStop(
+        0,
+        `rgba(139, 92, 246, ${auroraOpacity + Math.sin(time) * 0.01})`
+      );
+      auroraGradient.addColorStop(
+        0.5,
+        `rgba(6, 182, 212, ${auroraOpacity + Math.cos(time) * 0.01})`
+      );
+      auroraGradient.addColorStop(
+        1,
+        `rgba(139, 92, 246, ${auroraOpacity + Math.sin(time + 1) * 0.01})`
+      );
       ctx.fillStyle = auroraGradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -151,7 +219,10 @@ export const ParticleCanvas = () => {
     };
 
     const handleMouseMove = (e: MouseEvent) => {
-      mouseRef.current = { x: e.clientX, y: e.clientY };
+      // Only track mouse on desktop
+      if (!isMobile) {
+        mouseRef.current = { x: e.clientX, y: e.clientY };
+      }
     };
 
     resizeCanvas();
@@ -162,7 +233,11 @@ export const ParticleCanvas = () => {
       resizeCanvas();
       initParticles();
     });
-    window.addEventListener('mousemove', handleMouseMove);
+
+    // Only add mouse listener on desktop
+    if (!isMobile) {
+      window.addEventListener('mousemove', handleMouseMove);
+    }
 
     return () => {
       if (animationRef.current) {
@@ -171,13 +246,24 @@ export const ParticleCanvas = () => {
       window.removeEventListener('resize', resizeCanvas);
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, []);
+  }, [isMobile, isVerySmall, isTabVisible]);
+
+  // Render gradient fallback for very small screens
+  if (isVerySmall) {
+    return (
+      <div
+        className="absolute inset-0 z-0 bg-gradient-to-b from-primary/10 via-background to-background"
+        aria-hidden="true"
+      />
+    );
+  }
 
   return (
     <canvas
       ref={canvasRef}
       className="absolute inset-0 z-0"
       style={{ background: 'hsl(0 0% 2%)' }}
+      aria-hidden="true"
     />
   );
 };

@@ -1,10 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* Axio Hub Design System - Cinematic Glassmorphism with Cyberpunk accents */
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 @layer base {
   :root {
@@ -133,4 +133,137 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+}
+
+/* ========================================
+   Mobile Optimizations
+   ======================================== */
+
+/* Prevent horizontal scroll on all devices */
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Improve tap responsiveness on mobile */
+a, button, [role="button"] {
+  -webkit-tap-highlight-color: rgba(139, 92, 246, 0.2);
+  -webkit-touch-callout: none;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  /* Prevent zoom on input focus (iOS) */
+  input, textarea, select, button {
+    font-size: 16px !important;
+  }
+
+  /* Ensure touch-friendly buttons (44px minimum) */
+  button,
+  a.holographic-glow,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Better text readability on mobile */
+  body {
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Optimize glass-card for mobile */
+  .glass-card {
+    backdrop-filter: blur(12px); /* Reduce blur for performance */
+  }
+
+  /* Reduce motion for better performance */
+  .holographic-glow::before {
+    filter: blur(6px); /* Reduce blur for mobile performance */
+  }
+
+  /* Optimize section spacing for mobile */
+  section {
+    scroll-margin-top: 80px; /* Better scroll-to-section behavior */
+  }
+}
+
+/* Very small screens (<400px) */
+@media (max-width: 400px) {
+  /* Further reduce glass effects */
+  .glass-card {
+    backdrop-filter: blur(8px);
+  }
+
+  /* Reduce spacing on very small screens */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Respect user's reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Disable particle canvas animations */
+  canvas {
+    display: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .glass-card {
+    border-width: 2px;
+    border-color: hsl(var(--primary));
+  }
+
+  .gradient-text {
+    background-image: none;
+    color: hsl(var(--primary));
+  }
+}
+
+/* Dark mode adjustments (if implementing light mode later) */
+@media (prefers-color-scheme: light) {
+  /* Placeholder for future light mode support */
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  /* Reduce vertical padding in landscape */
+  section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+/* Safe area support for iOS notch */
+@supports (padding: max(0px)) {
+  body {
+    padding-left: max(0px, env(safe-area-inset-left));
+    padding-right: max(0px, env(safe-area-inset-right));
+  }
+}
+
+/* Focus visible improvements for keyboard navigation */
+:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Remove focus outline for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
 }
