@@ -22,9 +22,21 @@ export const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -103,44 +115,56 @@ export const Header = () => {
       {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 top-16 z-40 md:hidden"
-            id="mobile-menu"
-          >
-            <nav className="bg-background/95 backdrop-blur-xl border-b border-border/50 p-4" aria-label="Mobile navigation">
-              <div className="flex flex-col gap-2">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.label}
-                    to={item.href}
-                    className={`w-full text-left px-4 py-3 text-sm transition-colors rounded-lg hover:bg-muted/50 ${
-                      location.pathname === item.href 
-                        ? 'text-foreground font-medium bg-muted/30' 
-                        : 'text-muted-foreground hover:text-foreground'
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-                <div className="border-t border-border/50 pt-4 mt-2 flex flex-col gap-2">
-                  <a href="https://app.axiohub.io/login" target="_blank" rel="noopener noreferrer" className="w-full">
-                    <Button variant="ghost" className="w-full justify-center text-muted-foreground">
-                      Sign In
-                    </Button>
-                  </a>
-                  <a href="https://app.axiohub.io/register" target="_blank" rel="noopener noreferrer" className="w-full">
-                    <Button className="w-full justify-center bg-gradient-to-r from-violet-500 to-cyan-500 hover:from-violet-600 hover:to-cyan-600 text-white border-0 rounded-full">
-                      Sign Up
-                    </Button>
-                  </a>
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 bg-background/80 backdrop-blur-sm z-30 md:hidden"
+              onClick={() => setIsMobileMenuOpen(false)}
+              aria-hidden="true"
+            />
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-x-0 top-16 z-40 md:hidden max-h-[calc(100vh-4rem)] overflow-y-auto"
+              id="mobile-menu"
+            >
+              <nav className="bg-background/95 backdrop-blur-xl border-b border-border/50 p-4" aria-label="Mobile navigation">
+                <div className="flex flex-col gap-1">
+                  {navItems.map((item) => (
+                    <Link
+                      key={item.label}
+                      to={item.href}
+                      className={`w-full text-left px-4 py-4 text-base transition-colors rounded-lg hover:bg-muted/50 touch-manipulation ${
+                        location.pathname === item.href 
+                          ? 'text-foreground font-medium bg-muted/30' 
+                          : 'text-muted-foreground hover:text-foreground'
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                  <div className="border-t border-border/50 pt-4 mt-3 flex flex-col gap-3">
+                    <a href="https://app.axiohub.io/login" target="_blank" rel="noopener noreferrer" className="w-full">
+                      <Button variant="ghost" className="w-full justify-center text-muted-foreground min-h-[48px] text-base">
+                        Sign In
+                      </Button>
+                    </a>
+                    <a href="https://app.axiohub.io/register" target="_blank" rel="noopener noreferrer" className="w-full">
+                      <Button className="w-full justify-center bg-gradient-to-r from-violet-500 to-cyan-500 hover:from-violet-600 hover:to-cyan-600 text-white border-0 rounded-full min-h-[48px] text-base">
+                        Sign Up
+                      </Button>
+                    </a>
+                  </div>
                 </div>
-              </div>
-            </nav>
-          </motion.div>
+              </nav>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>

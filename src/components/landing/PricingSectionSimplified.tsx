@@ -107,27 +107,27 @@ export const PricingSectionSimplified = () => {
   };
 
   return (
-    <section className="py-32 bg-background relative overflow-hidden">
-      {/* Background grid effect */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.1)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+    <section className="py-20 md:py-32 bg-background relative overflow-hidden">
+      {/* Background grid effect - hidden on mobile for performance */}
+      <div className="absolute inset-0 hidden md:block bg-[linear-gradient(to_right,hsl(var(--border)/0.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.1)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
       
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 md:mb-4">
             <span className="text-foreground">Simple, </span>
             <span className="gradient-text">Transparent Pricing</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-xl mx-auto">
+          <p className="text-muted-foreground text-base md:text-lg max-w-xl mx-auto px-2">
             Start free. Scale when you're ready.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
           {plans.map((plan, i) => (
             <motion.div
               key={plan.name}
@@ -135,7 +135,7 @@ export const PricingSectionSimplified = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className={`glass-card p-6 relative flex flex-col ${
+              className={`glass-card p-5 md:p-6 relative flex flex-col ${
                 plan.popular ? 'border-primary ring-1 ring-primary/20' : ''
               }`}
             >
@@ -147,17 +147,17 @@ export const PricingSectionSimplified = () => {
                 </div>
               )}
               
-              <div className="mb-6">
-                <h3 className="text-xl font-bold text-foreground mb-1">{plan.name}</h3>
+              <div className="mb-4 md:mb-6">
+                <h3 className="text-lg md:text-xl font-bold text-foreground mb-1">{plan.name}</h3>
                 <p className="text-sm text-muted-foreground">{plan.description}</p>
               </div>
               
-              <div className="mb-6">
-                <span className="text-4xl font-bold text-foreground">{plan.price}</span>
+              <div className="mb-4 md:mb-6">
+                <span className="text-3xl md:text-4xl font-bold text-foreground">{plan.price}</span>
                 <span className="text-muted-foreground">{plan.period}</span>
               </div>
               
-              <ul className="space-y-3 mb-6 flex-1">
+              <ul className="space-y-2.5 md:space-y-3 mb-4 md:mb-6 flex-1">
                 {(expandedPlan === plan.name ? plan.allFeatures : plan.features).map((feature) => (
                   <li key={feature} className="flex items-start gap-2">
                     <Check className="w-4 h-4 text-primary mt-0.5 shrink-0" />
@@ -169,7 +169,7 @@ export const PricingSectionSimplified = () => {
               {plan.allFeatures.length > plan.features.length && (
                 <button
                   onClick={() => toggleExpand(plan.name)}
-                  className="text-sm text-primary hover:text-primary/80 mb-4 flex items-center gap-1 transition-colors"
+                  className="text-sm text-primary hover:text-primary/80 mb-3 md:mb-4 flex items-center gap-1 transition-colors touch-manipulation min-h-[44px]"
                 >
                   {expandedPlan === plan.name ? 'Show less' : `+${plan.allFeatures.length - plan.features.length} more features`}
                 </button>
@@ -177,7 +177,7 @@ export const PricingSectionSimplified = () => {
               
               <button
                 onClick={() => handleCtaClick(plan)}
-                className={`w-full py-3 rounded-lg font-semibold transition-all ${
+                className={`w-full py-3 rounded-lg font-semibold transition-all touch-manipulation min-h-[48px] ${
                   plan.popular
                     ? 'holographic-glow'
                     : 'bg-muted hover:bg-muted/80 text-foreground'
@@ -193,12 +193,12 @@ export const PricingSectionSimplified = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-center mt-12"
+          className="text-center mt-8 md:mt-12"
         >
           <Link
             to="/pricing"
             onClick={() => trackEvent('learn_more_click', { link: 'pricing_details' })}
-            className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium transition-colors"
+            className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium transition-colors touch-manipulation min-h-[44px]"
           >
             View full pricing details <ArrowRight className="w-4 h-4" />
           </Link>

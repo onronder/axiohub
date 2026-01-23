@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface Particle {
   x: number;
@@ -21,13 +21,31 @@ export const ParticleCanvas = () => {
   const connectionsRef = useRef<Connection[]>([]);
   const animationRef = useRef<number>();
   const mouseRef = useRef({ x: 0, y: 0 });
+  const startTimeRef = useRef<number>(Date.now());
+  const [isTinyScreen, setIsTinyScreen] = useState(false);
 
   useEffect(() => {
+    // Check for very small screens where we should disable animation
+    const checkScreenSize = () => {
+      setIsTinyScreen(window.innerWidth < 400);
+    };
+    
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+
+  useEffect(() => {
+    if (isTinyScreen) return;
+    
     const canvas = canvasRef.current;
     if (!canvas) return;
 
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+
+    const isMobile = window.innerWidth < 768;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
@@ -35,15 +53,18 @@ export const ParticleCanvas = () => {
     };
 
     const initParticles = () => {
-      const particleCount = Math.min(40, Math.floor(window.innerWidth / 30));
+      // Reduce particles on mobile for performance
+      const baseCount = isMobile ? 15 : 40;
+      const particleCount = Math.min(baseCount, Math.floor(window.innerWidth / (isMobile ? 40 : 30)));
       particlesRef.current = [];
 
       for (let i = 0; i < particleCount; i++) {
         particlesRef.current.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.3,
-          vy: (Math.random() - 0.5) * 0.3,
+          // Slower movement on mobile to reduce CPU usage
+          vx: (Math.random() - 0.5) * (isMobile ? 0.15 : 0.3),
+          vy: (Math.random() - 0.5) * (isMobile ? 0.15 : 0.3),
           radius: Math.random() * 2 + 1,
           opacity: Math.random() * 0.5 + 0.2,
         });
@@ -52,7 +73,8 @@ export const ParticleCanvas = () => {
 
     const updateConnections = () => {
       connectionsRef.current = [];
-      const maxDistance = 150;
+      // Reduce connection distance on mobile
+      const maxDistance = isMobile ? 100 : 150;
 
       for (let i = 0; i < particlesRef.current.length; i++) {
         for (let j = i + 1; j < particlesRef.current.length; j++) {
@@ -72,6 +94,20 @@ export const ParticleCanvas = () => {
     };
 
     const animate = () => {
+      // Pause animation after 15 seconds on mobile to save battery
+      const elapsed = Date.now() - startTimeRef.current;
+      if (isMobile && elapsed > 15000) {
+        // Draw one final frame and stop
+        return;
+      }
+
+      // Skip animation if user prefers reduced motion
+      if (prefersReducedMotion) {
+        ctx.fillStyle = 'hsl(0 0% 2%)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        return;
+      }
+
       ctx.fillStyle = 'rgba(5, 5, 5, 0.1)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -80,13 +116,15 @@ export const ParticleCanvas = () => {
         particle.x += particle.vx;
         particle.y += particle.vy;
 
-        // Mouse attraction (subtle)
-        const dx = mouseRef.current.x - particle.x;
-        const dy = mouseRef.current.y - particle.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        if (distance < 200 && distance > 0) {
-          particle.vx += dx / distance * 0.01;
-          particle.vy += dy / distance * 0.01;
+        // Skip mouse attraction on mobile (no hover anyway)
+        if (!isMobile) {
+          const dx = mouseRef.current.x - particle.x;
+          const dy = mouseRef.current.y - particle.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < 200 && distance > 0) {
+            particle.vx += dx / distance * 0.01;
+            particle.vy += dy / distance * 0.01;
+          }
         }
 
         // Boundary wrap
@@ -97,9 +135,10 @@ export const ParticleCanvas = () => {
 
         // Speed limit
         const speed = Math.sqrt(particle.vx * particle.vx + particle.vy * particle.vy);
-        if (speed > 1) {
-          particle.vx = (particle.vx / speed) * 1;
-          particle.vy = (particle.vy / speed) * 1;
+        const maxSpeed = isMobile ? 0.5 : 1;
+        if (speed > maxSpeed) {
+          particle.vx = (particle.vx / speed) * maxSpeed;
+          particle.vy = (particle.vy / speed) * maxSpeed;
         }
       });
 
@@ -138,14 +177,16 @@ export const ParticleCanvas = () => {
         ctx.fill();
       });
 
-      // Aurora effect overlay
-      const time = Date.now() * 0.0005;
-      const auroraGradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-      auroraGradient.addColorStop(0, `rgba(139, 92, 246, ${0.02 + Math.sin(time) * 0.01})`);
-      auroraGradient.addColorStop(0.5, `rgba(6, 182, 212, ${0.02 + Math.cos(time) * 0.01})`);
-      auroraGradient.addColorStop(1, `rgba(139, 92, 246, ${0.02 + Math.sin(time + 1) * 0.01})`);
-      ctx.fillStyle = auroraGradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      // Aurora effect overlay (simplified on mobile)
+      if (!isMobile) {
+        const time = Date.now() * 0.0005;
+        const auroraGradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        auroraGradient.addColorStop(0, `rgba(139, 92, 246, ${0.02 + Math.sin(time) * 0.01})`);
+        auroraGradient.addColorStop(0.5, `rgba(6, 182, 212, ${0.02 + Math.cos(time) * 0.01})`);
+        auroraGradient.addColorStop(1, `rgba(139, 92, 246, ${0.02 + Math.sin(time + 1) * 0.01})`);
+        ctx.fillStyle = auroraGradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
 
       animationRef.current = requestAnimationFrame(animate);
     };
@@ -156,22 +197,39 @@ export const ParticleCanvas = () => {
 
     resizeCanvas();
     initParticles();
+    startTimeRef.current = Date.now();
     animate();
 
-    window.addEventListener('resize', () => {
+    const handleResize = () => {
       resizeCanvas();
       initParticles();
-    });
-    window.addEventListener('mousemove', handleMouseMove);
+    };
+
+    window.addEventListener('resize', handleResize);
+    if (!isMobile) {
+      window.addEventListener('mousemove', handleMouseMove);
+    }
 
     return () => {
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }
-      window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener('resize', handleResize);
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, []);
+  }, [isTinyScreen]);
+
+  // Return simple gradient background for tiny screens
+  if (isTinyScreen) {
+    return (
+      <div 
+        className="absolute inset-0 z-0" 
+        style={{ 
+          background: 'linear-gradient(135deg, hsl(0 0% 2%) 0%, hsl(262 20% 8%) 100%)' 
+        }} 
+      />
+    );
+  }
 
   return (
     <canvas

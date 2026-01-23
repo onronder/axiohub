@@ -133,4 +133,37 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
+  /* Touch-friendly elements */
+  .touch-manipulation {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  /* Ensure readable font sizes - prevents iOS zoom on input focus */
+  body {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Touch-friendly buttons */
+  button,
+  a.holographic-glow,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Improve readability on mobile */
+  p {
+    line-height: 1.6;
+  }
+
+  /* Reduce motion on mobile for performance */
+  .glass-card {
+    backdrop-filter: blur(10px);
+  }
 }
