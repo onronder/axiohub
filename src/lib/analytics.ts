@@ -8,7 +8,7 @@ export const trackEvent = (eventName: string, properties?: Record<string, unknow
     const va = window.va as (event: string, properties?: Record<string, unknown>) => void;
     va('event', { name: eventName, ...properties });
   }
-  
+
   if (import.meta.env.DEV) {
     console.log('[Analytics]', eventName, properties);
   }
