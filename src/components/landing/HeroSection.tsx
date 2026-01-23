@@ -11,7 +11,7 @@ const scrollToDemo = () => {
 
 export const HeroSection = () => {
   return (
-    <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[80vh] md:min-h-[85vh] flex items-center justify-center overflow-hidden">
       <ParticleCanvas />
       
       {/* Content */}
@@ -21,7 +21,7 @@ export const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 leading-tight"
           >
             <span className="text-foreground">Your Knowledge, </span>
             <span className="gradient-text">Unified</span>
@@ -31,7 +31,7 @@ export const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-xl mx-auto"
+            className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-8 md:mb-10 max-w-xl mx-auto px-2"
           >
             The AI that knows which source to trust.
           </motion.p>
@@ -43,7 +43,7 @@ export const HeroSection = () => {
           >
             <button
               onClick={scrollToDemo}
-              className="holographic-glow text-lg px-8 py-4 rounded-xl font-semibold"
+              className="holographic-glow text-base md:text-lg px-6 md:px-8 py-3 md:py-4 rounded-xl font-semibold touch-manipulation min-h-[48px]"
             >
               See How It Works
             </button>
@@ -51,12 +51,12 @@ export const HeroSection = () => {
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator - hidden on small mobile */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 hidden sm:block"
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}

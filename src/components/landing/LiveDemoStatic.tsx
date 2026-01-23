@@ -24,32 +24,32 @@ export const LiveDemoStatic = () => {
   const [showDemo, setShowDemo] = useState(false);
 
   return (
-    <section id="demo" className="py-20 px-4 relative">
+    <section id="demo" className="py-16 md:py-20 px-4 relative">
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12">
           <span className="gradient-text">See the Difference</span>
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-6 md:gap-0 relative">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-0 relative">
           {/* Left: Old Way */}
-          <div className="glass-card p-6 md:rounded-r-none border-r-0 md:border-r">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-full bg-destructive/20 flex items-center justify-center">
-                <X className="w-5 h-5 text-destructive" />
+          <div className="glass-card p-5 md:p-6 md:rounded-r-none md:border-r-0">
+            <div className="flex items-center gap-3 mb-4 md:mb-6">
+              <div className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-destructive/20 flex items-center justify-center">
+                <X className="w-4 h-4 md:w-5 md:h-5 text-destructive" />
               </div>
-              <h3 className="text-xl font-semibold text-muted-foreground">The Old Way</h3>
+              <h3 className="text-lg md:text-xl font-semibold text-muted-foreground">The Old Way</h3>
             </div>
-            <ul className="space-y-4">
+            <ul className="space-y-3 md:space-y-4">
               {oldWayItems.map((item, i) => (
                 <li key={i} className="flex items-center gap-3 text-muted-foreground">
                   <item.icon className="w-4 h-4 text-destructive/70 shrink-0" />
-                  <span className="text-sm">{item.text}</span>
+                  <span className="text-sm md:text-base">{item.text}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* VS Badge */}
+          {/* VS Badge - Hidden on mobile */}
           <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
             <motion.div
               animate={{ boxShadow: ['0 0 20px hsl(var(--primary)/0.3)', '0 0 40px hsl(var(--primary)/0.5)', '0 0 20px hsl(var(--primary)/0.3)'] }}
@@ -61,18 +61,18 @@ export const LiveDemoStatic = () => {
           </div>
 
           {/* Right: Axio Way */}
-          <div className="glass-card p-6 md:rounded-l-none border-primary/30">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-full bg-scope-dominant/20 flex items-center justify-center">
-                <Check className="w-5 h-5 text-scope-dominant" />
+          <div className="glass-card p-5 md:p-6 md:rounded-l-none border-primary/30">
+            <div className="flex items-center gap-3 mb-4 md:mb-6">
+              <div className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-scope-dominant/20 flex items-center justify-center">
+                <Check className="w-4 h-4 md:w-5 md:h-5 text-scope-dominant" />
               </div>
-              <h3 className="text-xl font-semibold gradient-text">The Axio Way</h3>
+              <h3 className="text-lg md:text-xl font-semibold gradient-text">The Axio Way</h3>
             </div>
-            <ul className="space-y-4">
+            <ul className="space-y-3 md:space-y-4">
               {axioWayItems.map((item, i) => (
                 <li key={i} className="flex items-center gap-3 text-foreground">
                   <item.icon className="w-4 h-4 text-scope-dominant shrink-0" />
-                  <span className="text-sm">{item.text}</span>
+                  <span className="text-sm md:text-base">{item.text}</span>
                 </li>
               ))}
             </ul>
@@ -80,7 +80,7 @@ export const LiveDemoStatic = () => {
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-10">
+        <div className="text-center mt-8 md:mt-10">
           <Button 
             size="lg" 
             onClick={() => {
@@ -88,7 +88,7 @@ export const LiveDemoStatic = () => {
               trackCTA('try_interactive_demo', 'demo_section');
               setShowDemo(true);
             }} 
-            className="holographic-glow"
+            className="holographic-glow min-h-[48px] px-6 md:px-8 touch-manipulation"
           >
             Try Interactive Demo <Sparkles className="ml-2 w-4 h-4" />
           </Button>
@@ -98,9 +98,9 @@ export const LiveDemoStatic = () => {
 
       {/* Interactive Demo Modal */}
       <Dialog open={showDemo} onOpenChange={setShowDemo}>
-        <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto bg-background/95 backdrop-blur-xl">
+        <DialogContent className="max-w-[95vw] md:max-w-6xl max-h-[90vh] overflow-y-auto bg-background/95 backdrop-blur-xl">
           <DialogHeader>
-            <DialogTitle className="gradient-text text-2xl">Interactive Demo</DialogTitle>
+            <DialogTitle className="gradient-text text-xl md:text-2xl">Interactive Demo</DialogTitle>
           </DialogHeader>
           <LiveDemoSectionSimplified />
         </DialogContent>
