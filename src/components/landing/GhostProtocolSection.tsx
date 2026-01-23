@@ -7,6 +7,7 @@ import {
   ShieldX,
   ArrowRight
 } from 'lucide-react';
+import { trackEvent } from '@/lib/analytics';
 
 const highlights = [
   { icon: FileX2, text: 'Zero-retention architecture' },
@@ -86,6 +87,7 @@ export const GhostProtocolSection = () => {
         >
           <Link
             to="/security"
+            onClick={() => trackEvent('learn_more_click', { link: 'security' })}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-primary/50 text-primary hover:bg-primary/10 transition-colors font-medium"
           >
             Learn About Our Security <ArrowRight className="w-4 h-4" />

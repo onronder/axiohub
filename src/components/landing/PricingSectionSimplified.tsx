@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Check, ArrowRight } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { trackPricingAction, trackExternalLink } from '@/lib/analytics';
+import { trackPricingAction, trackExternalLink, trackEvent } from '@/lib/analytics';
 
 const plans = [
   {
@@ -197,6 +197,7 @@ export const PricingSectionSimplified = () => {
         >
           <Link
             to="/pricing"
+            onClick={() => trackEvent('learn_more_click', { link: 'pricing_details' })}
             className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium transition-colors"
           >
             View full pricing details <ArrowRight className="w-4 h-4" />
