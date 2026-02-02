@@ -91,7 +91,7 @@ const plans = [
 
 export const PricingSectionSimplified = () => {
   const navigate = useNavigate();
-  const [expandedPlan, setExpandedPlan] = useState<string | null>(null);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const handleCtaClick = (plan: typeof plans[0]) => {
     trackPricingAction(plan.name, 'click_cta');
@@ -103,15 +103,13 @@ export const PricingSectionSimplified = () => {
     }
   };
 
-  const toggleExpand = (planName: string) => {
-    if (expandedPlan !== planName) {
-      trackPricingAction(planName, 'expand');
-    }
-    setExpandedPlan(expandedPlan === planName ? null : planName);
+  const toggleExpand = () => {
+    trackEvent('pricing_expand', { expanded: !isExpanded });
+    setIsExpanded(!isExpanded);
   };
 
   return (
-    <section className="py-20 md:py-32 bg-background relative overflow-hidden">
+    <section className="py-20 md:py-32 bg-background relative">
       {/* Background grid effect - hidden on mobile for performance */}
       <div className="absolute inset-0 hidden md:block bg-[linear-gradient(to_right,hsl(var(--border)/0.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.1)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
       
@@ -162,7 +160,7 @@ export const PricingSectionSimplified = () => {
               </div>
               
               <ul className="space-y-2.5 md:space-y-3 mb-4 md:mb-6 flex-1">
-                {(expandedPlan === plan.name ? plan.allFeatures : plan.features).map((feature) => (
+                {(isExpanded ? plan.allFeatures : plan.features).map((feature) => (
                   <li key={feature} className="flex items-start gap-2">
                     <Check className="w-4 h-4 text-primary mt-0.5 shrink-0" />
                     <span className="text-sm text-muted-foreground">{feature}</span>
@@ -172,10 +170,13 @@ export const PricingSectionSimplified = () => {
 
               {plan.allFeatures.length > plan.features.length && (
                 <button
-                  onClick={() => toggleExpand(plan.name)}
+                  onClick={toggleExpand}
                   className="text-sm text-primary hover:text-primary/80 mb-3 md:mb-4 flex items-center gap-1 transition-colors touch-manipulation min-h-[44px]"
                 >
-                  {expandedPlan === plan.name ? 'Show less' : `+${plan.allFeatures.length - plan.features.length} more features`}
+                  {isExpanded 
+                    ? 'Show less' 
+                    : `+ ${plan.allFeatures.slice(plan.features.length).slice(0, 2).join(', ')}${plan.allFeatures.length - plan.features.length > 2 ? '...' : ''}`
+                  }
                 </button>
               )}
               
