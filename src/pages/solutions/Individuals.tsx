@@ -40,10 +40,10 @@ const SolutionsIndividuals = () => {
   return (
     <>
       <SEO 
-        title="Solo Analysts"
-        description="Your second brain, off the record. Digital burner mode for sensitive analysis. Zero-retention AI for whistleblowers, journalists, and traders."
+        title="For Individuals"
+        description="Your personal safe. Analyze sensitive files in a private, encrypted session. When you leave, the data vanishes. Zero-retention AI."
         canonical="/solutions/individuals"
-        keywords={['zero-retention AI', 'ephemeral document analysis', 'secure AI assistant', 'digital burner mode']}
+        keywords={['zero-retention AI', 'personal secure AI', 'private document analysis', 'ephemeral AI assistant']}
       />
       <main id="main-content" className="bg-background">
         <Header />

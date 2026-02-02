@@ -42,10 +42,10 @@ const SolutionsEnterprise = () => {
   return (
     <>
       <SEO 
-        title="Sovereign Infrastructure"
-        description="Intelligence without liability. BYOK and zero-retention cloud for banks, defense, and healthcare. Eliminate the data-at-rest attack vector."
+        title="For Enterprise"
+        description="Zero liability. We process your data but never store it. Eliminate data breach risks mathematically. Enterprise-grade zero-retention AI."
         canonical="/solutions/enterprise"
-        keywords={['enterprise zero-retention AI', 'BYOK AI platform', 'VPC deployment AI', 'sovereign infrastructure']}
+        keywords={['enterprise zero-retention AI', 'zero liability AI', 'enterprise secure AI', 'data breach prevention']}
       />
       <main id="main-content" className="bg-background">
         <Header />
