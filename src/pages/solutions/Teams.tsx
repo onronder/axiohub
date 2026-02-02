@@ -60,7 +60,7 @@ const SolutionsTeams = () => {
             >
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
                 <Users className="w-4 h-4 text-primary" />
-                <span className="text-sm font-medium text-primary">Secure War Rooms</span>
+                <span className="text-sm font-medium text-primary">For Teams</span>
               </div>
               
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
