@@ -16,12 +16,12 @@ const faqData: FAQItem[] = [
   {
     category: "Getting Started",
     question: "What is Axio Hub?",
-    answer: "Axio Hub is an AI-powered knowledge management platform that connects to your existing tools like Notion, Google Drive, and more. It creates a unified search and chat experience across all your documents without moving or copying your files."
+    answer: "Axio Hub is a Zero-Retention Enterprise AI Agent that connects to your existing tools like Notion, Google Drive, and more. It ingests your data into ephemeral memory, extracts intelligence, and cryptographically destroys the source. Pure intelligence, zero liability."
   },
   {
     category: "Getting Started",
     question: "How do I get started with Axio Hub?",
-    answer: "Simply sign up for an account, connect your data sources (Notion, Google Drive, etc.), and Axio Hub will automatically index your content. You can then search or chat with your knowledge base immediately."
+    answer: "Simply sign up for an account, connect your data sources (Notion, Google Drive, etc.), and Axio Hub will ingest and process your content in ephemeral memory. You can then query your intelligence engine immediately—the source data is wiped after processing."
   },
   {
     category: "Getting Started",

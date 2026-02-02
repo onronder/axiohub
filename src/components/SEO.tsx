@@ -12,8 +12,8 @@ interface SEOProps {
 }
 
 const SITE_NAME = 'Axio Hub';
-const DEFAULT_DESCRIPTION = 'Connect all your data sources to one AI knowledge base. Chat with documents securely. Enterprise RAG platform with zero-retention security.';
-const DEFAULT_KEYWORDS = ['AI knowledge base', 'chat with documents', 'enterprise RAG platform', 'multi-source document AI', 'ChatGPT for company documents'];
+const DEFAULT_DESCRIPTION = 'Zero-Retention Enterprise AI Agent. Analyze sensitive documents in ephemeral memory and destroy the source. Eliminate data liability.';
+const DEFAULT_KEYWORDS = ['Enterprise RAG', 'Zero-Retention AI', 'Secure AI', 'Privacy-Preserving LLM', 'Ghost Protocol', 'Ephemeral AI', 'HIPAA AI', 'SOC2 AI Agent'];
 const DEFAULT_OG_IMAGE = '/og-image.png';
 const BASE_URL = 'https://axiohub.io';
 

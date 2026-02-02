@@ -2,39 +2,39 @@ import { SEO } from '@/components/SEO';
 import { Header } from '@/components/landing/Header';
 import { Footer } from '@/components/landing/Footer';
 import { motion } from 'framer-motion';
-import { Building2, ArrowRight, Check, Shield, Lock, Server, Users } from 'lucide-react';
+import { Building2, ArrowRight, Check, Key, Power, Server, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { DataConnectorsSection } from '@/components/landing/DataConnectorsSection';
 
 const enterpriseFeatures = [
   {
-    icon: Shield,
-    title: 'Ghost Protocol Security',
-    description: 'Zero-retention architecture with AES-256 encryption. Your data never persists.',
+    icon: Key,
+    title: 'BYOK (Bring Your Own Key)',
+    description: 'Your encryption keys never leave your control.',
   },
   {
-    icon: Lock,
-    title: 'SSO & SAML',
-    description: 'Enterprise-grade authentication with single sign-on integration.',
+    icon: Power,
+    title: '24/7 Kill Switch',
+    description: 'Instant data destruction on demand.',
   },
   {
     icon: Server,
-    title: 'On-Premise Option',
-    description: 'Deploy Axio within your own infrastructure for maximum control.',
+    title: 'VPC Deployment',
+    description: 'Run Axio Hub inside your own infrastructure.',
   },
   {
-    icon: Users,
-    title: 'Unlimited Users',
-    description: 'Scale across your entire organization without per-seat limitations.',
+    icon: Shield,
+    title: 'Zero-Retention Cloud',
+    description: 'Or use our cloud with guaranteed data ephemerality.',
   },
 ];
 
 const enterpriseBenefits = [
-  'Connect up to 100,000 files with 1 TB storage',
+  'Eliminate the "Data at Rest" attack vector entirely',
+  'Run inside your VPC or use our Zero-Retention Cloud',
+  'BYOK ensures only you control encryption keys',
+  '24/7 Kill Switch for instant data destruction',
   '99.9% uptime SLA with dedicated support',
-  'Custom AI model selection for specific use cases',
-  'Amazon S3 connector for enterprise data lakes',
-  'Audit logs and compliance reporting',
   'Custom training and onboarding for your team',
 ];
 
@@ -42,10 +42,10 @@ const SolutionsEnterprise = () => {
   return (
     <>
       <SEO 
-        title="Axio Hub for Enterprise - Secure AI Knowledge Platform"
-        description="Deploy AI-powered knowledge management at scale. Enterprise-grade security, SSO integration, and dedicated support for your organization."
+        title="Sovereign Infrastructure"
+        description="Intelligence without liability. BYOK and zero-retention cloud for banks, defense, and healthcare. Eliminate the data-at-rest attack vector."
         canonical="/solutions/enterprise"
-        keywords={['enterprise AI', 'enterprise knowledge base', 'secure document AI', 'enterprise RAG platform']}
+        keywords={['enterprise zero-retention AI', 'BYOK AI platform', 'VPC deployment AI', 'sovereign infrastructure']}
       />
       <main id="main-content" className="bg-background">
         <Header />
@@ -62,17 +62,17 @@ const SolutionsEnterprise = () => {
             >
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
                 <Building2 className="w-4 h-4 text-primary" />
-                <span className="text-sm font-medium text-primary">For Enterprise</span>
+                <span className="text-sm font-medium text-primary">Sovereign Infrastructure</span>
               </div>
               
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-                <span className="text-foreground">AI Knowledge at </span>
-                <span className="gradient-text">Enterprise Scale</span>
+                <span className="text-foreground">Intelligence Without </span>
+                <span className="gradient-text">Liability.</span>
               </h1>
               
               <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-                Deploy secure, organization-wide AI with enterprise-grade security, 
-                compliance, and dedicated support.
+                Eliminate the <strong className="text-foreground">'Data at Rest'</strong> attack vector entirely. 
+                Run Axio Hub inside your VPC or use our <strong className="text-foreground">Zero-Retention Cloud</strong>.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -86,8 +86,32 @@ const SolutionsEnterprise = () => {
                   to="/security"
                   className="flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-lg font-semibold text-foreground border border-border hover:bg-muted/50 transition-colors"
                 >
-                  View Security <ArrowRight className="w-5 h-5" />
+                  Security Manifesto <ArrowRight className="w-5 h-5" />
                 </Link>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Key Feature Highlight */}
+        <section className="py-16 bg-void/50">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="max-w-3xl mx-auto text-center"
+            >
+              <div className="glass-card p-8 md:p-12 border-primary/30">
+                <Key className="w-12 h-12 text-primary mx-auto mb-6" />
+                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+                  BYOK & 24/7 Kill Switch
+                </h2>
+                <p className="text-xl text-muted-foreground">
+                  <strong className="text-foreground">Your keys. Your control. Your peace of mind.</strong>
+                  <br />
+                  Instant data destruction available 24/7.
+                </p>
               </div>
             </motion.div>
           </div>
@@ -104,10 +128,10 @@ const SolutionsEnterprise = () => {
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 <span className="text-foreground">Enterprise-Grade </span>
-                <span className="gradient-text">Security & Scale</span>
+                <span className="gradient-text">Sovereign Control</span>
               </h2>
               <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-                Built for organizations that don't compromise on security
+                Built for banks, defense, and healthcare
               </p>
             </motion.div>
 
@@ -185,7 +209,7 @@ const SolutionsEnterprise = () => {
               className="max-w-2xl mx-auto text-center"
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
-                Ready to Scale Your Organization's Knowledge?
+                Ready for Intelligence Without Liability?
               </h2>
               <p className="text-muted-foreground text-lg mb-8">
                 Talk to our enterprise team about your specific requirements.

@@ -1,504 +1,335 @@
-# Axio Hub - Complete Website Text Content
+# Axio Hub - Complete Site Content Documentation
 
-This document contains all text content across the Axio Hub website, organized by section and page.
-
----
-
-## Navigation & Header
-
-### Main Navigation
-- **Logo**: Axio Hub
-- **Nav Links**: Features, Pricing, Security, Integrations, Blog
-
-### Mobile Menu
-- Same links as desktop
-- "Start Free Trial" CTA button
+> **Positioning:** Zero-Retention Enterprise AI Agent
+> **Last Updated:** February 2026
 
 ---
 
-## Home Page (Index)
+## Global Glossary
+
+### Banned Terms → Replacement Terms
+
+| ❌ Never Use | ✅ Always Use |
+|-------------|---------------|
+| Upload | Ingest |
+| Store | Process |
+| Save | Encrypt/Wipe |
+| Chatbot | Agent |
+| Knowledge Base | Intelligence Engine |
+| Chat | Ephemeral Session |
+| Cloud storage | Secure Pipeline |
+| Files | Documents/Data |
+
+---
+
+## 1. HOME PAGE (`/`)
 
 ### Hero Section
-- **Headline**: "Deploy Enterprise AI. Eliminate Data Liability."
-- **Subheadline**: "The world's first Zero-Retention Agent. We analyze your most sensitive financial and legal documents in volatile memory, deliver the insight, and then cryptographically destroy the source. Pure intelligence. Zero paper trail."
-- **Primary CTA**: "Deploy Your Ghost Agent"
-- **Secondary CTA**: "Read the Security Whitepaper"
-- **Visual**: Animated file-to-binary destruction effect
 
-### Quick Nav Section
-**Header**: "Choose Your Path"
+**H1:** "Deploy Enterprise AI. **Eliminate Data Liability.**"
 
-**Card 1 - Individuals**
-- Icon: User
-- Title: "Individuals"
-- Description: "Personal knowledge management"
-- Link: /solutions/individuals
+**H2/Subheadline:** "The world's first **Zero-Retention Employee Agent**. We analyze sensitive M&A, Legal, and R&D documents in ephemeral memory, deliver the insight, and then **cryptographically destroy** the source."
 
-**Card 2 - Teams**
-- Icon: Users
-- Title: "Teams"
-- Description: "Collaborative workspaces"
-- Link: /solutions/teams
+**Trust Bar:** 
+- Architected for SOC 2 Type II
+- HIPAA Compliant
+- DoD 5220.22-M Wiping
 
-**Card 3 - Enterprise**
-- Icon: Building2
-- Title: "Enterprise"
-- Description: "Enterprise-grade security"
-- Link: /solutions/enterprise
+**Primary CTA:** "Deploy Your Ghost Agent"
 
-### Value Props Section
-**Section Header**: "Why Risk Your IP with 'Private' Clouds?"
-
-**Card 1 - Radical Ephemerality**
-- Icon: Eraser
-- Title: "Radical Ephemerality"
-- Body: "We don't just encrypt your data; we process it in RAM-only SmartBuffers. Once the task is done, the data is wiped from physical existence using DoD 5220.22-M standards. You can't leak what you don't hold."
-
-**Card 2 - Blind Indexing Engine™**
-- Icon: EyeOff
-- Title: "Blind Indexing Engine™"
-- Body: "Our 'Decoupled Search' technology indexes only the stems of words, never the sentences. We hold the map, but we can never see the territory. Your secrets remain mathematically invisible to us."
-
-**Card 3 - Fail-Closed Architecture**
-- Icon: Lock
-- Title: "Fail-Closed Architecture"
-- Body: "Security isn't a setting; it's our physics. Without your encryption keys, the system physically cannot boot. If a threat is detected, the airlock seals instantly."
-
-### Solutions Grid Section
-**Section Header**: "Intelligence for the 'Do Not Leak' Economy"
-
-**Card 1 - Finance**
-- Tag: "Finance"
-- Icon: TrendingUp
-- Headline: "The Ephemeral Analyst"
-- Copy: "Ingest 100MB+ merger documents. Extract alpha. Destroy the evidence. Perfect for M&A due diligence where leaks cost millions."
-
-**Card 2 - Legal**
-- Tag: "Legal"
-- Icon: Scale
-- Headline: "The Clean-Room Associate"
-- Copy: "Review privileged contracts without uploading them to a permanent cloud. Client privilege remains absolute, even against subpoenas."
-
-**Card 3 - R&D**
-- Tag: "R&D"
-- Icon: Microscope
-- Headline: "The IP Guardian"
-- Copy: "Accelerate drug discovery or engineering cycles. Query patent databases ensuring your trade secrets never leave the volatile session."
-
-### Ghost Protocol Section
-- **Emoji**: 🔐
-- **Headline**: "Ghost Protocol™ Security"
-- **Subheadline**: "Your data stays yours. We never store your raw documents."
-
-**Trust Badges**:
-1. "Zero-retention architecture" (FileX2 icon)
-2. "AES-256 encryption at rest & in transit" (KeyRound icon)
-3. "Enterprise-grade isolation" (Building2 icon)
-4. "Real-time malware scanning" (ShieldX icon)
-
-- **CTA**: "Learn About Our Security" → /security
-
-### Live Demo Section
-- **Headline**: "See the Difference"
-- **Subheadline**: "Traditional AI blends sources. Axio keeps them separate."
-
-**Demo Tabs**:
-- Tab 1: "Without Axio" - Shows blended, confused response
-- Tab 2: "With Axio" - Shows source-attributed response
-
-**Mock Responses**:
-- Without: "Based on various sources, the quarterly results show... [confused mixed data]"
-- With: "📊 From Q3 Financial Report: Revenue increased 23%... 📋 From Board Minutes: The expansion was approved..."
-
-- **CTA**: "Experience the Clarity" → scrolls to demo
-
-### Pricing Section (Simplified)
-**Header**: "Simple, Transparent Pricing"
-**Subheader**: "Start free, scale as you grow."
-
-**Plan 1 - Starter (Free)**
-- Price: "$0/month"
-- Description: "Perfect for individuals getting started"
-- Features:
-  - 100 documents
-  - 50 queries/month
-  - Basic integrations
-  - Community support
-- CTA: "Get Started Free"
-
-**Plan 2 - Pro (Featured)**
-- Price: "$29/month"
-- Description: "For professionals and small teams"
-- Features:
-  - Unlimited documents
-  - Unlimited queries
-  - All integrations
-  - Priority support
-  - Advanced analytics
-- CTA: "Start Pro Trial"
-
-**Plan 3 - Enterprise**
-- Price: "Custom"
-- Description: "For organizations with advanced needs"
-- Features:
-  - Everything in Pro
-  - SSO & SAML
-  - Custom integrations
-  - Dedicated support
-  - SLA guarantee
-  - On-premise option
-- CTA: "Contact Sales"
-
-- **Footer Note**: "All plans include Ghost Protocol™ security"
-
-### Final CTA Section
-- **Headline**: "Ready to Deploy Without Liability?"
-- **Subheadline**: "Join forward-thinking teams using Axio Hub."
-- **CTA Button**: "Deploy Your Ghost Agent"
-- **Secondary**: "Have questions? Contact us" → /contact
+**Secondary CTA:** "Read the Security Whitepaper"
 
 ---
 
-## Features Page
+### Quick Nav Section (Persona Cards)
 
-### Hero
-- **Headline**: "Features Built for Intelligence"
-- **Subheadline**: "Everything you need to transform scattered knowledge into actionable insights."
-
-### Feature Categories
-
-**Category 1: Smart Search**
-- Semantic understanding
-- Cross-document relationships
-- Real-time suggestions
-
-**Category 2: Source Attribution**
-- Every answer traced to source
-- Confidence scoring
-- Multi-source synthesis
-
-**Category 3: Security**
-- End-to-end encryption
-- Zero-knowledge architecture
-- Compliance ready (SOC2, GDPR)
-
-**Category 4: Integrations**
-- 50+ native connectors
-- Custom API support
-- Real-time sync
-
-**Category 5: Collaboration**
-- Shared workspaces
-- Permission controls
-- Audit trails
-
-**Category 6: Analytics**
-- Usage insights
-- Knowledge gaps
-- Team performance
+| Card | Title | Description | Detailed Description |
+|------|-------|-------------|---------------------|
+| 1 | Solo Analysts | Off-the-record analysis | Digital burner mode for sensitive work |
+| 2 | Secure War Rooms | Ephemeral collaboration | Deal rooms that disappear after closing |
+| 3 | Sovereign Infrastructure | Zero-liability enterprise | BYOK and VPC deployment options |
 
 ---
 
-## Security Page
+### Technology Section (Security is Physics)
+
+**Section Header:** "Security is Not a Feature. **It's Physics.**"
+
+| Card | Title | Body |
+|------|-------|------|
+| 1 | SmartBuffer™ | **RAM-First Processing (No Disk I/O)**. Your data never touches permanent storage. We process in volatile memory and wipe using DoD 5220.22-M standards. |
+| 2 | Decoupled Indexing | We search *stems*, not sentences. Your secrets remain **mathematically invisible**. We hold the map, but we can never see the territory. |
+| 3 | Fail-Closed Architecture | **No key? No boot.** The system physically cannot operate without your encryption keys. If a threat is detected, the airlock seals instantly. |
+
+---
+
+### Solutions Grid ("Do Not Leak" Economy)
+
+**Section Header:** "Built for the **'Do Not Leak' Economy**"
+
+| Card | Icon | Tag | Headline | Copy |
+|------|------|-----|----------|------|
+| 1 | BarChart3 | Finance | The Ephemeral Analyst | Ingest 100MB+ merger documents into RAM. Extract alpha, analyze risks, and wipe the data instantly. **Zero audit risk.** |
+| 2 | Scale | Legal | The Clean-Room Associate | Review privileged contracts without uploading them to a permanent cloud. Client privilege remains absolute via **Decoupled Indexing**. |
+| 3 | FlaskConical | R&D | The IP Guardian | Query sensitive patent databases and clinical trial results ensuring trade secrets never leave the **volatile session**. |
+
+---
+
+## 2. SOLUTION PAGES
+
+### Solo Analysts (`/solutions/individuals`)
+
+**Badge:** Solo Analysts
+
+**H1:** "Your Second Brain. **Off the Record.**"
+
+**Subheadline:** "**Digital Burner Mode.** Perform deep analysis on leaked documents or market intel without creating a digital footprint."
+
+**Key Feature:** "Single-Session Memory: Close the tab, wipe the universe."
+
+**Target Audience:** Whistleblowers, Journalists, Traders
+
+**Features:**
+| Icon | Title | Description |
+|------|-------|-------------|
+| Ghost | Digital Burner Mode | Analyze sensitive documents without creating a digital footprint. |
+| Timer | Single-Session Memory | Close the tab, wipe the universe. Nothing persists. |
+| Shield | Zero-Trace Operations | Perfect for market intel, leaked documents, and sensitive research. |
+| Zap | Instant Analysis | Ingest, analyze, and destroy in one ephemeral session. |
+
+**Benefits:**
+- Process sensitive documents without creating audit trails
+- RAM-only processing—data never touches permanent storage
+- Perfect for whistleblowers, journalists, and independent traders
+- Works with any document format—PDFs, spreadsheets, and more
+- Free tier available—no credit card required
+
+---
+
+### Secure War Rooms (`/solutions/teams`)
+
+**Badge:** Secure War Rooms
+
+**H1:** "Collaborate in a **Digital Clean Room.**"
+
+**Subheadline:** "A shared intelligence workspace that exists only while you need it. Perfect for **deal rooms** and **internal investigations**."
+
+**Key Feature:** "Privilege by Design: We cannot be subpoenaed for data we do not have."
+
+**Target Audience:** M&A Deal Teams, Litigation Units
+
+**Features:**
+| Icon | Title | Description |
+|------|-------|-------------|
+| Users | Ephemeral Deal Rooms | Shared intelligence that exists only while you need it. |
+| Scale | Privilege by Design | We cannot be subpoenaed for data we do not have. |
+| Lock | Session-Based Access | Collaborate on sensitive M&A or litigation matters securely. |
+| Trash2 | Automatic Cleanup | When the deal closes, the data room disappears. |
+
+**Benefits:**
+- Perfect for M&A deal teams and litigation units
+- Eliminate discovery risk—we hold no discoverable data
+- Collaborate on sensitive matters without creating permanent records
+- Session-based workspaces that vanish after use
+- Enterprise-grade encryption with zero-retention guarantee
+
+---
+
+### Sovereign Infrastructure (`/solutions/enterprise`)
+
+**Badge:** Sovereign Infrastructure
+
+**H1:** "Intelligence Without **Liability.**"
+
+**Subheadline:** "Eliminate the **'Data at Rest'** attack vector entirely. Run Axio Hub inside your VPC or use our **Zero-Retention Cloud**."
+
+**Key Features:** "BYOK (Bring Your Own Key) & 24/7 Kill Switch."
+
+**Target Audience:** Banks, Defense, Healthcare
+
+**Features:**
+| Icon | Title | Description |
+|------|-------|-------------|
+| Key | BYOK (Bring Your Own Key) | Your encryption keys never leave your control. |
+| Power | 24/7 Kill Switch | Instant data destruction on demand. |
+| Server | VPC Deployment | Run Axio Hub inside your own infrastructure. |
+| Shield | Zero-Retention Cloud | Or use our cloud with guaranteed data ephemerality. |
+
+**Benefits:**
+- Eliminate the "Data at Rest" attack vector entirely
+- Run inside your VPC or use our Zero-Retention Cloud
+- BYOK ensures only you control encryption keys
+- 24/7 Kill Switch for instant data destruction
+- 99.9% uptime SLA with dedicated support
+- Custom training and onboarding for your team
+
+---
+
+## 3. FEATURES PAGE (`/features`)
 
 ### Hero
-- **Headline**: "Security Without Compromise"
-- **Subheadline**: "Your data protection is our obsession. Here's how we keep your information safe."
+
+**H1:** "The Ingestion Pipeline **That Forgets**"
+
+**Subheadline:** "We don't sync your data; we stream it. **Read-Once, Wipe-After** operations for maximum security."
+
+### Scope Dominance Guard™
+
+| Threshold | Label | Description | Example |
+|-----------|-------|-------------|---------|
+| ≥85% | DOMINANT | Answer confidently. Cite the source. Move on. | "Based on Backend Docs: Here's how authentication works…" |
+| 60-84% | CONTESTED | Answer from primary. Show alternatives. | "Based on Backend Docs: [answer]. Also found in: Product Manual, Engineering Wiki" |
+| <60% | FRAGMENTED | Don't guess. Clarify. | "I found relevant information in 3 sources. Which should I focus on?" |
+
+### Intelligence Features
+
+| Icon | Title | Description |
+|------|-------|-------------|
+| Lock | Sticky Scope Sessions | Tell us once. We remember. When you select a scope—or when one source dominates 3 times in a row—we lock it for the entire conversation. |
+| Quote | Source Citations | Every answer includes clickable citations to the exact document and passage. |
+| Search | Hybrid Search | Combines keyword matching with semantic understanding. |
+
+---
+
+## 4. INTEGRATIONS PAGE (`/integrations`)
+
+### Hero
+
+**H1:** "Connect Your Data. **Keep Your Secrets.**"
+
+**Subheadline:** "We pull data into RAM, answer the question, and disconnect. **We are not a backup solution.**"
+
+### Active Integrations
+- Google Drive (Zero-retention processing)
+- Dropbox
+- OneDrive
+- SharePoint
+- Box
+- Amazon S3 (Enterprise Only)
+- Notion
+- GitHub
+- SFTP Server
+- Web Crawler
+- YouTube
+- File Ingest (Direct processing)
+
+---
+
+## 5. SECURITY PAGE (`/security`) - "The Manifesto"
+
+### Hero
+
+**H1:** "We Don't Want Your Data. **We Built a System That Rejects It.**"
+
+**Subheadline:** "The industry's first truly **zero-retention AI platform**. Your data is processed in RAM and cryptographically destroyed."
+
+### Technical Proof Points
+
+| Title | Description | Spec |
+|-------|-------------|------|
+| AES-256 Encryption | Data is encrypted before it touches the buffer. | AES-256-CBC (Fernet) |
+| OS-Level Wiping | We use os.urandom to overwrite disk blocks if RAM overflows. | DoD 5220.22-M compliant |
+| Malware Sandboxing | Every ingest is detonated in an isolated environment first. | ClamAV + isolated containers |
+
+### Ghost Protocol™ Flow
+
+1. **Ingest** - Data received
+2. **Sandbox** - Malware detonation
+3. **Process** - RAM-only extraction
+4. **Encrypt** - AES-256 before buffer
+5. **Wipe** - os.urandom overwrite
+6. **Index** - Only encrypted vectors remain
 
 ### Security Pillars
 
-**Pillar 1: Zero-Knowledge Architecture**
-- "We can't see your data even if we wanted to. Your encryption keys never leave your control."
+| Pillar | Key Features |
+|--------|--------------|
+| Zero-Retention Architecture | Never store raw documents, encrypted indexing, instant deletion |
+| Encryption Standards | AES-256, TLS 1.3, BYOK support, SOC 2 Type II ready |
+| Enterprise Controls | RLS, organization isolation, audit logging, SSO |
+| Malware Protection | ClamAV scanning, quarantine, admin notifications |
 
-**Pillar 2: End-to-End Encryption**
-- "AES-256 encryption for data at rest and in transit. Military-grade protection for your documents."
-
-**Pillar 3: Compliance Ready**
-- "SOC 2 Type II certified. GDPR, HIPAA, and CCPA compliant. Regular third-party audits."
-
-**Pillar 4: Enterprise Controls**
-- "SSO/SAML, role-based access, IP restrictions, and comprehensive audit logs."
-
-### Ghost Protocol Section
-- Same content as homepage section
-
-### Trust Indicators
-- "SOC 2 Type II Certified"
-- "GDPR Compliant"
-- "HIPAA Ready"
-- "99.99% Uptime SLA"
+### Compliance Badges
+- GDPR Compliant
+- HIPAA Considerations
+- SOC 2 Type II Ready
+- DoD 5220.22-M Wiping
+- Zero Data Retention
 
 ---
 
-## Pricing Page
+## 6. ABOUT PAGE (`/about`)
 
-### Hero
-- **Headline**: "Pricing That Scales With You"
-- **Subheadline**: "No hidden fees. No surprises. Just powerful AI at every level."
+### Mission
 
-### Plans (Same as homepage pricing section, with more detail)
-
-### FAQ Section
-**Q: Can I change plans anytime?**
-A: "Yes, upgrade or downgrade at any time. Changes take effect immediately."
-
-**Q: What payment methods do you accept?**
-A: "All major credit cards, wire transfers for Enterprise, and annual billing discounts."
-
-**Q: Is there a free trial?**
-A: "Yes, Pro includes a 14-day free trial. No credit card required."
-
----
-
-## Integrations Page
-
-### Hero
-- **Headline**: "Connect Everything"
-- **Subheadline**: "50+ integrations to bring all your knowledge together."
-
-### Integration Categories
-
-**Cloud Storage**
-- Google Drive
-- Dropbox
-- OneDrive
-- Box
-
-**Productivity**
-- Notion
-- Confluence
-- Slack
-- Microsoft Teams
-
-**Development**
-- GitHub
-- GitLab
-- Jira
-- Linear
-
-**CRM & Sales**
-- Salesforce
-- HubSpot
-- Pipedrive
-
-**Custom**
-- REST API
-- Webhooks
-- Zapier
-- Custom connectors
-
----
-
-## Blog Page
-
-### Header
-- **Title**: "Axio Hub Blog"
-- **Subtitle**: "Insights, tutorials, and updates from the Axio team."
-
-### Blog Posts (from blog-posts.ts)
-
-**Post 1: Building an AI Knowledge Base**
-- Slug: "ai-knowledge-base"
-- Title: "Building an AI Knowledge Base: A Complete Guide"
-- Excerpt: "Learn how to create an effective AI-powered knowledge base that actually understands your content."
-- Category: "Guides"
-- Read Time: "8 min read"
-
-**Post 2: Chat with Documents**
-- Slug: "chat-with-documents"
-- Title: "How to Chat with Your Documents Using AI"
-- Excerpt: "Discover the power of conversational AI for document analysis and research."
-- Category: "Tutorials"
-- Read Time: "6 min read"
-
-**Post 3: Multi-Source AI**
-- Slug: "multi-source-ai"
-- Title: "Why Multi-Source AI Beats Single-Source Solutions"
-- Excerpt: "Understanding the importance of source attribution in AI responses."
-- Category: "Insights"
-- Read Time: "5 min read"
-
-**Post 4: RAG vs ChatGPT**
-- Slug: "rag-vs-chatgpt"
-- Title: "RAG vs ChatGPT: Which is Right for Your Business?"
-- Excerpt: "A detailed comparison of retrieval-augmented generation versus pure language models."
-- Category: "Comparisons"
-- Read Time: "10 min read"
-
----
-
-## About Page
-
-### Hero
-- **Headline**: "About Axio Hub"
-- **Subheadline**: "We're on a mission to make AI work for your data, not against it."
-
-### Story Section
-- **Title**: "Our Story"
-- **Content**: "Axio Hub was born from a simple frustration: AI tools that mix up your sources and forget context mid-conversation. We built something better—an AI that keeps your knowledge organized, attributed, and secure."
+"We believe AI should amplify human intelligence without creating liability. Axio Hub exists to make enterprise intelligence accessible while **eliminating the data-at-rest attack vector entirely**."
 
 ### Values
-1. **Security First**: "Your data protection is non-negotiable."
-2. **Clarity Over Confusion**: "Every answer traced to its source."
-3. **Privacy by Design**: "We can't see what we don't store."
 
-### Team Section
-- **Title**: "Built by Experts"
-- **Content**: "Our team combines decades of experience in AI, security, and enterprise software."
-
----
-
-## Contact Page
-
-### Hero
-- **Headline**: "Get in Touch"
-- **Subheadline**: "Have questions? We'd love to hear from you."
-
-### Contact Form Fields
-- Name (required)
-- Email (required)
-- Company (optional)
-- Message (required)
-- Submit Button: "Send Message"
-
-### Alternative Contact
-- **Email**: hello@axiohub.com
-- **Sales**: sales@axiohub.com
-- **Support**: support@axiohub.com
+| Icon | Title | Description |
+|------|-------|-------------|
+| Shield | Privacy First | Ghost Protocol isn't a feature, it's our foundation. Your data is wiped after processing. |
+| Eye | Transparency | You always know where answers come from. Every response includes source citations. |
+| Layers | Simplicity | Powerful technology shouldn't require a manual. Connect and query in minutes. |
+| Heart | Trust | Your data stays yours, period. We never sell, share, or train AI on your content. |
 
 ---
 
-## FAQ Page
+## 7. SEO METADATA
 
-### Hero
-- **Headline**: "Frequently Asked Questions"
-- **Subheadline**: "Everything you need to know about Axio Hub."
-
-### FAQ Categories & Questions
-
-**Getting Started**
-- Q: "What is Axio Hub?"
-- A: "Axio Hub is an AI-powered knowledge platform that connects all your data sources and provides intelligent answers with source attribution."
-
-- Q: "How do I get started?"
-- A: "Sign up for free, connect your first data source, and start asking questions. No credit card required."
-
-**Security**
-- Q: "How secure is my data?"
-- A: "We use end-to-end encryption, zero-knowledge architecture, and are SOC 2 Type II certified."
-
-- Q: "Do you store my documents?"
-- A: "No. We process documents in volatile memory and destroy them after extraction. We only store encrypted metadata."
-
-**Pricing**
-- Q: "Is there a free plan?"
-- A: "Yes, our Starter plan is free forever with 100 documents and 50 queries per month."
-
-- Q: "Can I cancel anytime?"
-- A: "Yes, cancel anytime with no penalties. Your data is exported and deleted upon request."
-
-**Integrations**
-- Q: "What can I connect?"
-- A: "50+ integrations including Google Drive, Notion, Slack, GitHub, Salesforce, and more."
-
-- Q: "Can I use custom data sources?"
-- A: "Yes, our API and webhook support allow custom integrations."
-
----
-
-## Solutions Pages
-
-### Individuals (/solutions/individuals)
-- **Headline**: "AI for Individual Professionals"
-- **Subheadline**: "Personal knowledge management that actually works."
-- **Key Benefits**:
-  - Unified personal knowledge base
-  - Research acceleration
-  - Private and secure
-- **CTA**: "Start Free"
-
-### Teams (/solutions/teams)
-- **Headline**: "AI for Growing Teams"
-- **Subheadline**: "Collaborative knowledge that scales."
-- **Key Benefits**:
-  - Shared workspaces
-  - Real-time collaboration
-  - Permission controls
-- **CTA**: "Start Team Trial"
-
-### Enterprise (/solutions/enterprise)
-- **Headline**: "AI for Enterprise"
-- **Subheadline**: "Enterprise-grade AI with uncompromising security."
-- **Key Benefits**:
-  - SSO & SAML integration
-  - Custom deployment options
-  - Dedicated support & SLA
-  - Compliance ready
-- **CTA**: "Contact Sales"
-
----
-
-## Legal Pages
-
-### Privacy Policy (/privacy)
-- Standard privacy policy sections
-- Data collection practices
-- User rights
-- Contact information
-
-### Terms of Service (/terms)
-- Standard terms sections
-- Usage guidelines
-- Liability limitations
-- Dispute resolution
-
----
-
-## Footer
-
-### Column 1: Product
-- Features
-- Pricing
-- Integrations
-- Security
-
-### Column 2: Resources
-- Blog
-- Documentation
-- API Reference
-- Changelog
-
-### Column 3: Company
-- About
-- Contact
-- Careers
-- Press
-
-### Column 4: Legal
-- Privacy Policy
-- Terms of Service
-- Cookie Policy
-
-### Bottom Bar
-- Copyright: "© 2024 Axio Hub. All rights reserved."
-- Social Links: Twitter, LinkedIn, GitHub
-
----
-
-## SEO Metadata (Page Titles & Descriptions)
+### Page Titles & Descriptions
 
 | Page | Title | Description |
 |------|-------|-------------|
-| Home | Axio Hub - AI Knowledge Platform | Connect all your data sources to one AI. Get answers that cite the right source. |
-| Features | Features - Axio Hub | Everything you need to transform scattered knowledge into actionable insights. |
-| Pricing | Pricing - Axio Hub | Simple, transparent pricing. Start free, scale as you grow. |
-| Security | Security - Axio Hub | Your data protection is our obsession. Zero-knowledge, SOC 2 certified. |
-| Integrations | Integrations - Axio Hub | 50+ integrations to bring all your knowledge together. |
-| Blog | Blog - Axio Hub | Insights, tutorials, and updates from the Axio team. |
-| About | About - Axio Hub | We're on a mission to make AI work for your data, not against it. |
-| Contact | Contact - Axio Hub | Have questions? We'd love to hear from you. |
-| FAQ | FAQ - Axio Hub | Everything you need to know about Axio Hub. |
+| Home | Axio Hub \| Zero-Retention Enterprise AI Agent | Deploy Enterprise AI. Eliminate Data Liability. Zero-Retention Employee Agent for M&A, Legal, and R&D. |
+| Security | Security Manifesto \| Axio Hub | We don't want your data. We built a system that rejects it. Zero-retention architecture. |
+| Features | Ingestion Pipeline \| Axio Hub | Stream data, extract intelligence, destroy the source. Enterprise RAG built for privacy. |
+| Integrations | Secure Connectors \| Axio Hub | Connect your data. Keep your secrets. Read-once, wipe-after integrations. |
+| Individuals | Solo Analysts \| Axio Hub | Your second brain, off the record. Digital burner mode for sensitive analysis. |
+| Teams | Secure War Rooms \| Axio Hub | Collaborate in a digital clean room. Ephemeral deal rooms for M&A and litigation. |
+| Enterprise | Sovereign Infrastructure \| Axio Hub | Intelligence without liability. BYOK and zero-retention cloud for banks, defense, healthcare. |
+
+### Default Keywords
+- Enterprise RAG
+- Zero-Retention AI
+- Secure AI
+- Privacy-Preserving LLM
+- Ghost Protocol
+- Ephemeral AI
+- HIPAA AI
+- SOC2 AI Agent
 
 ---
 
-*Last updated: February 2026*
+## 8. PRICING (Simplified)
+
+### Tiers
+
+| Tier | Price | Target | Key Features |
+|------|-------|--------|--------------|
+| Free | $0/mo | Solo Analysts | 3 data sources, 100 queries/mo, Ghost Protocol |
+| Pro | $29/mo | Secure War Rooms | Unlimited sources, 1000 queries/mo, Team collaboration |
+| Enterprise | Custom | Sovereign Infrastructure | BYOK, VPC deployment, 24/7 Kill Switch |
+
+---
+
+## 9. CALL-TO-ACTION COPY
+
+### Primary CTAs
+- "Deploy Your Ghost Agent"
+- "Create War Room"
+- "Contact Sales"
+
+### Secondary CTAs
+- "Security Manifesto"
+- "View Pricing"
+- "Start Free Trial"
+
+### CTA Section Headlines
+- "Ready for Off-the-Record Intelligence?"
+- "Ready for Zero-Liability Collaboration?"
+- "Ready for Intelligence Without Liability?"
+
+---
+
+*Document generated for Axio Hub marketing and development teams.*

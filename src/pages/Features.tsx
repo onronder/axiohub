@@ -168,10 +168,10 @@ const Features = () => {
   return (
     <>
       <SEO 
-        title="Enterprise RAG Features"
-        description="Scope Dominance Guard, sticky scope sessions, multi-provider failover. Enterprise RAG features that actually solve real problems. The AI knowledge base built for teams."
+        title="Ingestion Pipeline"
+        description="Stream data, extract intelligence, destroy the source. Enterprise RAG built for privacy. Read-Once, Wipe-After operations for maximum security."
         canonical="/features"
-        keywords={['enterprise RAG platform', 'AI knowledge base', 'chat with documents', 'multi-source document AI']}
+        keywords={['Enterprise RAG', 'Zero-Retention AI', 'Ephemeral AI', 'secure document processing']}
         ogImage="/og-features.png"
       />
       <main className="bg-background min-h-screen">
@@ -187,11 +187,11 @@ const Features = () => {
               className="text-center max-w-3xl mx-auto"
             >
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                <span className="text-foreground">Features That Actually </span>
-                <span className="gradient-text">Solve the Problem</span>
+                <span className="text-foreground">The Ingestion Pipeline </span>
+                <span className="gradient-text">That Forgets</span>
               </h1>
               <p className="text-xl text-muted-foreground">
-                Context intelligence no other tool has. Enterprise security. Multiple native connectors.
+                We don't sync your data; we stream it. <strong className="text-foreground">Read-Once, Wipe-After</strong> operations for maximum security.
               </p>
             </motion.div>
           </div>

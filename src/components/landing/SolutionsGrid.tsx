@@ -1,24 +1,24 @@
 import { motion } from 'framer-motion';
-import { TrendingUp, Scale, FlaskConical } from 'lucide-react';
+import { BarChart3, Scale, FlaskConical } from 'lucide-react';
 
 const solutions = [
   {
-    icon: TrendingUp,
+    icon: BarChart3,
     tag: 'Finance',
     headline: 'The Ephemeral Analyst',
-    copy: 'Ingest 100MB+ merger documents. Extract alpha. Destroy the evidence. Perfect for M&A due diligence where leaks cost millions.',
+    copy: 'Ingest 100MB+ merger documents into RAM. Extract alpha, analyze risks, and wipe the data instantly. <strong>Zero audit risk.</strong>',
   },
   {
     icon: Scale,
     tag: 'Legal',
     headline: 'The Clean-Room Associate',
-    copy: 'Review privileged contracts without uploading them to a permanent cloud. Client privilege remains absolute, even against subpoenas.',
+    copy: 'Review privileged contracts without uploading them to a permanent cloud. Client privilege remains absolute via <strong>Decoupled Indexing</strong>.',
   },
   {
     icon: FlaskConical,
     tag: 'R&D',
     headline: 'The IP Guardian',
-    copy: 'Accelerate drug discovery or engineering cycles. Query patent databases ensuring your trade secrets never leave the volatile session.',
+    copy: 'Query sensitive patent databases and clinical trial results ensuring trade secrets never leave the <strong>volatile session</strong>.',
   },
 ];
 
@@ -36,7 +36,7 @@ export const SolutionsGrid = () => {
           className="text-center mb-12 md:mb-16"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-foreground">Intelligence for the </span>
+            <span className="text-foreground">Built for the </span>
             <span className="gradient-text">'Do Not Leak' Economy</span>
           </h2>
         </motion.div>
@@ -66,9 +66,10 @@ export const SolutionsGrid = () => {
                   {solution.headline}
                 </h3>
                 
-                <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
-                  {solution.copy}
-                </p>
+                <p 
+                  className="text-muted-foreground leading-relaxed text-sm md:text-base"
+                  dangerouslySetInnerHTML={{ __html: solution.copy }}
+                />
               </div>
             </motion.div>
           ))}

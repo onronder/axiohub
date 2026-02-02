@@ -2,37 +2,37 @@ import { SEO } from '@/components/SEO';
 import { Header } from '@/components/landing/Header';
 import { Footer } from '@/components/landing/Footer';
 import { motion } from 'framer-motion';
-import { User, ArrowRight, Check, Brain, Lock, Zap, FileText } from 'lucide-react';
+import { User, ArrowRight, Check, Ghost, Timer, Shield, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const individualFeatures = [
   {
-    icon: Brain,
-    title: 'Personal Knowledge Base',
-    description: 'Connect your notes, research, and documents. Get answers instantly.',
+    icon: Ghost,
+    title: 'Digital Burner Mode',
+    description: 'Analyze sensitive documents without creating a digital footprint.',
   },
   {
-    icon: FileText,
-    title: 'Multi-Format Support',
-    description: 'PDFs, Word docs, spreadsheets, and more—all searchable in one place.',
+    icon: Timer,
+    title: 'Single-Session Memory',
+    description: 'Close the tab, wipe the universe. Nothing persists.',
   },
   {
-    icon: Lock,
-    title: 'Private & Secure',
-    description: 'Your data stays yours. Zero-retention means nothing is stored after processing.',
+    icon: Shield,
+    title: 'Zero-Trace Operations',
+    description: 'Perfect for market intel, leaked documents, and sensitive research.',
   },
   {
     icon: Zap,
-    title: 'Instant Setup',
-    description: 'Connect your first data source in under 2 minutes.',
+    title: 'Instant Analysis',
+    description: 'Ingest, analyze, and destroy in one ephemeral session.',
   },
 ];
 
 const individualBenefits = [
-  'Find any piece of information across all your documents',
-  'Stop wasting time searching through folders',
-  'Get AI-powered summaries and insights',
-  'Works with Google Drive, Dropbox, OneDrive, and more',
+  'Process sensitive documents without creating audit trails',
+  'RAM-only processing—data never touches permanent storage',
+  'Perfect for whistleblowers, journalists, and independent traders',
+  'Works with any document format—PDFs, spreadsheets, and more',
   'Free tier available—no credit card required',
 ];
 
@@ -40,10 +40,10 @@ const SolutionsIndividuals = () => {
   return (
     <>
       <SEO 
-        title="Axio Hub for Individuals - Your Personal AI Knowledge Base"
-        description="Connect your personal documents and get AI-powered answers. Find information instantly across all your files with complete privacy."
+        title="Solo Analysts"
+        description="Your second brain, off the record. Digital burner mode for sensitive analysis. Zero-retention AI for whistleblowers, journalists, and traders."
         canonical="/solutions/individuals"
-        keywords={['personal knowledge base', 'AI document search', 'personal productivity', 'document AI assistant']}
+        keywords={['zero-retention AI', 'ephemeral document analysis', 'secure AI assistant', 'digital burner mode']}
       />
       <main id="main-content" className="bg-background">
         <Header />
@@ -60,17 +60,17 @@ const SolutionsIndividuals = () => {
             >
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
                 <User className="w-4 h-4 text-primary" />
-                <span className="text-sm font-medium text-primary">For Individuals</span>
+                <span className="text-sm font-medium text-primary">Solo Analysts</span>
               </div>
               
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-                <span className="text-foreground">Your Personal </span>
-                <span className="gradient-text">Second Brain</span>
+                <span className="text-foreground">Your Second Brain. </span>
+                <span className="gradient-text">Off the Record.</span>
               </h1>
               
               <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-                Connect your documents, notes, and research. Ask questions in natural language 
-                and get answers that cite exactly where the information came from.
+                <strong className="text-foreground">Digital Burner Mode.</strong> Perform deep analysis on leaked documents 
+                or market intel without creating a digital footprint.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -80,13 +80,13 @@ const SolutionsIndividuals = () => {
                   rel="noopener noreferrer"
                   className="holographic-glow px-8 py-4 rounded-xl text-lg font-semibold"
                 >
-                  Start Free
+                  Deploy Your Ghost Agent
                 </a>
                 <Link
-                  to="/features"
+                  to="/security"
                   className="flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-lg font-semibold text-foreground border border-border hover:bg-muted/50 transition-colors"
                 >
-                  See Features <ArrowRight className="w-5 h-5" />
+                  Security Whitepaper <ArrowRight className="w-5 h-5" />
                 </Link>
               </div>
             </motion.div>
@@ -103,11 +103,11 @@ const SolutionsIndividuals = () => {
               className="text-center mb-16"
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                <span className="text-foreground">Everything You Need to </span>
-                <span className="gradient-text">Stay Organized</span>
+                <span className="text-foreground">Single-Session Memory: </span>
+                <span className="gradient-text">Close the Tab, Wipe the Universe</span>
               </h2>
               <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-                Simple, powerful, and completely private
+                Intelligence without evidence
               </p>
             </motion.div>
 
@@ -147,7 +147,7 @@ const SolutionsIndividuals = () => {
                 className="text-center mb-12"
               >
                 <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
-                  Why Individuals Love Axio
+                  Why Solo Analysts Choose Axio
                 </h2>
               </motion.div>
 
@@ -182,10 +182,10 @@ const SolutionsIndividuals = () => {
               className="max-w-2xl mx-auto text-center"
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
-                Ready to Organize Your Knowledge?
+                Ready for Off-the-Record Intelligence?
               </h2>
               <p className="text-muted-foreground text-lg mb-8">
-                Start free today. Connect your first source in minutes.
+                Deploy your Ghost Agent today. No credit card required.
               </p>
               <a 
                 href="https://app.axiohub.io/register"
