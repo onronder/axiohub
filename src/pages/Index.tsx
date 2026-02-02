@@ -3,7 +3,8 @@ import { SEO } from '@/components/SEO';
 import { Header } from '@/components/landing/Header';
 import { HeroSection } from '@/components/landing/HeroSection';
 import { QuickNavSection } from '@/components/landing/QuickNavSection';
-import { ProblemSectionSimplified } from '@/components/landing/ProblemSectionSimplified';
+import { ValuePropsSection } from '@/components/landing/ValuePropsSection';
+import { SolutionsGrid } from '@/components/landing/SolutionsGrid';
 import { GhostProtocolSection } from '@/components/landing/GhostProtocolSection';
 import { LiveDemoStatic } from '@/components/landing/LiveDemoStatic';
 import { PricingSectionSimplified } from '@/components/landing/PricingSectionSimplified';
@@ -46,7 +47,8 @@ const Index = () => {
         <Header />
         <HeroSection />
         <QuickNavSection />
-        <ProblemSectionSimplified />
+        <ValuePropsSection />
+        <SolutionsGrid />
         <section id="security">
           <GhostProtocolSection />
         </section>
