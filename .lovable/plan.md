@@ -1,132 +1,70 @@
 
-# Fix Pricing Data & UI Badge Clipping
+
+# Fix Pricing Cards: Unified Expand & Badge Visibility
 
 ## Problems Identified
 
-### 1. Pricing Data Incorrect
-The `PricingSectionSimplified.tsx` on the home page shows wrong pricing:
+### 1. Expand Button Shows Generic "+X more" Instead of Actual Features
+Currently each card shows "+6 more features", "+4 more features" etc. You want each card to show the **actual extra feature names** in the collapsed state, and when any card's expand button is clicked, **all three plans expand together**.
 
-| Plan | Current (Wrong) | Correct |
-|------|-----------------|---------|
-| Starter | $0/month | $4.99/month |
-| Pro | $30/month | $29/month |
-
-Features are also missing/incorrect based on your provided spec.
-
-### 2. "Most Popular" Badge Cut Off
-The badge uses `absolute -top-3` positioning, but the parent grid or section has `overflow-hidden`, which clips the top of the badge.
+### 2. "Most Popular" Badge Still Clipped
+The badge at `-top-3` is still being cut off. The current `pt-4` on the grid container isn't enough because the parent section has `overflow-hidden`.
 
 ---
 
 ## Implementation Plan
 
-### File 1: `src/components/landing/PricingSectionSimplified.tsx`
+### File: `src/components/landing/PricingSectionSimplified.tsx`
 
-**A. Fix Starter Plan (lines 7-32):**
+**A. Change State to Boolean (Global Expand)**
+
 ```typescript
-{
-  name: 'Starter',
-  description: 'Perfect for individuals and small projects',
-  price: '$4.99',
-  period: '/month',
-  features: [
-    '50 files, 100 MB storage',
-    '5 connected data sources',
-    '1M AI tokens/month',
-    'Axio Fast ⚡ AI model',
-  ],
-  allFeatures: [
-    '50 files, 100 MB storage',
-    '5 connected data sources',
-    '1M AI tokens/month',
-    'Axio Fast ⚡ AI model',
-    'All 12 connectors (except S3)',
-    'Ghost Protocol security',
-    'Hybrid AI search',
-    'Source citations',
-    'Web crawling',
-    'Community support',
-  ],
-  cta: 'Get Started',
-  ctaUrl: 'https://app.axiohub.io/register?plan=starter',
-  isExternal: true,
-  popular: false,
-}
+// Line 94: Change from per-plan expand to global expand
+const [isExpanded, setIsExpanded] = useState(false);
 ```
 
-**B. Fix Pro Plan (lines 33-58):**
+**B. Update Toggle Function**
+
 ```typescript
-{
-  name: 'Pro',
-  description: 'For professionals and growing teams',
-  price: '$29',
-  period: '/month',
-  features: [
-    '2,000 files, 10 GB storage',
-    '100 data sources',
-    '10M AI tokens/month',
-    'Axio Pro 🧠 + Fast ⚡ AI',
-  ],
-  allFeatures: [
-    '2,000 files, 10 GB storage',
-    '100 connected data sources',
-    '10M AI tokens/month',
-    'Axio Pro 🧠 + Fast ⚡ AI',
-    'Team collaboration (5 members)',
-    'Priority support',
-    'API access',
-    'Everything in Starter',
-  ],
-  cta: 'Start Free Trial',
-  ctaUrl: 'https://app.axiohub.io/register?plan=pro',
-  isExternal: true,
-  popular: true,
-}
+// Line 106-111: Simplified toggle
+const toggleExpand = () => {
+  trackEvent('pricing_expand', { expanded: !isExpanded });
+  setIsExpanded(!isExpanded);
+};
 ```
 
-**C. Fix Enterprise Plan (lines 59-86):**
+**C. Update Feature Display Logic**
+
 ```typescript
-{
-  name: 'Enterprise',
-  description: 'For organizations at scale',
-  price: 'Custom',
-  period: '',
-  features: [
-    '100,000 files, 1 TB storage',
-    '1,000 data sources',
-    '100M AI tokens/month',
-    '100 team members',
-  ],
-  allFeatures: [
-    '100,000 files, 1 TB storage',
-    '1,000 data sources',
-    '100M AI tokens/month',
-    '100 team members',
-    'Amazon S3 connector',
-    'DoD 5220.22-M secure wipe',
-    'SSO & SAML',
-    'Custom integrations',
-    'Dedicated support + SLA',
-    'Custom retention policies',
-  ],
-  cta: 'Contact Sales',
-  ctaUrl: '/contact',
-  isExternal: false,
-  popular: false,
-}
+// Line 165: Use global isExpanded instead of per-plan
+{(isExpanded ? plan.allFeatures : plan.features).map((feature) => (
 ```
 
-**D. Fix Badge Clipping (line 130):**
-Add padding to the grid container to accommodate the badge overflow:
-```tsx
-// Change from:
-<div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
+**D. Show Actual Extra Features in Button Text**
 
-// Change to:
-<div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto pt-4">
+Instead of "+6 more features", show the first 2-3 extra feature names:
+
+```typescript
+// Lines 173-180: Replace button content
+{plan.allFeatures.length > plan.features.length && (
+  <button
+    onClick={toggleExpand}
+    className="text-sm text-primary hover:text-primary/80 mb-3 md:mb-4 flex items-center gap-1 transition-colors touch-manipulation min-h-[44px]"
+  >
+    {isExpanded 
+      ? 'Show less' 
+      : `+ ${plan.allFeatures.slice(plan.features.length).slice(0, 2).join(', ')}${plan.allFeatures.length - plan.features.length > 2 ? '...' : ''}`
+    }
+  </button>
+)}
 ```
 
-This adds top padding so the "Most Popular" badge isn't clipped.
+**E. Fix Badge Clipping - Remove overflow-hidden from Section**
+
+```typescript
+// Line 114: Remove overflow-hidden
+<section className="py-20 md:py-32 bg-background relative">
+```
 
 ---
 
@@ -134,9 +72,14 @@ This adds top padding so the "Most Popular" badge isn't clipped.
 
 | Change | Location | Description |
 |--------|----------|-------------|
-| Starter price | Line 11 | $0 → $4.99 |
-| Pro price | Line 37 | $30 → $29 |
-| Feature lists | Lines 13-27, 38-53, 64-80 | Update to match real spec |
-| Badge clipping | Line 130 | Add `pt-4` to grid container |
+| Global expand state | Line 94 | `useState<string \| null>` → `useState(false)` |
+| Toggle function | Lines 106-111 | Simplified to toggle boolean |
+| Feature display | Line 165 | Use `isExpanded` instead of per-plan check |
+| Button text | Lines 173-180 | Show actual feature names instead of "+X more" |
+| Badge clipping | Line 114 | Remove `overflow-hidden` from section |
 
-This ensures the pricing matches your actual product and the "Most Popular" badge displays correctly without being cut off.
+This ensures:
+- Each card shows meaningful preview of extra features
+- Clicking any "expand" toggles all three plans together
+- The "Most Popular" badge is fully visible
+
