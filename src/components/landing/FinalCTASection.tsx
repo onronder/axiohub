@@ -18,10 +18,10 @@ export const FinalCTASection = () => {
         >
           <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 md:mb-6">
             <span className="text-foreground">Ready to </span>
-            <span className="gradient-text">Unlock Your Knowledge?</span>
+            <span className="secure-gradient">Deploy Without Liability?</span>
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground mb-8 md:mb-10">
-            Join thousands of teams who trust Axio Hub with their most sensitive data.
+            Join the enterprises who trust Axio Hub with their most sensitive intelligence operations.
           </p>
 
           <motion.div
@@ -36,12 +36,12 @@ export const FinalCTASection = () => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => {
-                trackCTA('start_free_trial', 'final_cta');
+                trackCTA('deploy_ghost_agent', 'final_cta');
                 trackExternalLink('https://app.axiohub.io/auth/register', 'final_cta');
               }}
               className="inline-flex items-center gap-2 holographic-glow px-6 md:px-8 py-4 rounded-full text-base md:text-lg font-semibold text-white transition-transform hover:scale-105 active:scale-95 touch-manipulation min-h-[48px]"
             >
-              Start Your Free Trial
+              Deploy Your Ghost Agent
               <ArrowRight className="w-5 h-5" />
             </a>
 

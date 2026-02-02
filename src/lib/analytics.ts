@@ -1,4 +1,9 @@
 /**
+ * User type for QuickNav persona tracking
+ */
+export type UserType = 'individuals' | 'teams' | 'enterprise';
+
+/**
  * Core event tracking function
  * Uses Vercel Analytics in production, logs to console in development
  */
