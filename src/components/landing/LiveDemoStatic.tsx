@@ -30,7 +30,7 @@ export const LiveDemoStatic = () => {
           <span className="gradient-text">See the Difference</span>
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-0 relative">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-4 md:gap-0 relative items-stretch">
           {/* Left: Old Way */}
           <div className="glass-card p-5 md:p-6 md:rounded-r-none md:border-r-0">
             <div className="flex items-center gap-3 mb-4 md:mb-6">
@@ -49,8 +49,8 @@ export const LiveDemoStatic = () => {
             </ul>
           </div>
 
-          {/* VS Badge - Hidden on mobile */}
-          <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+          {/* VS Badge - Hidden on mobile, centered column on desktop */}
+          <div className="hidden md:flex items-center justify-center z-10 px-4">
             <motion.div
               animate={{ boxShadow: ['0 0 20px hsl(var(--primary)/0.3)', '0 0 40px hsl(var(--primary)/0.5)', '0 0 20px hsl(var(--primary)/0.3)'] }}
               transition={{ duration: 2, repeat: Infinity }}
