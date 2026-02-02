@@ -1,21 +1,21 @@
 import { motion } from 'framer-motion';
-import { Eraser, EyeOff, Lock } from 'lucide-react';
+import { Cpu, Search, Lock } from 'lucide-react';
 
 const valueProps = [
   {
-    icon: Eraser,
-    title: 'Radical Ephemerality',
-    body: "We don't just encrypt your data; we process it in <strong>RAM-only SmartBuffers</strong>. Once the task is done, the data is wiped from physical existence using DoD 5220.22-M standards. You can't leak what you don't hold.",
+    icon: Cpu,
+    title: 'SmartBuffer™',
+    body: "<strong>RAM-First Processing (No Disk I/O)</strong>. Your data never touches permanent storage. We process in volatile memory and wipe using DoD 5220.22-M standards.",
   },
   {
-    icon: EyeOff,
-    title: 'Blind Indexing Engine™',
-    body: "Our 'Decoupled Search' technology indexes only the <em>stems</em> of words, never the sentences. We hold the map, but we can never see the territory. Your secrets remain mathematically invisible to us.",
+    icon: Search,
+    title: 'Decoupled Indexing',
+    body: "We search <em>stems</em>, not sentences. Your secrets remain <strong>mathematically invisible</strong>. We hold the map, but we can never see the territory.",
   },
   {
     icon: Lock,
     title: 'Fail-Closed Architecture',
-    body: "Security isn't a setting; it's our physics. Without your encryption keys, the system physically cannot boot. If a threat is detected, the airlock seals instantly.",
+    body: "<strong>No key? No boot.</strong> The system physically cannot operate without your encryption keys. If a threat is detected, the airlock seals instantly.",
   },
 ];
 
@@ -33,8 +33,8 @@ export const ValuePropsSection = () => {
           className="text-center mb-12 md:mb-16"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-foreground">Why Risk Your IP with </span>
-            <span className="text-muted-foreground">'Private' Clouds?</span>
+            <span className="text-foreground">Security is Not a Feature. </span>
+            <span className="gradient-text">It's Physics.</span>
           </h2>
         </motion.div>
 

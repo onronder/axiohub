@@ -70,10 +70,24 @@ export const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 md:mb-10 max-w-3xl mx-auto px-2 leading-relaxed"
+            className="text-base sm:text-lg md:text-xl text-muted-foreground mb-6 md:mb-8 max-w-3xl mx-auto px-2 leading-relaxed"
           >
-            The world's first <strong className="text-foreground">Zero-Retention Agent</strong>. We analyze your most sensitive financial and legal documents in volatile memory, deliver the insight, and then <strong className="text-foreground">cryptographically destroy</strong> the source. Pure intelligence. Zero paper trail.
+            The world's first <strong className="text-foreground">Zero-Retention Employee Agent</strong>. We analyze sensitive M&A, Legal, and R&D documents in ephemeral memory, deliver the insight, and then <strong className="text-foreground">cryptographically destroy</strong> the source.
           </motion.p>
+          
+          {/* Trust Bar */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="flex flex-wrap justify-center items-center gap-2 md:gap-4 mb-8 md:mb-10 text-xs md:text-sm text-muted-foreground/80"
+          >
+            <span>Architected for SOC 2 Type II</span>
+            <span className="hidden sm:inline">•</span>
+            <span>HIPAA Compliant</span>
+            <span className="hidden sm:inline">•</span>
+            <span>DoD 5220.22-M Wiping</span>
+          </motion.div>
           
           <motion.div
             initial={{ opacity: 0, y: 20 }}

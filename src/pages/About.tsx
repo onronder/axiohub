@@ -39,9 +39,9 @@ const About = () => {
     <>
       <SEO 
         title="About"
-        description="Axio Hub: The enterprise RAG platform that amplifies human intelligence without compromising privacy. AI-powered knowledge management for teams."
+        description="Axio Hub: The zero-retention enterprise AI agent that amplifies human intelligence without compromising privacy. Process data, extract intelligence, destroy the source."
         canonical="/about"
-        keywords={['enterprise RAG platform', 'AI knowledge base', 'AI-powered knowledge management']}
+        keywords={['Zero-Retention AI', 'Enterprise RAG', 'Ephemeral AI', 'Privacy-First AI']}
         ogImage="/og-about.png"
       />
       <main className="bg-background min-h-screen">
@@ -75,9 +75,8 @@ const About = () => {
             >
               <h2 className="text-3xl font-bold text-foreground mb-6">Our Mission</h2>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                We believe AI should amplify human intelligence without compromising privacy. 
-                Axio Hub exists to make enterprise knowledge accessible while keeping your data 
-                under your control.
+                We believe AI should amplify human intelligence without creating liability. 
+                Axio Hub exists to make enterprise intelligence accessible while <strong className="text-foreground">eliminating the data-at-rest attack vector entirely</strong>.
               </p>
             </motion.div>
           </div>

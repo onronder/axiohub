@@ -38,7 +38,7 @@ const integrations: Integration[] = [
   { 
     name: 'Google Drive', 
     icon: FolderOpen, 
-    description: 'Import documents, spreadsheets, and presentations from your Google Drive. Supports shared drives and team folders.',
+    description: 'Ingest documents from your Google Drive. Zero-retention processing.',
     category: 'Cloud Storage'
   },
   { 
@@ -165,10 +165,10 @@ const Integrations = () => {
   return (
     <>
       <SEO 
-        title="Data Integrations"
-        description="Connect Google Drive, Notion, GitHub, SharePoint and more to your AI knowledge base. Multi-source document AI with one unified search."
+        title="Secure Connectors"
+        description="Connect your data. Keep your secrets. Read-once, wipe-after integrations. We pull data into RAM, answer the question, and disconnect."
         canonical="/integrations"
-        keywords={['multi-source document AI', 'chat with documents', 'AI knowledge base', 'document integrations']}
+        keywords={['zero-retention integrations', 'secure data connectors', 'ephemeral AI connectors', 'Enterprise RAG integrations']}
         ogImage="/og-integrations.png"
       />
       <main className="bg-background min-h-screen">
@@ -184,11 +184,11 @@ const Integrations = () => {
               className="text-center max-w-3xl mx-auto"
             >
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                <span className="text-foreground">Connect </span>
-                <span className="gradient-text">Everything</span>
+                <span className="text-foreground">Connect Your Data. </span>
+                <span className="gradient-text">Keep Your Secrets.</span>
               </h1>
               <p className="text-xl text-muted-foreground">
-                Multiple integrations today. More coming soon.
+                We pull data into RAM, answer the question, and disconnect. <strong className="text-foreground">We are not a backup solution.</strong>
               </p>
             </motion.div>
           </div>
