@@ -40,10 +40,10 @@ const SolutionsTeams = () => {
   return (
     <>
       <SEO 
-        title="Secure War Rooms"
-        description="Collaborate in a digital clean room. Ephemeral deal rooms for M&A and litigation. We cannot be subpoenaed for data we do not have."
+        title="For Teams"
+        description="The digital clean room. A secure space for high-stakes projects. Upload, discuss, and decide. Then, the room self-destructs."
         canonical="/solutions/teams"
-        keywords={['ephemeral deal rooms', 'secure collaboration', 'M&A data room', 'litigation workspace']}
+        keywords={['secure team collaboration', 'ephemeral workspace', 'private team AI', 'zero-retention team platform']}
       />
       <main id="main-content" className="bg-background">
         <Header />
