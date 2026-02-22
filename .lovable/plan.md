@@ -1,85 +1,123 @@
 
 
-# Fix Pricing Cards: Unified Expand & Badge Visibility
+# Comprehensive Website Fixes: Content, Legal & SEO
 
-## Problems Identified
+## PART 1: Critical Content Fixes
 
-### 1. Expand Button Shows Generic "+X more" Instead of Actual Features
-Currently each card shows "+6 more features", "+4 more features" etc. You want each card to show the **actual extra feature names** in the collapsed state, and when any card's expand button is clicked, **all three plans expand together**.
+### 1.1 — /security: Fix SOC 2 & HIPAA Claims
 
-### 2. "Most Popular" Badge Still Clipped
-The badge at `-top-3` is still being cut off. The current `pt-4` on the grid container isn't enough because the parent section has `overflow-hidden`.
+**File: `src/pages/Security.tsx`**
+- Line 65: `'SOC 2 Type II ready'` → `'SOC 2 Type II — Architecture Ready (certification roadmap 2026)'`
+- Line 108: `'SOC 2 Type II Ready'` → `'SOC 2 Ready (certification roadmap 2026)'`
+- Line 107: `'HIPAA Considerations'` → `'HIPAA-Ready Architecture'`
 
----
+**File: `src/components/landing/HeroSection.tsx`**
+- Line 85: `'Architected for SOC 2 Type II'` → `'SOC 2 Type II — Architecture Ready'`
+- Line 87: `'HIPAA Compliant'` → `'HIPAA-Ready Architecture'`
 
-## Implementation Plan
+**File: `src/components/SEO.tsx`**
+- Line 16: Update DEFAULT_KEYWORDS — change `'HIPAA AI'` to `'HIPAA-Ready AI'`
 
-### File: `src/components/landing/PricingSectionSimplified.tsx`
+**Files: `src/components/landing/TrustBadgesRow.tsx` & `src/components/landing/Footer.tsx`**
+- Already say `'SOC 2 Ready'` — no change needed.
 
-**A. Change State to Boolean (Global Expand)**
+### 1.2 — /solutions/teams: Remove "subpoena-proof" Language
 
-```typescript
-// Line 94: Change from per-plan expand to global expand
-const [isExpanded, setIsExpanded] = useState(false);
-```
+**File: `src/pages/solutions/Teams.tsx`**
+- Line 17 (feature description): Replace `'We cannot be subpoenaed for data we do not have.'` with `'Minimal Discovery Surface — zero-retention architecture reduces data subject to potential discovery or regulatory requests.'`
+- Lines 111-113 (Privilege by Design section): Replace the bold subpoena claim with the exact wording provided:
+  - `"Data that doesn't exist can't be requested. AxioHub's zero-retention architecture means processed documents are cryptographically destroyed — leaving only encrypted intelligence vectors with no recoverable source material."`
+- Line 33 (benefits): Replace `'Eliminate discovery risk—we hold no discoverable data'` with `'Minimal discovery surface — significantly reduced data subject to potential discovery'`
 
-**B. Update Toggle Function**
+### 1.3 — /solutions/individuals: Remove "whistleblower" & "burner" Language
 
-```typescript
-// Line 106-111: Simplified toggle
-const toggleExpand = () => {
-  trackEvent('pricing_expand', { expanded: !isExpanded });
-  setIsExpanded(!isExpanded);
-};
-```
+**File: `src/pages/solutions/Individuals.tsx`**
+- Line 11: `'Digital Burner Mode'` → `'Ephemeral Analysis Mode'`
+- Line 20 (Zero-Trace Operations description): `'Perfect for market intel, leaked documents, and sensitive research.'` → `'Perfect for confidential research, competitive analysis, and sensitive document review.'`
+- Line 34: `'Perfect for whistleblowers, journalists, and independent traders'` → `'Built for independent consultants, legal professionals, research analysts, and anyone who needs to analyze sensitive documents without creating persistent data copies'`
+- Lines 72-73 (hero paragraph): Replace `'Digital Burner Mode'` and `'leaked documents'` references with: `"Ephemeral Analysis Mode. Perform deep analysis on confidential documents or market intel without creating a digital footprint."`
 
-**C. Update Feature Display Logic**
+### 1.4 — /solutions/enterprise: Rename "Kill Switch"
 
-```typescript
-// Line 165: Use global isExpanded instead of per-plan
-{(isExpanded ? plan.allFeatures : plan.features).map((feature) => (
-```
-
-**D. Show Actual Extra Features in Button Text**
-
-Instead of "+6 more features", show the first 2-3 extra feature names:
-
-```typescript
-// Lines 173-180: Replace button content
-{plan.allFeatures.length > plan.features.length && (
-  <button
-    onClick={toggleExpand}
-    className="text-sm text-primary hover:text-primary/80 mb-3 md:mb-4 flex items-center gap-1 transition-colors touch-manipulation min-h-[44px]"
-  >
-    {isExpanded 
-      ? 'Show less' 
-      : `+ ${plan.allFeatures.slice(plan.features.length).slice(0, 2).join(', ')}${plan.allFeatures.length - plan.features.length > 2 ? '...' : ''}`
-    }
-  </button>
-)}
-```
-
-**E. Fix Badge Clipping - Remove overflow-hidden from Section**
-
-```typescript
-// Line 114: Remove overflow-hidden
-<section className="py-20 md:py-32 bg-background relative">
-```
+**File: `src/pages/solutions/Enterprise.tsx`**
+- Line 17: `'24/7 Kill Switch'` → `'24/7 Emergency Data Purge'`
+- Line 18: Update description to: `'Instant compliance response. Trigger an organization-wide data purge at any time — all vectors, indexes, and encrypted chunks are cryptographically destroyed within minutes. Full audit trail maintained for regulatory documentation.'`
+- Line 36: `'24/7 Kill Switch for instant data destruction'` → `'24/7 Emergency Data Purge with full audit trail'`
+- Line 108: `'BYOK & 24/7 Kill Switch'` → `'BYOK & 24/7 Emergency Data Purge'`
+- Line 113: `'Instant data destruction available 24/7.'` → `'Emergency data purge available 24/7 with full audit trail.'`
 
 ---
 
-## Summary
+## PART 2: SEO Meta Tag Fixes (8 Pages)
 
-| Change | Location | Description |
-|--------|----------|-------------|
-| Global expand state | Line 94 | `useState<string \| null>` → `useState(false)` |
-| Toggle function | Lines 106-111 | Simplified to toggle boolean |
-| Feature display | Line 165 | Use `isExpanded` instead of per-plan check |
-| Button text | Lines 173-180 | Show actual feature names instead of "+X more" |
-| Badge clipping | Line 114 | Remove `overflow-hidden` from section |
+### 2.1 — /features (`src/pages/Features.tsx`)
 
-This ensures:
-- Each card shows meaningful preview of extra features
-- Clicking any "expand" toggles all three plans together
-- The "Most Popular" badge is fully visible
+Update SEO component (lines 170-176):
+- title: `"Features | Scope Guard, Ghost Protocol & AI Chat — Axio Hub"`
+- description: `"Scope Dominance Guard, hybrid search, source citations, 3-provider AI failover, and zero-retention security. The most reliable enterprise RAG platform."`
+- keywords: `['scope guard', 'ghost protocol features', 'AI chat with citations', 'hybrid search', 'enterprise RAG features', 'zero-retention AI']`
+
+Note: The SEO component already handles og:title, og:description, og:url, twitter:title, and twitter:description automatically from the `title`, `description`, and `canonical` props — these are generated by react-helmet-async. However, the current SEO component does NOT support separate twitter:description. I will NOT modify the SEO component for this; the shared description is sufficient and avoids complexity.
+
+### 2.2 — /pricing (`src/pages/Pricing.tsx`)
+
+Update SEO component (lines 128-134):
+- title: `"Pricing | Starter, Pro & Enterprise Plans — Axio Hub"`
+- description: `"Simple, transparent pricing. Starter from $4.99/mo, Pro $29/mo, Enterprise custom. All plans include Ghost Protocol zero-retention security and AES-256 encryption."`
+- keywords: `['axio hub pricing', 'AI knowledge base cost', 'enterprise RAG pricing', 'ghost protocol plans']`
+
+### 2.3 — /about (`src/pages/About.tsx`)
+
+Update SEO component (lines 41-46):
+- title: `"About Us | The Team Behind Axio Hub"`
+- description: `"We believe AI should amplify intelligence without creating data liability. Meet the team building the zero-retention AI knowledge platform."`
+- keywords: `['axio hub team', 'fittechs', 'AI startup Istanbul', 'zero-retention AI company']`
+
+### 2.4 — /contact (`src/pages/Contact.tsx`)
+
+Update SEO component (lines 81-88):
+- title: `"Contact Us — Axio Hub"`
+- description: `"Get in touch with the Axio Hub team. Enterprise demos, partnership inquiries, and support. We respond within 24 hours."`
+- keywords: `['contact axio hub', 'enterprise demo', 'AI knowledge base support']`
+
+### 2.5 — /privacy (`src/pages/Privacy.tsx`)
+
+Update SEO component (lines 24-30):
+- title: `"Privacy Policy | Zero-Copy Architecture — Axio Hub"`
+- description: `"How Axio Hub protects your data with Zero-Copy Architecture. GDPR, KVKK, and CCPA compliant. Original files are never stored — only encrypted vectors."`
+- keywords: `['axio hub privacy policy', 'zero-copy architecture', 'GDPR KVKK CCPA compliance']`
+
+### 2.6 — /solutions/individuals (`src/pages/solutions/Individuals.tsx`)
+
+Update SEO component (lines 42-47):
+- title: `"For Individuals | Ephemeral Document Analysis — Axio Hub"`
+- description: `"Analyze sensitive documents without creating persistent copies. Ephemeral processing, single-session memory, and Ghost Protocol security for independent professionals."`
+- keywords: `['individual AI knowledge base', 'personal document analysis', 'ephemeral AI processing']`
+
+### 2.7 — /solutions/enterprise (`src/pages/solutions/Enterprise.tsx`)
+
+Update SEO component (lines 44-49):
+- title: `"For Enterprise | Zero-Retention AI with BYOK & VPC — Axio Hub"`
+- description: `"Deploy enterprise AI without data liability. Bring Your Own Key encryption, VPC deployment options, emergency data purge, and 99.9% uptime SLA."`
+- keywords: `['enterprise AI knowledge base', 'BYOK encryption', 'VPC AI deployment', 'zero-retention enterprise']`
+
+---
+
+## Summary of Files Changed
+
+| File | Changes |
+|------|---------|
+| `src/pages/Security.tsx` | SOC 2 → Architecture Ready, HIPAA → HIPAA-Ready |
+| `src/components/landing/HeroSection.tsx` | Trust bar SOC 2 & HIPAA labels |
+| `src/components/SEO.tsx` | Default keywords HIPAA fix |
+| `src/pages/solutions/Teams.tsx` | Remove subpoena language, rewrite Privilege by Design |
+| `src/pages/solutions/Individuals.tsx` | Rename Burner → Ephemeral, remove whistleblower, update SEO |
+| `src/pages/solutions/Enterprise.tsx` | Kill Switch → Emergency Data Purge, update SEO |
+| `src/pages/Features.tsx` | Update SEO meta tags & keywords |
+| `src/pages/Pricing.tsx` | Update SEO meta tags & keywords |
+| `src/pages/About.tsx` | Update SEO meta tags & keywords |
+| `src/pages/Contact.tsx` | Update SEO meta tags & keywords |
+| `src/pages/Privacy.tsx` | Update SEO meta tags & keywords |
+
+Total: **11 files**, covering all content fixes and SEO improvements in a single update.
 
