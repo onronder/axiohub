@@ -126,10 +126,10 @@ const Pricing = () => {
   return (
     <>
       <SEO 
-        title="Pricing"
-        description="Simple pricing for AI knowledge base software. Starter at $4.99/mo, Pro at $29/mo. Chat with documents securely. All plans include Ghost Protocol."
+        title="Pricing | Starter, Pro & Enterprise Plans"
+        description="Simple, transparent pricing. Starter from $4.99/mo, Pro $29/mo, Enterprise custom. All plans include Ghost Protocol zero-retention security and AES-256 encryption."
         canonical="/pricing"
-        keywords={['AI knowledge base', 'ChatGPT for company documents', 'enterprise RAG platform', 'document AI pricing']}
+        keywords={['axio hub pricing', 'AI knowledge base cost', 'enterprise RAG pricing', 'ghost protocol plans']}
         ogImage="/og-pricing.png"
       />
       <main className="bg-background min-h-screen">

@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const individualFeatures = [
   {
     icon: Ghost,
-    title: 'Digital Burner Mode',
+    title: 'Ephemeral Analysis Mode',
     description: 'Analyze sensitive documents without creating a digital footprint.',
   },
   {
@@ -19,7 +19,7 @@ const individualFeatures = [
   {
     icon: Shield,
     title: 'Zero-Trace Operations',
-    description: 'Perfect for market intel, leaked documents, and sensitive research.',
+    description: 'Perfect for confidential research, competitive analysis, and sensitive document review.',
   },
   {
     icon: Zap,
@@ -31,7 +31,7 @@ const individualFeatures = [
 const individualBenefits = [
   'Process sensitive documents without creating audit trails',
   'RAM-only processing—data never touches permanent storage',
-  'Perfect for whistleblowers, journalists, and independent traders',
+  'Built for independent consultants, legal professionals, research analysts, and anyone who needs to analyze sensitive documents without creating persistent data copies',
   'Works with any document format—PDFs, spreadsheets, and more',
   'Free tier available—no credit card required',
 ];
@@ -40,10 +40,10 @@ const SolutionsIndividuals = () => {
   return (
     <>
       <SEO 
-        title="For Individuals"
-        description="Your personal safe. Analyze sensitive files in a private, encrypted session. When you leave, the data vanishes. Zero-retention AI."
+        title="For Individuals | Ephemeral Document Analysis"
+        description="Analyze sensitive documents without creating persistent copies. Ephemeral processing, single-session memory, and Ghost Protocol security for independent professionals."
         canonical="/solutions/individuals"
-        keywords={['zero-retention AI', 'personal secure AI', 'private document analysis', 'ephemeral AI assistant']}
+        keywords={['individual AI knowledge base', 'personal document analysis', 'ephemeral AI processing']}
       />
       <main id="main-content" className="bg-background">
         <Header />
@@ -69,7 +69,7 @@ const SolutionsIndividuals = () => {
               </h1>
               
               <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-                <strong className="text-foreground">Digital Burner Mode.</strong> Perform deep analysis on leaked documents 
+                <strong className="text-foreground">Ephemeral Analysis Mode.</strong> Perform deep analysis on confidential documents 
                 or market intel without creating a digital footprint.
               </p>
               

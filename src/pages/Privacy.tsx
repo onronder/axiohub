@@ -22,10 +22,10 @@ const Privacy = () => {
   return (
     <>
       <SEO 
-        title="Privacy Policy"
-        description="Learn how Axio Hub protects your data with Zero-Copy Architecture. We process your files without storing originals, ensuring maximum privacy."
+        title="Privacy Policy | Zero-Copy Architecture"
+        description="How Axio Hub protects your data with Zero-Copy Architecture. GDPR, KVKK, and CCPA compliant. Original files are never stored — only encrypted vectors."
         canonical="/privacy"
-        keywords={['AI knowledge base', 'data privacy', 'zero-retention security', 'GDPR compliant']}
+        keywords={['axio hub privacy policy', 'zero-copy architecture', 'GDPR KVKK CCPA compliance']}
         structuredData={breadcrumbData}
       />
       <LegalPageLayout

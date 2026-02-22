@@ -13,7 +13,7 @@ interface SEOProps {
 
 const SITE_NAME = 'Axio Hub';
 const DEFAULT_DESCRIPTION = 'Zero-Retention Enterprise AI Agent. Analyze sensitive documents in ephemeral memory and destroy the source. Eliminate data liability.';
-const DEFAULT_KEYWORDS = ['Enterprise RAG', 'Zero-Retention AI', 'Secure AI', 'Privacy-Preserving LLM', 'Ghost Protocol', 'Ephemeral AI', 'HIPAA AI', 'SOC2 AI Agent'];
+const DEFAULT_KEYWORDS = ['Enterprise RAG', 'Zero-Retention AI', 'Secure AI', 'Privacy-Preserving LLM', 'Ghost Protocol', 'Ephemeral AI', 'HIPAA-Ready AI', 'SOC2 AI Agent'];
 const DEFAULT_OG_IMAGE = '/og-image.png';
 const BASE_URL = 'https://axiohub.io';
 

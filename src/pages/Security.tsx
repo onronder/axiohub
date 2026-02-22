@@ -62,7 +62,7 @@ const ghostProtocolCategories = [
       { icon: KeyRound, text: 'AES-256 encryption at rest' },
       { icon: Lock, text: 'TLS 1.3 in transit' },
       { icon: KeyRound, text: 'BYOK support for enterprise' },
-      { icon: ShieldIcon, text: 'SOC 2 Type II ready' },
+      { icon: ShieldIcon, text: 'SOC 2 Type II — Architecture Ready (certification roadmap 2026)' },
     ],
   },
   {
@@ -104,8 +104,8 @@ const whatWeDoNotStore = [
 
 const complianceBadges = [
   'GDPR Compliant',
-  'HIPAA Considerations',
-  'SOC 2 Type II Ready',
+  'HIPAA-Ready Architecture',
+  'SOC 2 Ready (certification roadmap 2026)',
   'DoD 5220.22-M Wiping',
   'Zero Data Retention',
 ];

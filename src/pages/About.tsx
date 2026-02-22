@@ -38,10 +38,10 @@ const About = () => {
   return (
     <>
       <SEO 
-        title="About"
-        description="Axio Hub: The zero-retention enterprise AI agent that amplifies human intelligence without compromising privacy. Process data, extract intelligence, destroy the source."
+        title="About Us | The Team Behind Axio Hub"
+        description="We believe AI should amplify intelligence without creating data liability. Meet the team building the zero-retention AI knowledge platform."
         canonical="/about"
-        keywords={['Zero-Retention AI', 'Enterprise RAG', 'Ephemeral AI', 'Privacy-First AI']}
+        keywords={['axio hub team', 'fittechs', 'AI startup Istanbul', 'zero-retention AI company']}
         ogImage="/og-about.png"
       />
       <main className="bg-background min-h-screen">
