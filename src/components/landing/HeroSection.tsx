@@ -82,9 +82,9 @@ export const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="flex flex-wrap justify-center items-center gap-2 md:gap-4 mb-8 md:mb-10 text-xs md:text-sm text-muted-foreground/80"
           >
-            <span>Architected for SOC 2 Type II</span>
+            <span>SOC 2 Type II — Architecture Ready</span>
             <span className="hidden sm:inline">•</span>
-            <span>HIPAA Compliant</span>
+            <span>HIPAA-Ready Architecture</span>
             <span className="hidden sm:inline">•</span>
             <span>DoD 5220.22-M Wiping</span>
           </motion.div>

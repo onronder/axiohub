@@ -14,7 +14,7 @@ const teamFeatures = [
   {
     icon: Scale,
     title: 'Privilege by Design',
-    description: 'We cannot be subpoenaed for data we do not have.',
+    description: 'Minimal Discovery Surface — zero-retention architecture reduces data subject to potential discovery or regulatory requests.',
   },
   {
     icon: Lock,
@@ -30,7 +30,7 @@ const teamFeatures = [
 
 const teamBenefits = [
   'Perfect for M&A deal teams and litigation units',
-  'Eliminate discovery risk—we hold no discoverable data',
+  'Minimal discovery surface — significantly reduced data subject to potential discovery',
   'Collaborate on sensitive matters without creating permanent records',
   'Session-based workspaces that vanish after use',
   'Enterprise-grade encryption with zero-retention guarantee',
@@ -108,9 +108,7 @@ const SolutionsTeams = () => {
                   Privilege by Design
                 </h2>
                 <p className="text-xl text-muted-foreground">
-                  <strong className="text-foreground">We cannot be subpoenaed for data we do not have.</strong>
-                  <br />
-                  Your privileged communications remain absolutely protected.
+                  Data that doesn't exist can't be requested. AxioHub's zero-retention architecture means processed documents are cryptographically destroyed — leaving only encrypted intelligence vectors with no recoverable source material.
                 </p>
               </div>
             </motion.div>

@@ -168,10 +168,10 @@ const Features = () => {
   return (
     <>
       <SEO 
-        title="Ingestion Pipeline"
-        description="Stream data, extract intelligence, destroy the source. Enterprise RAG built for privacy. Read-Once, Wipe-After operations for maximum security."
+        title="Features | Scope Guard, Ghost Protocol & AI Chat"
+        description="Scope Dominance Guard, hybrid search, source citations, 3-provider AI failover, and zero-retention security. The most reliable enterprise RAG platform."
         canonical="/features"
-        keywords={['Enterprise RAG', 'Zero-Retention AI', 'Ephemeral AI', 'secure document processing']}
+        keywords={['scope guard', 'ghost protocol features', 'AI chat with citations', 'hybrid search', 'enterprise RAG features', 'zero-retention AI']}
         ogImage="/og-features.png"
       />
       <main className="bg-background min-h-screen">

@@ -14,8 +14,8 @@ const enterpriseFeatures = [
   },
   {
     icon: Power,
-    title: '24/7 Kill Switch',
-    description: 'Instant data destruction on demand.',
+    title: '24/7 Emergency Data Purge',
+    description: 'Instant compliance response. Trigger an organization-wide data purge at any time — all vectors, indexes, and encrypted chunks are cryptographically destroyed within minutes. Full audit trail maintained for regulatory documentation.',
   },
   {
     icon: Server,
@@ -33,7 +33,7 @@ const enterpriseBenefits = [
   'Eliminate the "Data at Rest" attack vector entirely',
   'Run inside your VPC or use our Zero-Retention Cloud',
   'BYOK ensures only you control encryption keys',
-  '24/7 Kill Switch for instant data destruction',
+  '24/7 Emergency Data Purge with full audit trail',
   '99.9% uptime SLA with dedicated support',
   'Custom training and onboarding for your team',
 ];
@@ -42,10 +42,10 @@ const SolutionsEnterprise = () => {
   return (
     <>
       <SEO 
-        title="For Enterprise"
-        description="Zero liability. We process your data but never store it. Eliminate data breach risks mathematically. Enterprise-grade zero-retention AI."
+        title="For Enterprise | Zero-Retention AI with BYOK & VPC"
+        description="Deploy enterprise AI without data liability. Bring Your Own Key encryption, VPC deployment options, emergency data purge, and 99.9% uptime SLA."
         canonical="/solutions/enterprise"
-        keywords={['enterprise zero-retention AI', 'zero liability AI', 'enterprise secure AI', 'data breach prevention']}
+        keywords={['enterprise AI knowledge base', 'BYOK encryption', 'VPC AI deployment', 'zero-retention enterprise']}
       />
       <main id="main-content" className="bg-background">
         <Header />
@@ -105,12 +105,12 @@ const SolutionsEnterprise = () => {
               <div className="glass-card p-8 md:p-12 border-primary/30">
                 <Key className="w-12 h-12 text-primary mx-auto mb-6" />
                 <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-                  BYOK & 24/7 Kill Switch
+                  BYOK & 24/7 Emergency Data Purge
                 </h2>
                 <p className="text-xl text-muted-foreground">
                   <strong className="text-foreground">Your keys. Your control. Your peace of mind.</strong>
                   <br />
-                  Instant data destruction available 24/7.
+                  Emergency data purge available 24/7 with full audit trail.
                 </p>
               </div>
             </motion.div>
