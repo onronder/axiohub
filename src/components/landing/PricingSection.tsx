@@ -1,66 +1,66 @@
-import { motion } from 'framer-motion';
-import { Check, Sparkles } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { motion } from "framer-motion";
+import { Check, Sparkles } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const plans = [
   {
-    name: 'Starter',
-    price: '$4.99',
-    period: '/month',
-    description: 'Perfect for individuals and small projects',
+    name: "Starter",
+    price: "$9.99",
+    period: "/month",
+    description: "Perfect for individuals and small projects",
     features: [
-      '50 files, 100 MB storage',
-      '5 connected data sources',
-      '1 million AI tokens/month',
-      'All connectors (except S3)',
-      'Ghost Protocol security',
-      'Hybrid AI search',
-      'Source citations',
-      'Community support',
+      "50 files, 100 MB storage",
+      "5 connected data sources",
+      "1 million AI tokens/month",
+      "All connectors (except S3)",
+      "Ghost Protocol security",
+      "Hybrid AI search",
+      "Source citations",
+      "Community support",
     ],
-    cta: 'Get Started',
+    cta: "Get Started",
     popular: false,
-    ctaUrl: 'https://app.axiohub.io/register?plan=starter',
+    ctaUrl: "https://app.axiohub.io/register?plan=starter",
     isExternal: true,
   },
   {
-    name: 'Pro',
-    price: '$29',
-    period: '/month',
-    description: 'For professionals and growing teams',
+    name: "Pro",
+    price: "$29",
+    period: "/month",
+    description: "For professionals and growing teams",
     features: [
-      '2,000 files, 10 GB storage',
-      '100 connected data sources',
-      '10 million AI tokens/month',
-      'Smart AI model (GPT-4o)',
-      'Team collaboration (5 members)',
-      'Priority support',
-      'Everything in Starter',
+      "2,000 files, 10 GB storage",
+      "100 connected data sources",
+      "10 million AI tokens/month",
+      "Smart AI model (GPT-4o)",
+      "Team collaboration (5 members)",
+      "Priority support",
+      "Everything in Starter",
     ],
-    cta: 'Start Free Trial',
+    cta: "Start Free Trial",
     popular: true,
-    ctaUrl: 'https://app.axiohub.io/register?plan=pro',
+    ctaUrl: "https://app.axiohub.io/register?plan=pro",
     isExternal: true,
   },
   {
-    name: 'Enterprise',
-    price: 'Custom',
-    period: '',
-    description: 'For organizations at scale',
+    name: "Enterprise",
+    price: "Custom",
+    period: "",
+    description: "For organizations at scale",
     features: [
-      '100,000 files, 1 TB storage',
-      '1,000 data sources',
-      '100 million AI tokens/month',
-      '100 team members',
-      'Amazon S3 connector',
-      'DoD 5220.22-M secure wipe',
-      'Dedicated support',
-      'SLA guarantee',
-      'Custom retention policies',
+      "100,000 files, 1 TB storage",
+      "1,000 data sources",
+      "100 million AI tokens/month",
+      "100 team members",
+      "Amazon S3 connector",
+      "DoD 5220.22-M secure wipe",
+      "Dedicated support",
+      "SLA guarantee",
+      "Custom retention policies",
     ],
-    cta: 'Contact Sales',
+    cta: "Contact Sales",
     popular: false,
-    ctaUrl: '/contact',
+    ctaUrl: "/contact",
     isExternal: false,
   },
 ];
@@ -68,7 +68,7 @@ const plans = [
 export const PricingSection = () => {
   const navigate = useNavigate();
 
-  const handleCtaClick = (plan: typeof plans[0]) => {
+  const handleCtaClick = (plan: (typeof plans)[0]) => {
     if (plan.isExternal) {
       window.location.href = plan.ctaUrl;
     } else {
@@ -80,10 +80,14 @@ export const PricingSection = () => {
     <section className="py-32 bg-background relative overflow-hidden">
       {/* Grid background */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
-          backgroundSize: '50px 50px'
-        }} />
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
+            backgroundSize: "50px 50px",
+          }}
+        />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -110,7 +114,7 @@ export const PricingSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className={`relative ${plan.popular ? 'md:-mt-4 md:mb-4' : ''}`}
+              className={`relative ${plan.popular ? "md:-mt-4 md:mb-4" : ""}`}
             >
               {/* Popular badge */}
               {plan.popular && (
@@ -122,11 +126,7 @@ export const PricingSection = () => {
                 </div>
               )}
 
-              <div
-                className={`h-full glass-card p-8 ${
-                  plan.popular ? 'cyberpunk-border' : ''
-                }`}
-              >
+              <div className={`h-full glass-card p-8 ${plan.popular ? "cyberpunk-border" : ""}`}>
                 <h3 className="text-xl font-bold text-foreground mb-1">{plan.name}</h3>
                 <p className="text-sm text-muted-foreground mb-6">{plan.description}</p>
 
@@ -148,10 +148,10 @@ export const PricingSection = () => {
                   onClick={() => handleCtaClick(plan)}
                   className={`w-full py-3 rounded-xl font-semibold transition-all ${
                     plan.popular
-                      ? 'holographic-glow text-white'
-                      : 'border border-white/20 text-foreground hover:bg-white/5'
+                      ? "holographic-glow text-white"
+                      : "border border-white/20 text-foreground hover:bg-white/5"
                   }`}
-                  aria-label={`${plan.cta} - ${plan.name} plan${plan.price !== 'Custom' ? ` at ${plan.price}${plan.period}` : ''}`}
+                  aria-label={`${plan.cta} - ${plan.name} plan${plan.price !== "Custom" ? ` at ${plan.price}${plan.period}` : ""}`}
                 >
                   {plan.cta}
                 </button>
@@ -167,7 +167,8 @@ export const PricingSection = () => {
           viewport={{ once: true }}
           className="text-center text-sm text-muted-foreground mt-8 max-w-2xl mx-auto"
         >
-          All plans include Ghost Protocol zero-retention security, AES-256 encryption, malware scanning, multi-provider AI failover, and source citations.
+          All plans include Ghost Protocol zero-retention security, AES-256 encryption, malware scanning, multi-provider
+          AI failover, and source citations.
         </motion.p>
       </div>
     </section>
