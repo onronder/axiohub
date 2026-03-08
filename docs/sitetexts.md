@@ -31,8 +31,8 @@
 **H2/Subheadline:** "The world's first **Zero-Retention Employee Agent**. We analyze sensitive M&A, Legal, and R&D documents in ephemeral memory, deliver the insight, and then **cryptographically destroy** the source."
 
 **Trust Bar:** 
-- Architected for SOC 2 Type II
-- HIPAA Compliant
+- SOC 2 Type II — Architecture Ready
+- HIPAA-Ready Architecture
 - DoD 5220.22-M Wiping
 
 **Primary CTA:** "Deploy Your Ghost Agent"
