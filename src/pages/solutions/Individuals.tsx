@@ -4,6 +4,7 @@ import { Footer } from '@/components/landing/Footer';
 import { motion } from 'framer-motion';
 import { User, ArrowRight, Check, Ghost, Timer, Shield, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { getBreadcrumbSchema, getSolutionPageSchema } from '@/lib/structured-data';
 
 const individualFeatures = [
   {
@@ -44,6 +45,18 @@ const SolutionsIndividuals = () => {
         description="Analyze sensitive documents without creating persistent copies. Ephemeral processing, single-session memory, and Ghost Protocol security for independent professionals."
         canonical="/solutions/individuals"
         keywords={['individual AI knowledge base', 'personal document analysis', 'ephemeral AI processing']}
+        structuredData={[
+          getBreadcrumbSchema([
+            { name: 'Home', url: 'https://axiohub.io' },
+            { name: 'Solutions', url: 'https://axiohub.io/solutions' },
+            { name: 'Individuals', url: 'https://axiohub.io/solutions/individuals' },
+          ]),
+          getSolutionPageSchema(
+            'Axio Hub for Individuals — Ephemeral Document Analysis',
+            'Analyze sensitive documents without creating persistent copies. Ephemeral processing, single-session memory, and Ghost Protocol security for independent professionals.',
+            'https://axiohub.io/solutions/individuals'
+          ),
+        ]}
       />
       <main id="main-content" className="bg-background">
         <Header />

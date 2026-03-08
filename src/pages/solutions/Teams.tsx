@@ -4,6 +4,7 @@ import { Footer } from '@/components/landing/Footer';
 import { motion } from 'framer-motion';
 import { Users, ArrowRight, Check, Scale, Lock, Trash2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { getBreadcrumbSchema, getSolutionPageSchema } from '@/lib/structured-data';
 
 const teamFeatures = [
   {
@@ -44,6 +45,18 @@ const SolutionsTeams = () => {
         description="The digital clean room. A secure space for high-stakes projects. Upload, discuss, and decide. Then, the room self-destructs."
         canonical="/solutions/teams"
         keywords={['secure team collaboration', 'ephemeral workspace', 'private team AI', 'zero-retention team platform']}
+        structuredData={[
+          getBreadcrumbSchema([
+            { name: 'Home', url: 'https://axiohub.io' },
+            { name: 'Solutions', url: 'https://axiohub.io/solutions' },
+            { name: 'Teams', url: 'https://axiohub.io/solutions/teams' },
+          ]),
+          getSolutionPageSchema(
+            'Axio Hub for Teams — Ephemeral Collaboration',
+            'The digital clean room. A secure space for high-stakes projects. Upload, discuss, and decide. Then, the room self-destructs.',
+            'https://axiohub.io/solutions/teams'
+          ),
+        ]}
       />
       <main id="main-content" className="bg-background">
         <Header />

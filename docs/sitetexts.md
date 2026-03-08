@@ -1,7 +1,7 @@
 # Axio Hub - Complete Site Content Documentation
 
 > **Positioning:** Zero-Retention Enterprise AI Agent
-> **Last Updated:** February 2026
+> **Last Updated:** March 2026
 
 ---
 
@@ -31,8 +31,8 @@
 **H2/Subheadline:** "The world's first **Zero-Retention Employee Agent**. We analyze sensitive M&A, Legal, and R&D documents in ephemeral memory, deliver the insight, and then **cryptographically destroy** the source."
 
 **Trust Bar:** 
-- Architected for SOC 2 Type II
-- HIPAA Compliant
+- SOC 2 Type II — Architecture Ready
+- HIPAA-Ready Architecture
 - DoD 5220.22-M Wiping
 
 **Primary CTA:** "Deploy Your Ghost Agent"
@@ -45,7 +45,7 @@
 
 | Card | Title | Description | Detailed Description |
 |------|-------|-------------|---------------------|
-| 1 | Solo Analysts | Off-the-record analysis | Digital burner mode for sensitive work |
+| 1 | Solo Analysts | Off-the-record analysis | Ephemeral analysis mode for sensitive work |
 | 2 | Secure War Rooms | Ephemeral collaboration | Deal rooms that disappear after closing |
 | 3 | Sovereign Infrastructure | Zero-liability enterprise | BYOK and VPC deployment options |
 
@@ -83,24 +83,24 @@
 
 **H1:** "Your Second Brain. **Off the Record.**"
 
-**Subheadline:** "**Digital Burner Mode.** Perform deep analysis on leaked documents or market intel without creating a digital footprint."
+**Subheadline:** "**Ephemeral Analysis Mode.** Perform deep analysis on confidential documents or market intel without creating a digital footprint."
 
 **Key Feature:** "Single-Session Memory: Close the tab, wipe the universe."
 
-**Target Audience:** Whistleblowers, Journalists, Traders
+**Target Audience:** Independent consultants, legal professionals, research analysts
 
 **Features:**
 | Icon | Title | Description |
 |------|-------|-------------|
-| Ghost | Digital Burner Mode | Analyze sensitive documents without creating a digital footprint. |
+| Ghost | Ephemeral Analysis Mode | Analyze sensitive documents without creating a digital footprint. |
 | Timer | Single-Session Memory | Close the tab, wipe the universe. Nothing persists. |
-| Shield | Zero-Trace Operations | Perfect for market intel, leaked documents, and sensitive research. |
+| Shield | Zero-Trace Operations | Perfect for confidential research, competitive analysis, and sensitive document review. |
 | Zap | Instant Analysis | Ingest, analyze, and destroy in one ephemeral session. |
 
 **Benefits:**
 - Process sensitive documents without creating audit trails
 - RAM-only processing—data never touches permanent storage
-- Perfect for whistleblowers, journalists, and independent traders
+- Built for independent consultants, legal professionals, research analysts, and anyone who needs to analyze sensitive documents without creating persistent data copies
 - Works with any document format—PDFs, spreadsheets, and more
 - Free tier available—no credit card required
 
@@ -114,7 +114,7 @@
 
 **Subheadline:** "A shared intelligence workspace that exists only while you need it. Perfect for **deal rooms** and **internal investigations**."
 
-**Key Feature:** "Privilege by Design: We cannot be subpoenaed for data we do not have."
+**Key Feature:** "Privilege by Design: Minimal Discovery Surface — zero-retention architecture reduces data subject to potential discovery or regulatory requests."
 
 **Target Audience:** M&A Deal Teams, Litigation Units
 
@@ -122,13 +122,13 @@
 | Icon | Title | Description |
 |------|-------|-------------|
 | Users | Ephemeral Deal Rooms | Shared intelligence that exists only while you need it. |
-| Scale | Privilege by Design | We cannot be subpoenaed for data we do not have. |
+| Scale | Privilege by Design | Minimal Discovery Surface — zero-retention architecture reduces data subject to potential discovery or regulatory requests. |
 | Lock | Session-Based Access | Collaborate on sensitive M&A or litigation matters securely. |
 | Trash2 | Automatic Cleanup | When the deal closes, the data room disappears. |
 
 **Benefits:**
 - Perfect for M&A deal teams and litigation units
-- Eliminate discovery risk—we hold no discoverable data
+- Minimal discovery surface — significantly reduced data subject to potential discovery
 - Collaborate on sensitive matters without creating permanent records
 - Session-based workspaces that vanish after use
 - Enterprise-grade encryption with zero-retention guarantee
@@ -143,7 +143,7 @@
 
 **Subheadline:** "Eliminate the **'Data at Rest'** attack vector entirely. Run Axio Hub inside your VPC or use our **Zero-Retention Cloud**."
 
-**Key Features:** "BYOK (Bring Your Own Key) & 24/7 Kill Switch."
+**Key Features:** "BYOK (Bring Your Own Key) & 24/7 Emergency Data Purge."
 
 **Target Audience:** Banks, Defense, Healthcare
 
@@ -151,7 +151,7 @@
 | Icon | Title | Description |
 |------|-------|-------------|
 | Key | BYOK (Bring Your Own Key) | Your encryption keys never leave your control. |
-| Power | 24/7 Kill Switch | Instant data destruction on demand. |
+| Power | 24/7 Emergency Data Purge | Instant compliance response. Trigger an organization-wide data purge at any time — all vectors, indexes, and encrypted chunks are cryptographically destroyed within minutes. Full audit trail maintained for regulatory documentation. |
 | Server | VPC Deployment | Run Axio Hub inside your own infrastructure. |
 | Shield | Zero-Retention Cloud | Or use our cloud with guaranteed data ephemerality. |
 
@@ -159,7 +159,7 @@
 - Eliminate the "Data at Rest" attack vector entirely
 - Run inside your VPC or use our Zero-Retention Cloud
 - BYOK ensures only you control encryption keys
-- 24/7 Kill Switch for instant data destruction
+- 24/7 Emergency Data Purge with full audit trail
 - 99.9% uptime SLA with dedicated support
 - Custom training and onboarding for your team
 
@@ -251,8 +251,8 @@
 
 ### Compliance Badges
 - GDPR Compliant
-- HIPAA Considerations
-- SOC 2 Type II Ready
+- HIPAA-Ready Architecture
+- SOC 2 Type II — Architecture Ready
 - DoD 5220.22-M Wiping
 - Zero Data Retention
 
@@ -285,9 +285,9 @@
 | Security | Security Manifesto \| Axio Hub | We don't want your data. We built a system that rejects it. Zero-retention architecture. |
 | Features | Ingestion Pipeline \| Axio Hub | Stream data, extract intelligence, destroy the source. Enterprise RAG built for privacy. |
 | Integrations | Secure Connectors \| Axio Hub | Connect your data. Keep your secrets. Read-once, wipe-after integrations. |
-| Individuals | Solo Analysts \| Axio Hub | Your second brain, off the record. Digital burner mode for sensitive analysis. |
-| Teams | Secure War Rooms \| Axio Hub | Collaborate in a digital clean room. Ephemeral deal rooms for M&A and litigation. |
-| Enterprise | Sovereign Infrastructure \| Axio Hub | Intelligence without liability. BYOK and zero-retention cloud for banks, defense, healthcare. |
+| Individuals | For Individuals \| Ephemeral Document Analysis \| Axio Hub | Analyze sensitive documents without creating persistent copies. Ephemeral processing, single-session memory, and Ghost Protocol security for independent professionals. |
+| Teams | For Teams \| Axio Hub | The digital clean room. A secure space for high-stakes projects. Upload, discuss, and decide. Then, the room self-destructs. |
+| Enterprise | For Enterprise \| Zero-Retention AI with BYOK & VPC \| Axio Hub | Deploy enterprise AI without data liability. Bring Your Own Key encryption, VPC deployment options, emergency data purge, and 99.9% uptime SLA. |
 
 ### Default Keywords
 - Enterprise RAG
@@ -296,7 +296,7 @@
 - Privacy-Preserving LLM
 - Ghost Protocol
 - Ephemeral AI
-- HIPAA AI
+- HIPAA-Ready AI
 - SOC2 AI Agent
 
 ---
@@ -309,7 +309,7 @@
 |------|-------|--------|--------------|
 | Free | $0/mo | Solo Analysts | 3 data sources, 100 queries/mo, Ghost Protocol |
 | Pro | $29/mo | Secure War Rooms | Unlimited sources, 1000 queries/mo, Team collaboration |
-| Enterprise | Custom | Sovereign Infrastructure | BYOK, VPC deployment, 24/7 Kill Switch |
+| Enterprise | Custom | Sovereign Infrastructure | BYOK, VPC deployment, 24/7 Emergency Data Purge |
 
 ---
 

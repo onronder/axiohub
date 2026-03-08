@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Building2, ArrowRight, Check, Key, Power, Server, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { DataConnectorsSection } from '@/components/landing/DataConnectorsSection';
+import { getBreadcrumbSchema, getSolutionPageSchema } from '@/lib/structured-data';
 
 const enterpriseFeatures = [
   {
@@ -46,6 +47,18 @@ const SolutionsEnterprise = () => {
         description="Deploy enterprise AI without data liability. Bring Your Own Key encryption, VPC deployment options, emergency data purge, and 99.9% uptime SLA."
         canonical="/solutions/enterprise"
         keywords={['enterprise AI knowledge base', 'BYOK encryption', 'VPC AI deployment', 'zero-retention enterprise']}
+        structuredData={[
+          getBreadcrumbSchema([
+            { name: 'Home', url: 'https://axiohub.io' },
+            { name: 'Solutions', url: 'https://axiohub.io/solutions' },
+            { name: 'Enterprise', url: 'https://axiohub.io/solutions/enterprise' },
+          ]),
+          getSolutionPageSchema(
+            'Axio Hub for Enterprise — Zero-Retention AI with BYOK & VPC',
+            'Deploy enterprise AI without data liability. Bring Your Own Key encryption, VPC deployment options, emergency data purge, and 99.9% uptime SLA.',
+            'https://axiohub.io/solutions/enterprise'
+          ),
+        ]}
       />
       <main id="main-content" className="bg-background">
         <Header />

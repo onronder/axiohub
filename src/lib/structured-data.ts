@@ -133,6 +133,16 @@ export const getProductSchema = () => ({
   }
 });
 
+export const getSolutionPageSchema = (name: string, description: string, url: string) => ({
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": name,
+  "description": description,
+  "url": url,
+  "provider": { "@id": `${BASE_URL}/#organization` },
+  "isPartOf": { "@id": `${BASE_URL}/#website` }
+});
+
 export const getServiceSchema = () => ({
   "@context": "https://schema.org",
   "@type": "Service",
