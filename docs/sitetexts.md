@@ -151,7 +151,7 @@
 | Icon | Title | Description |
 |------|-------|-------------|
 | Key | BYOK (Bring Your Own Key) | Your encryption keys never leave your control. |
-| Power | 24/7 Kill Switch | Instant data destruction on demand. |
+| Power | 24/7 Emergency Data Purge | Instant compliance response. Trigger an organization-wide data purge at any time — all vectors, indexes, and encrypted chunks are cryptographically destroyed within minutes. Full audit trail maintained for regulatory documentation. |
 | Server | VPC Deployment | Run Axio Hub inside your own infrastructure. |
 | Shield | Zero-Retention Cloud | Or use our cloud with guaranteed data ephemerality. |
 
