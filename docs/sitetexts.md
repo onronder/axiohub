@@ -309,7 +309,7 @@
 |------|-------|--------|--------------|
 | Free | $0/mo | Solo Analysts | 3 data sources, 100 queries/mo, Ghost Protocol |
 | Pro | $29/mo | Secure War Rooms | Unlimited sources, 1000 queries/mo, Team collaboration |
-| Enterprise | Custom | Sovereign Infrastructure | BYOK, VPC deployment, 24/7 Kill Switch |
+| Enterprise | Custom | Sovereign Infrastructure | BYOK, VPC deployment, 24/7 Emergency Data Purge |
 
 ---
 
