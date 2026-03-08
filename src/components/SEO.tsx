@@ -28,8 +28,23 @@ export const SEO = ({
   keywords = DEFAULT_KEYWORDS,
 }: SEOProps) => {
   const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} | AI Knowledge Base - Chat with Documents`;
-  const fullCanonical = canonical ? `${BASE_URL}${canonical}` : undefined;
   const fullOgImage = ogImage.startsWith('http') ? ogImage : `${BASE_URL}${ogImage}`;
+
+  // Always emit a canonical URL — strip trailing slashes for normalization
+  const getCanonicalUrl = () => {
+    if (canonical) {
+      const normalized = canonical.replace(/\/+$/, '') || '/';
+      return `${BASE_URL}${normalized}`;
+    }
+    // Fallback: use current pathname (works for pages without explicit canonical prop)
+    if (typeof window !== 'undefined') {
+      const path = window.location.pathname.replace(/\/+$/, '') || '/';
+      return `${BASE_URL}${path}`;
+    }
+    return undefined;
+  };
+
+  const fullCanonical = getCanonicalUrl();
 
   const jsonLdData = structuredData
     ? Array.isArray(structuredData)

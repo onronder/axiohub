@@ -22,9 +22,15 @@ const footerLinks = {
     { label: 'Help Center', href: 'https://help.axiohub.io', external: true },
     { label: 'Status', href: 'https://status.axiohub.io', external: true },
   ],
+  solutions: [
+    { label: 'For Individuals', href: '/solutions/individuals' },
+    { label: 'For Teams', href: '/solutions/teams' },
+    { label: 'For Enterprise', href: '/solutions/enterprise' },
+  ],
   company: [
     { label: 'About', href: '/about' },
     { label: 'Contact', href: '/contact' },
+    { label: 'FAQ', href: '/faq' },
   ],
   legal: [
     { label: 'Privacy Policy', href: '/privacy' },
