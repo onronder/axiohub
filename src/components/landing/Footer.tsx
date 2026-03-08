@@ -22,9 +22,15 @@ const footerLinks = {
     { label: 'Help Center', href: 'https://help.axiohub.io', external: true },
     { label: 'Status', href: 'https://status.axiohub.io', external: true },
   ],
+  solutions: [
+    { label: 'For Individuals', href: '/solutions/individuals' },
+    { label: 'For Teams', href: '/solutions/teams' },
+    { label: 'For Enterprise', href: '/solutions/enterprise' },
+  ],
   company: [
     { label: 'About', href: '/about' },
     { label: 'Contact', href: '/contact' },
+    { label: 'FAQ', href: '/faq' },
   ],
   legal: [
     { label: 'Privacy Policy', href: '/privacy' },
@@ -75,13 +81,30 @@ export const Footer = () => {
           ))}
         </div>
 
-        {/* 4-column links */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+        {/* 5-column links */}
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
           {/* Product */}
           <div>
             <h4 className="text-sm font-semibold text-foreground mb-4">Product</h4>
             <ul className="space-y-2">
               {footerLinks.product.map((link) => (
+                <li key={link.label}>
+                  <Link 
+                    to={link.href} 
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Solutions */}
+          <div>
+            <h4 className="text-sm font-semibold text-foreground mb-4">Solutions</h4>
+            <ul className="space-y-2">
+              {footerLinks.solutions.map((link) => (
                 <li key={link.label}>
                   <Link 
                     to={link.href} 
