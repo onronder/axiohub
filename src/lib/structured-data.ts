@@ -133,7 +133,27 @@ export const getProductSchema = () => ({
   }
 });
 
+export const getSolutionPageSchema = (name: string, description: string, url: string) => ({
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": name,
+  "description": description,
+  "url": url,
+  "provider": { "@id": `${BASE_URL}/#organization` },
+  "isPartOf": { "@id": `${BASE_URL}/#website` }
+});
+
 export const getServiceSchema = () => ({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Axio Hub Knowledge Management",
+  "description": "Enterprise RAG platform and AI knowledge base. Connect your data sources, chat with documents securely, and get answers with source citations.",
+  "provider": {
+    "@id": `${BASE_URL}/#organization`
+  },
+  "serviceType": "Knowledge Management Platform",
+  "areaServed": "Worldwide"
+});
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Axio Hub Knowledge Management",

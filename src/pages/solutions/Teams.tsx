@@ -45,6 +45,18 @@ const SolutionsTeams = () => {
         description="The digital clean room. A secure space for high-stakes projects. Upload, discuss, and decide. Then, the room self-destructs."
         canonical="/solutions/teams"
         keywords={['secure team collaboration', 'ephemeral workspace', 'private team AI', 'zero-retention team platform']}
+        structuredData={[
+          getBreadcrumbSchema([
+            { name: 'Home', url: 'https://axiohub.io' },
+            { name: 'Solutions', url: 'https://axiohub.io/solutions' },
+            { name: 'Teams', url: 'https://axiohub.io/solutions/teams' },
+          ]),
+          getSolutionPageSchema(
+            'Axio Hub for Teams — Ephemeral Collaboration',
+            'The digital clean room. A secure space for high-stakes projects. Upload, discuss, and decide. Then, the room self-destructs.',
+            'https://axiohub.io/solutions/teams'
+          ),
+        ]}
       />
       <main id="main-content" className="bg-background">
         <Header />
