@@ -45,7 +45,7 @@
 
 | Card | Title | Description | Detailed Description |
 |------|-------|-------------|---------------------|
-| 1 | Solo Analysts | Off-the-record analysis | Digital burner mode for sensitive work |
+| 1 | Solo Analysts | Off-the-record analysis | Ephemeral analysis mode for sensitive work |
 | 2 | Secure War Rooms | Ephemeral collaboration | Deal rooms that disappear after closing |
 | 3 | Sovereign Infrastructure | Zero-liability enterprise | BYOK and VPC deployment options |
 
