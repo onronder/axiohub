@@ -4,6 +4,7 @@ import { Footer } from '@/components/landing/Footer';
 import { motion } from 'framer-motion';
 import { Users, ArrowRight, Check, Scale, Lock, Trash2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { getBreadcrumbSchema, getSolutionPageSchema } from '@/lib/structured-data';
 
 const teamFeatures = [
   {
