@@ -251,8 +251,8 @@
 
 ### Compliance Badges
 - GDPR Compliant
-- HIPAA Considerations
-- SOC 2 Type II Ready
+- HIPAA-Ready Architecture
+- SOC 2 Type II — Architecture Ready
 - DoD 5220.22-M Wiping
 - Zero Data Retention
 
