@@ -4,6 +4,7 @@ import { Footer } from '@/components/landing/Footer';
 import { motion } from 'framer-motion';
 import { User, ArrowRight, Check, Ghost, Timer, Shield, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { getBreadcrumbSchema, getSolutionPageSchema } from '@/lib/structured-data';
 
 const individualFeatures = [
   {
