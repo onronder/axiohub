@@ -296,7 +296,7 @@
 - Privacy-Preserving LLM
 - Ghost Protocol
 - Ephemeral AI
-- HIPAA AI
+- HIPAA-Ready AI
 - SOC2 AI Agent
 
 ---
