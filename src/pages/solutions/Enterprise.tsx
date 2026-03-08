@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Building2, ArrowRight, Check, Key, Power, Server, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { DataConnectorsSection } from '@/components/landing/DataConnectorsSection';
+import { getBreadcrumbSchema, getSolutionPageSchema } from '@/lib/structured-data';
 
 const enterpriseFeatures = [
   {
