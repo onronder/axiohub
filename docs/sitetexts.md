@@ -159,7 +159,7 @@
 - Eliminate the "Data at Rest" attack vector entirely
 - Run inside your VPC or use our Zero-Retention Cloud
 - BYOK ensures only you control encryption keys
-- 24/7 Kill Switch for instant data destruction
+- 24/7 Emergency Data Purge with full audit trail
 - 99.9% uptime SLA with dedicated support
 - Custom training and onboarding for your team
 
