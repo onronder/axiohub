@@ -143,7 +143,7 @@
 
 **Subheadline:** "Eliminate the **'Data at Rest'** attack vector entirely. Run Axio Hub inside your VPC or use our **Zero-Retention Cloud**."
 
-**Key Features:** "BYOK (Bring Your Own Key) & 24/7 Kill Switch."
+**Key Features:** "BYOK (Bring Your Own Key) & 24/7 Emergency Data Purge."
 
 **Target Audience:** Banks, Defense, Healthcare
 
