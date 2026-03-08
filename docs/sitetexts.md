@@ -128,7 +128,7 @@
 
 **Benefits:**
 - Perfect for M&A deal teams and litigation units
-- Eliminate discovery risk—we hold no discoverable data
+- Minimal discovery surface — significantly reduced data subject to potential discovery
 - Collaborate on sensitive matters without creating permanent records
 - Session-based workspaces that vanish after use
 - Enterprise-grade encryption with zero-retention guarantee
