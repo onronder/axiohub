@@ -83,24 +83,24 @@
 
 **H1:** "Your Second Brain. **Off the Record.**"
 
-**Subheadline:** "**Digital Burner Mode.** Perform deep analysis on leaked documents or market intel without creating a digital footprint."
+**Subheadline:** "**Ephemeral Analysis Mode.** Perform deep analysis on confidential documents or market intel without creating a digital footprint."
 
 **Key Feature:** "Single-Session Memory: Close the tab, wipe the universe."
 
-**Target Audience:** Whistleblowers, Journalists, Traders
+**Target Audience:** Independent consultants, legal professionals, research analysts
 
 **Features:**
 | Icon | Title | Description |
 |------|-------|-------------|
-| Ghost | Digital Burner Mode | Analyze sensitive documents without creating a digital footprint. |
+| Ghost | Ephemeral Analysis Mode | Analyze sensitive documents without creating a digital footprint. |
 | Timer | Single-Session Memory | Close the tab, wipe the universe. Nothing persists. |
-| Shield | Zero-Trace Operations | Perfect for market intel, leaked documents, and sensitive research. |
+| Shield | Zero-Trace Operations | Perfect for confidential research, competitive analysis, and sensitive document review. |
 | Zap | Instant Analysis | Ingest, analyze, and destroy in one ephemeral session. |
 
 **Benefits:**
 - Process sensitive documents without creating audit trails
 - RAM-only processing—data never touches permanent storage
-- Perfect for whistleblowers, journalists, and independent traders
+- Built for independent consultants, legal professionals, research analysts, and anyone who needs to analyze sensitive documents without creating persistent data copies
 - Works with any document format—PDFs, spreadsheets, and more
 - Free tier available—no credit card required
 
