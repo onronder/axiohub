@@ -114,7 +114,7 @@
 
 **Subheadline:** "A shared intelligence workspace that exists only while you need it. Perfect for **deal rooms** and **internal investigations**."
 
-**Key Feature:** "Privilege by Design: We cannot be subpoenaed for data we do not have."
+**Key Feature:** "Privilege by Design: Minimal Discovery Surface — zero-retention architecture reduces data subject to potential discovery or regulatory requests."
 
 **Target Audience:** M&A Deal Teams, Litigation Units
 
