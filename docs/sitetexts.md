@@ -285,9 +285,9 @@
 | Security | Security Manifesto \| Axio Hub | We don't want your data. We built a system that rejects it. Zero-retention architecture. |
 | Features | Ingestion Pipeline \| Axio Hub | Stream data, extract intelligence, destroy the source. Enterprise RAG built for privacy. |
 | Integrations | Secure Connectors \| Axio Hub | Connect your data. Keep your secrets. Read-once, wipe-after integrations. |
-| Individuals | Solo Analysts \| Axio Hub | Your second brain, off the record. Digital burner mode for sensitive analysis. |
-| Teams | Secure War Rooms \| Axio Hub | Collaborate in a digital clean room. Ephemeral deal rooms for M&A and litigation. |
-| Enterprise | Sovereign Infrastructure \| Axio Hub | Intelligence without liability. BYOK and zero-retention cloud for banks, defense, healthcare. |
+| Individuals | For Individuals \| Ephemeral Document Analysis \| Axio Hub | Analyze sensitive documents without creating persistent copies. Ephemeral processing, single-session memory, and Ghost Protocol security for independent professionals. |
+| Teams | For Teams \| Axio Hub | The digital clean room. A secure space for high-stakes projects. Upload, discuss, and decide. Then, the room self-destructs. |
+| Enterprise | For Enterprise \| Zero-Retention AI with BYOK & VPC \| Axio Hub | Deploy enterprise AI without data liability. Bring Your Own Key encryption, VPC deployment options, emergency data purge, and 99.9% uptime SLA. |
 
 ### Default Keywords
 - Enterprise RAG
