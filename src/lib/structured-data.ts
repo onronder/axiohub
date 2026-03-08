@@ -154,13 +154,3 @@ export const getServiceSchema = () => ({
   "serviceType": "Knowledge Management Platform",
   "areaServed": "Worldwide"
 });
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "Axio Hub Knowledge Management",
-  "description": "Enterprise RAG platform and AI knowledge base. Connect your data sources, chat with documents securely, and get answers with source citations.",
-  "provider": {
-    "@id": `${BASE_URL}/#organization`
-  },
-  "serviceType": "Knowledge Management Platform",
-  "areaServed": "Worldwide"
-});
