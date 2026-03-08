@@ -1,7 +1,7 @@
 # Axio Hub - Complete Site Content Documentation
 
 > **Positioning:** Zero-Retention Enterprise AI Agent
-> **Last Updated:** February 2026
+> **Last Updated:** March 2026
 
 ---
 
