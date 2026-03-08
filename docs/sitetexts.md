@@ -122,7 +122,7 @@
 | Icon | Title | Description |
 |------|-------|-------------|
 | Users | Ephemeral Deal Rooms | Shared intelligence that exists only while you need it. |
-| Scale | Privilege by Design | We cannot be subpoenaed for data we do not have. |
+| Scale | Privilege by Design | Minimal Discovery Surface — zero-retention architecture reduces data subject to potential discovery or regulatory requests. |
 | Lock | Session-Based Access | Collaborate on sensitive M&A or litigation matters securely. |
 | Trash2 | Automatic Cleanup | When the deal closes, the data room disappears. |
 
