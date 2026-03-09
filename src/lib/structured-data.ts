@@ -39,8 +39,8 @@ export const getSoftwareApplicationSchema = () => ({
   "applicationCategory": "BusinessApplication",
   "applicationSubCategory": "Knowledge Management",
   "operatingSystem": "Web Browser",
-  "keywords": "AI knowledge base, chat with documents, enterprise RAG platform, multi-source document AI",
-  "description": "Enterprise RAG platform and AI knowledge base. Chat with documents from multiple sources securely with Ghost Protocol zero-retention security.",
+  "keywords": "AI agent, zero-retention AI agent, enterprise RAG, employee agent, RAG platform, AI knowledge base, chat with documents",
+  "description": "Zero-retention AI agent and enterprise RAG platform. Employee Agent that analyzes documents in ephemeral memory and destroys the source. Ghost Protocol security.",
   "url": BASE_URL,
   "image": `${BASE_URL}/favicon.png`,
   "provider": {
