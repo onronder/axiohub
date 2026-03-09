@@ -114,10 +114,10 @@ const Security = () => {
   return (
     <>
       <SEO 
-        title="Security Manifesto"
-        description="We don't want your data. We built a system that rejects it. Zero-retention architecture with AES-256 encryption and DoD 5220.22-M wiping."
+        title="Zero-Retention AI Security | Ghost Protocol for Enterprise AI Agents"
+        description="Zero-retention AI agent security: Ghost Protocol ensures your data is processed in RAM and cryptographically destroyed. AES-256 encryption, DoD 5220.22-M wiping for enterprise AI agents."
         canonical="/security"
-        keywords={['Zero-Retention AI', 'Enterprise RAG security', 'HIPAA AI', 'SOC2 AI Agent', 'Privacy-Preserving LLM']}
+        keywords={['zero-retention AI', 'zero-retention AI agent', 'AI agent security', 'enterprise RAG security', 'ghost protocol', 'HIPAA-Ready AI', 'SOC2 AI Agent']}
         ogImage="/og-security.png"
       />
       <main className="bg-background min-h-screen">
