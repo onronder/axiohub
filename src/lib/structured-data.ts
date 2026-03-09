@@ -84,7 +84,7 @@ export const getWebSiteSchema = () => ({
   "@id": `${BASE_URL}/#website`,
   "name": "Axio Hub",
   "url": BASE_URL,
-  "description": "AI knowledge base that lets you chat with documents from multiple sources. Enterprise RAG platform with Ghost Protocol zero-retention security.",
+  "description": "Zero-retention AI agent and enterprise RAG platform. Deploy an Employee Agent to chat with documents securely using Ghost Protocol zero-retention security.",
   "publisher": {
     "@id": `${BASE_URL}/#organization`
   }
