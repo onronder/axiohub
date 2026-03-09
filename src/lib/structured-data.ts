@@ -12,7 +12,7 @@ export const getOrganizationSchema = () => ({
     "width": 512,
     "height": 512
   },
-  "description": "Enterprise RAG platform and AI knowledge base. Chat with documents securely using multi-source document AI with Ghost Protocol zero-retention security.",
+  "description": "Zero-retention AI agent and enterprise RAG platform. Deploy an Employee Agent that analyzes documents in ephemeral memory with Ghost Protocol security.",
   "email": "hello@axiohub.io",
   "sameAs": [
     "https://twitter.com/axiohub"
