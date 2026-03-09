@@ -119,7 +119,7 @@ export const getProductSchema = () => ({
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "Axio Hub",
-  "description": "AI knowledge base that lets you chat with documents. Enterprise RAG platform with Ghost Protocol zero-retention security.",
+  "description": "Zero-retention AI agent and enterprise RAG platform. Employee Agent with Ghost Protocol security for enterprise document analysis.",
   "brand": {
     "@type": "Brand",
     "name": "Axio Hub"
