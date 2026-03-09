@@ -62,7 +62,7 @@ export const HeroSection = () => {
             transition={{ duration: 0.8 }}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight"
           >
-            <span className="text-foreground">Deploy Enterprise AI. </span>
+            <span className="text-foreground">The Zero-Retention AI Agent. </span>
             <span className="secure-gradient">Eliminate Data Liability.</span>
           </motion.h1>
           
