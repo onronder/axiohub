@@ -187,11 +187,11 @@ const Features = () => {
               className="text-center max-w-3xl mx-auto"
             >
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                <span className="text-foreground">The Ingestion Pipeline </span>
-                <span className="gradient-text">That Forgets</span>
+                <span className="text-foreground">Enterprise RAG </span>
+                <span className="gradient-text">AI Agent Features</span>
               </h1>
               <p className="text-xl text-muted-foreground">
-                We don't sync your data; we stream it. <strong className="text-foreground">Read-Once, Wipe-After</strong> operations for maximum security.
+                The zero-retention AI agent that streams your data, extracts intelligence, and forgets. <strong className="text-foreground">Read-Once, Wipe-After</strong> enterprise RAG operations.
               </p>
             </motion.div>
           </div>

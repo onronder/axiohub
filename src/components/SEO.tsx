@@ -27,7 +27,7 @@ export const SEO = ({
   structuredData,
   keywords = DEFAULT_KEYWORDS,
 }: SEOProps) => {
-  const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} | AI Knowledge Base - Chat with Documents`;
+  const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} | Zero-Retention AI Agent & Enterprise RAG Platform`;
   const fullOgImage = ogImage.startsWith('http') ? ogImage : `${BASE_URL}${ogImage}`;
 
   // Always emit a canonical URL — strip trailing slashes for normalization

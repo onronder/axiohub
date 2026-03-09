@@ -18,9 +18,10 @@ const footerLinks = {
   ],
   resources: [
     { label: 'Blog', href: '/blog' },
+    { label: 'What Is an AI Agent?', href: '/blog/what-is-an-ai-agent-for-enterprise' },
+    { label: 'What Is RAG?', href: '/blog/what-is-rag-retrieval-augmented-generation-explained' },
+    { label: 'Zero-Retention AI', href: '/blog/zero-retention-ai-the-future-of-secure-data-processing' },
     { label: 'Documentation', href: 'https://docs.axiohub.io', external: true },
-    { label: 'Help Center', href: 'https://help.axiohub.io', external: true },
-    { label: 'Status', href: 'https://status.axiohub.io', external: true },
   ],
   solutions: [
     { label: 'For Individuals', href: '/solutions/individuals' },

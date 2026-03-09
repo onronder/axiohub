@@ -35,8 +35,8 @@ const Index = () => {
     <>
       <SEO 
         canonical="/"
-        description="Deploy Enterprise AI. Eliminate Data Liability. Zero-Retention Employee Agent for M&A, Legal, and R&D. We process in RAM and destroy the source."
-        keywords={['Enterprise RAG', 'Zero-Retention AI', 'Secure AI', 'Ephemeral AI', 'HIPAA AI', 'SOC2 AI Agent']}
+        description="The zero-retention AI agent for enterprise. Deploy an Employee Agent that analyzes M&A, Legal, and R&D documents in RAM and destroys the source. Enterprise RAG platform."
+        keywords={['AI Agent', 'Zero-Retention AI Agent', 'Enterprise RAG', 'Employee Agent', 'Zero Retention', 'RAG Platform', 'Secure AI', 'Ephemeral AI', 'HIPAA-Ready AI', 'SOC2 AI Agent']}
         structuredData={[
           getOrganizationSchema(),
           getSoftwareApplicationSchema(),

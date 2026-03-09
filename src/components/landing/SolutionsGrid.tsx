@@ -36,7 +36,7 @@ export const SolutionsGrid = () => {
           className="text-center mb-12 md:mb-16"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-foreground">Built for the </span>
+            <span className="text-foreground">AI Agent Solutions for the </span>
             <span className="gradient-text">'Do Not Leak' Economy</span>
           </h2>
         </motion.div>

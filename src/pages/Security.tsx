@@ -134,12 +134,12 @@ const Security = () => {
             >
               <span className="text-5xl mb-6 block">🛡️</span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-                <span className="text-foreground">We Don't Want Your Data. </span>
-                <span className="gradient-text">We Built a System That Rejects It.</span>
+                <span className="text-foreground">Zero-Retention AI Agent Security. </span>
+                <span className="gradient-text">Ghost Protocol for Enterprise.</span>
               </h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                The industry's first truly <strong className="text-foreground">zero-retention AI platform</strong>. 
-                Your data is processed in RAM and cryptographically destroyed.
+                The industry's first truly <strong className="text-foreground">zero-retention AI agent</strong>. 
+                Your data is processed in RAM and cryptographically destroyed. No AI agent has ever been this secure.
               </p>
             </motion.div>
           </div>
