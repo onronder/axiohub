@@ -62,7 +62,7 @@ export const HeroSection = () => {
             transition={{ duration: 0.8 }}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight"
           >
-            <span className="text-foreground">Deploy Enterprise AI. </span>
+            <span className="text-foreground">The Zero-Retention AI Agent. </span>
             <span className="secure-gradient">Eliminate Data Liability.</span>
           </motion.h1>
           
@@ -72,7 +72,7 @@ export const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-base sm:text-lg md:text-xl text-muted-foreground mb-6 md:mb-8 max-w-3xl mx-auto px-2 leading-relaxed"
           >
-            The world's first <strong className="text-foreground">Zero-Retention Employee Agent</strong>. We analyze sensitive M&A, Legal, and R&D documents in ephemeral memory, deliver the insight, and then <strong className="text-foreground">cryptographically destroy</strong> the source.
+            The world's first <strong className="text-foreground">Zero-Retention Employee Agent</strong> — an enterprise RAG AI agent that analyzes sensitive M&A, Legal, and R&D documents in ephemeral memory, delivers the insight, and then <strong className="text-foreground">cryptographically destroys</strong> the source.
           </motion.p>
           
           {/* Trust Bar */}

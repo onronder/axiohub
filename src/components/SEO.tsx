@@ -12,8 +12,8 @@ interface SEOProps {
 }
 
 const SITE_NAME = 'Axio Hub';
-const DEFAULT_DESCRIPTION = 'Zero-Retention Enterprise AI Agent. Analyze sensitive documents in ephemeral memory and destroy the source. Eliminate data liability.';
-const DEFAULT_KEYWORDS = ['Enterprise RAG', 'Zero-Retention AI', 'Secure AI', 'Privacy-Preserving LLM', 'Ghost Protocol', 'Ephemeral AI', 'HIPAA-Ready AI', 'SOC2 AI Agent'];
+const DEFAULT_DESCRIPTION = 'Zero-Retention AI Agent for enterprise. Deploy an Employee Agent that analyzes documents in ephemeral memory and destroys the source. Enterprise RAG platform with Ghost Protocol security.';
+const DEFAULT_KEYWORDS = ['AI Agent', 'Zero-Retention AI', 'Enterprise RAG', 'Employee Agent', 'Zero-Retention AI Agent', 'RAG Platform', 'Secure AI', 'Ghost Protocol', 'Ephemeral AI', 'HIPAA-Ready AI', 'SOC2 AI Agent'];
 const DEFAULT_OG_IMAGE = '/og-image.png';
 const BASE_URL = 'https://axiohub.io';
 
@@ -27,7 +27,7 @@ export const SEO = ({
   structuredData,
   keywords = DEFAULT_KEYWORDS,
 }: SEOProps) => {
-  const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} | AI Knowledge Base - Chat with Documents`;
+  const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} | Zero-Retention AI Agent & Enterprise RAG Platform`;
   const fullOgImage = ogImage.startsWith('http') ? ogImage : `${BASE_URL}${ogImage}`;
 
   // Always emit a canonical URL — strip trailing slashes for normalization

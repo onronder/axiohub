@@ -168,10 +168,10 @@ const Features = () => {
   return (
     <>
       <SEO 
-        title="Features | Scope Guard, Ghost Protocol & AI Chat"
-        description="Scope Dominance Guard, hybrid search, source citations, 3-provider AI failover, and zero-retention security. The most reliable enterprise RAG platform."
+        title="Enterprise RAG Features | AI Agent with Ghost Protocol & Zero Retention"
+        description="Enterprise RAG AI agent features: Scope Dominance Guard, hybrid search, source citations, 3-provider AI failover, and zero-retention security. The most reliable AI agent platform."
         canonical="/features"
-        keywords={['scope guard', 'ghost protocol features', 'AI chat with citations', 'hybrid search', 'enterprise RAG features', 'zero-retention AI']}
+        keywords={['enterprise RAG features', 'AI agent features', 'zero-retention AI agent', 'ghost protocol', 'scope guard', 'RAG platform', 'employee agent']}
         ogImage="/og-features.png"
       />
       <main className="bg-background min-h-screen">
@@ -187,11 +187,11 @@ const Features = () => {
               className="text-center max-w-3xl mx-auto"
             >
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                <span className="text-foreground">The Ingestion Pipeline </span>
-                <span className="gradient-text">That Forgets</span>
+                <span className="text-foreground">Enterprise RAG </span>
+                <span className="gradient-text">AI Agent Features</span>
               </h1>
               <p className="text-xl text-muted-foreground">
-                We don't sync your data; we stream it. <strong className="text-foreground">Read-Once, Wipe-After</strong> operations for maximum security.
+                The zero-retention AI agent that streams your data, extracts intelligence, and forgets. <strong className="text-foreground">Read-Once, Wipe-After</strong> enterprise RAG operations.
               </p>
             </motion.div>
           </div>

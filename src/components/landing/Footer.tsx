@@ -18,9 +18,10 @@ const footerLinks = {
   ],
   resources: [
     { label: 'Blog', href: '/blog' },
+    { label: 'What Is an AI Agent?', href: '/blog/what-is-an-ai-agent-for-enterprise' },
+    { label: 'What Is RAG?', href: '/blog/what-is-rag-retrieval-augmented-generation-explained' },
+    { label: 'Zero-Retention AI', href: '/blog/zero-retention-ai-the-future-of-secure-data-processing' },
     { label: 'Documentation', href: 'https://docs.axiohub.io', external: true },
-    { label: 'Help Center', href: 'https://help.axiohub.io', external: true },
-    { label: 'Status', href: 'https://status.axiohub.io', external: true },
   ],
   solutions: [
     { label: 'For Individuals', href: '/solutions/individuals' },
@@ -123,14 +124,23 @@ export const Footer = () => {
             <ul className="space-y-2">
               {footerLinks.resources.map((link) => (
                 <li key={link.label}>
-                  <a 
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {link.label}
-                  </a>
+                  {'external' in link && link.external ? (
+                    <a 
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link
+                      to={link.href}
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

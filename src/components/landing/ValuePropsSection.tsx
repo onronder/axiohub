@@ -36,6 +36,9 @@ export const ValuePropsSection = () => {
             <span className="text-foreground">Security is Not a Feature. </span>
             <span className="gradient-text">It's Physics.</span>
           </h2>
+          <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto mt-4">
+            Our enterprise RAG AI agent is built on zero-retention architecture. Every document is processed in volatile memory and wiped — making this the most secure AI agent platform ever built.
+          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
